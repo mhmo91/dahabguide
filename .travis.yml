@@ -3,12 +3,6 @@ sudo: false
 language: node_js
 node_js:
 - stable
-addons:
-  apt:
-    sources:
-    - google-chrome
-    packages:
-    - google-chrome-stable
 cache:
   directories:
   - "./node_modules"
