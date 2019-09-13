@@ -9,9 +9,9 @@ cache:
 install:
 - npm install
 script:
-- npm lint
-- npm continuous-test
-- npm build-prod
+- npm run lint
+- npm run continuous-test
+- npm run build-prod
 deploy:
   provider: firebase
   token:
