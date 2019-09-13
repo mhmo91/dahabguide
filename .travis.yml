@@ -1,0 +1,24 @@
+dist: trusty
+sudo: false
+language: node_js
+node_js:
+- stable
+addons:
+  apt:
+    sources:
+    - google-chrome
+    packages:
+    - google-chrome-stable
+cache:
+  directories:
+  - "./node_modules"
+install:
+- npm install
+script:
+- ng lint
+- ng test --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
+- ng build --prod
+deploy:
+  provider: firebase
+  token:
+    secure: TmfkmKkRGY8V5x3OIkLLiwO3IcXp5BlULZ7MJs7LSs+f+zHCMz+MR8lD6Hx4dIA1rCnRGHGj4vOKOxDFFpGe/lDtb8gTSQcngg8Ku8knLBR/hyzTtVD+a8sXTWZ0psyx2Pp2aHHcXW2GmUifdXi88DoEkTQYSK1moKCiouM4Q2fJKL5gcxAv67dIeSHgqYe6DTM60VzKTRptnXb+5ouJi6vvsm8DDISZlxnq7lHe0xu35bCTgzbOKXwiTcWiMJCmBe25eacRM15jYnAeez8YDv9Xt1cFXKaYEXJ2PPIK+BFoLIIi7SmFIoOn/aqk7h1+jbUTWGZwJtC04+JKvBistJgedJVrTjnRBAeninV1U/XdHbM0rbvvyzdYNigNA8Z5PKYmZULy03bJpd0AQIljk50g0twUdcPAPb0Aahv2sk6fwtc4JnwAH8IuXOkQVvamDFUxe4mTalyThmTzB00GX75Xuo0gcikzBUghxsftGpklTuljuizWG/akqq5uT7XmdZr4p4+R32z5fFV8BaedTU8DqFTHai90yVA705LpIOfBG5YXZta8AUzn33DfRVEgU4itizbxNdblMuds4xdasxROsuMR8BHSQB71cUpprJdwB6YWkGiZ1vIew/b/pUJjkZI9ER0MCyOVtZEbLSpT2x5AXeOj5owpYQPQBO5GuO4=

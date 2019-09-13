@@ -22,6 +22,8 @@
     "@angular/router": "~8.2.4",
     "firebase": "^6.6.0",
     "rxjs": "~6.4.0",
+    "travis": "^0.1.1",
+    "travis-ci": "^2.2.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
