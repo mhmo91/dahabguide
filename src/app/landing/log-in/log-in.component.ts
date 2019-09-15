@@ -9,17 +9,20 @@ import { AuthService } from '../../app-shared/services/auth.service';
 })
 export class LogInComponent implements OnInit {
 
-  constructor( private auth: AuthService, private dialogRef: MatDialogRef<LogInComponent>) { }
+  constructor(private auth: AuthService, private dialogRef: MatDialogRef<LogInComponent>) { }
 
   ngOnInit() {
   }
   async logInWithFacebook() {
-    await this.auth.facebookSignin();
-    this.close();
+    this.auth.facebookSignin().then((res) => {
+      console.log(res);
+      this.close();
+    });
   }
   async logInWithgoogle() {
-    await this.auth.googleSignin();
-    this.close();
+    this.auth.googleSignin().then((res) => {
+      this.close();
+    });
   }
   close() {
     this.dialogRef.close();

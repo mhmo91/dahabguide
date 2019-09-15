@@ -12,6 +12,7 @@
 
     <mat-sidenav-content class="d-flex justify-content-center align-items-center">
       <h2 class="text-secondary">Stay tuned...</h2>
+      {{this.userService.user | json}}
       <router-outlet></router-outlet>
     </mat-sidenav-content>
 

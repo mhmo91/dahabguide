@@ -63,9 +63,7 @@ import { AuthGuard } from './guards/auth.guard';
     MatBadgeModule,
     MatTooltipModule,
     MatAutocompleteModule,
-    MatChipsModule,
-    AuthService,
-    AuthGuard
+    MatChipsModule
   ]
 })
 export class AppSharedModule { }
