@@ -61,7 +61,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatBadgeModule,
     MatTooltipModule,
     MatAutocompleteModule,
-    MatChipsModule,
+    MatChipsModule
   ]
 })
 export class AppSharedModule { }

@@ -1,4 +1,4 @@
-import { AppSharedModule } from './../app-shared/app-shared.module';
+import { RestrictSharedModule } from './restrict-shared/restrict-shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -12,7 +12,7 @@ import { RestrictToolbarComponent } from './restrict-toolbar/restrict-toolbar.co
   imports: [
     CommonModule,
     RestrictRoutingModule,
-    AppSharedModule
+    RestrictSharedModule
   ]
 })
 export class RestrictModule { }
