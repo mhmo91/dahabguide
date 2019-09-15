@@ -1,3 +1,4 @@
+import { AppSharedModule } from './app-shared/app-shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
@@ -22,8 +23,8 @@ import { AppComponent } from './app.component';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
+    AppSharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
