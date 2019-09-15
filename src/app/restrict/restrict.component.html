@@ -1,1 +1,21 @@
-<p>restrict works!</p>
+<div class="restrict-container" [class.mobile-view]="mobileQuery.matches">
+
+  <dahab-restrict-toolbar (toggleSideNav)="snav.toggle()"></dahab-restrict-toolbar>
+
+  <mat-sidenav-container class="restrict-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 4">
+
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <mat-nav-list>
+        <span>some content here</span>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="d-flex justify-content-center align-items-center">
+      <h2 class="text-secondary">Stay tuned...</h2>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+</div>
