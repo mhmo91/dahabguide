@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 
 import { LandingRoutingModule } from './landing-routing.module';
 import { LandingComponent } from './landing.component';
+import { LandingToolbarComponent } from './landing-toolbar/landing-toolbar.component';
 
 
 @NgModule({
-  declarations: [LandingComponent],
+  declarations: [LandingComponent, LandingToolbarComponent],
   imports: [
     CommonModule,
     LandingRoutingModule,

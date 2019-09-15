@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 
 import { RestrictRoutingModule } from './restrict-routing.module';
 import { RestrictComponent } from './restrict.component';
+import { RestrictToolbarComponent } from './restrict-toolbar/restrict-toolbar.component';
 
 
 @NgModule({
-  declarations: [RestrictComponent],
+  declarations: [RestrictComponent, RestrictToolbarComponent],
   imports: [
     CommonModule,
     RestrictRoutingModule,

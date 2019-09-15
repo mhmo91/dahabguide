@@ -1,8 +1,8 @@
-<div class="landing-container" [class.mobile-view]="mobileQuery.matches">
+<div class="restrict-container" [class.mobile-view]="mobileQuery.matches">
 
-  <dahab-landing-toolbar (toggleSideNav)="snav.toggle()"></dahab-landing-toolbar>
+  <dahab-restrict-toolbar (toggleSideNav)="snav.toggle()"></dahab-restrict-toolbar>
 
-  <mat-sidenav-container class="landing-sidenav-container">
+  <mat-sidenav-container class="restrict-sidenav-container">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56">
       <mat-nav-list>
