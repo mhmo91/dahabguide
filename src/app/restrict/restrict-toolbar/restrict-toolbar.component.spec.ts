@@ -1,22 +1,22 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { LandingComponent } from './landing.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RestrictToolbarComponent } from './restrict-toolbar.component';
 
-describe('LandingComponent', () => {
-  let component: LandingComponent;
-  let fixture: ComponentFixture<LandingComponent>;
+
+describe('RestrictToolbarComponent', () => {
+  let component: RestrictToolbarComponent;
+  let fixture: ComponentFixture<RestrictToolbarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LandingComponent],
+      declarations: [RestrictToolbarComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LandingComponent);
+    fixture = TestBed.createComponent(RestrictToolbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
