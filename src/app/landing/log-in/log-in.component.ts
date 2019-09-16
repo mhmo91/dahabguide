@@ -15,7 +15,6 @@ export class LogInComponent implements OnInit {
   }
   async logInWithFacebook() {
     this.auth.facebookSignin().then((res) => {
-      console.log(res);
       this.close();
     });
   }

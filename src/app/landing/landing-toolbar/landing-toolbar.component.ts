@@ -1,6 +1,7 @@
 import { MatDialog } from '@angular/material';
 import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { LogInComponent } from '../log-in/log-in.component';
+import { AuthService } from 'src/app/app-shared/services/auth.service';
 
 @Component({
   selector: 'dahab-landing-toolbar',
@@ -11,7 +12,7 @@ import { LogInComponent } from '../log-in/log-in.component';
 export class LandingToolbarComponent implements OnInit {
 
   @Output() toggleSideNav = new EventEmitter();
-  constructor(private matDialog: MatDialog) { }
+  constructor(private matDialog: MatDialog, public userService: AuthService) { }
 
   ngOnInit() {
   }
@@ -21,6 +22,10 @@ export class LandingToolbarComponent implements OnInit {
       minWidth: '30vw',
       disableClose: true
     });
+  }
+
+  signOut() {
+    this.userService.signOut();
   }
 
 }

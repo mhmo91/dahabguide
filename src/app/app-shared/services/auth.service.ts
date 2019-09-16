@@ -19,10 +19,14 @@ interface User {
 export class AuthService {
 
   user: Observable<User>;
-  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
-    this.user = this.afAuth.authState.pipe(
+  constructor(private angularFireAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
+
+    // the "this.angularFireAuth.authState" is an Observable<firebase.User> emit when app authState change
+    this.user = this.angularFireAuth.authState.pipe(
       switchMap(user => {
         if (user) {
+
+          // get user info from users Collection from firestore "dahab-guide/database/users"
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
@@ -33,27 +37,32 @@ export class AuthService {
 
   async googleSignin() {
     const provider = new auth.GoogleAuthProvider();
-    const credential = await this.afAuth.auth.signInWithPopup(provider);
+
+    // receiving the user info object from his google account
+    // if sign up it will add the user info object to "/dahab-guide/authentication/users"
+    const credential = await this.angularFireAuth.auth.signInWithPopup(provider);
     return this.updateUserData(credential.user);
   }
   async facebookSignin() {
     const provider = new auth.FacebookAuthProvider();
-    const credential = await this.afAuth.auth.signInWithPopup(provider);
+    const credential = await this.angularFireAuth.auth.signInWithPopup(provider);
     return this.updateUserData(credential.user);
   }
   // async Signin(email: string, password: string) {
-  //   const credential = await this.afAuth.auth.signInWithEmailAndPassword(email , password);
+  //   const credential = await this.angularFireAuth.auth.signInWithEmailAndPassword(email , password);
   //   return this.updateUserData(credential.user);
   //  }
 
   async signOut() {
-    await this.afAuth.auth.signOut();
-    return this.router.navigate(['/']);
+    await this.angularFireAuth.auth.signOut();
+    return this.router.navigate(['/landing']);
   }
 
 
   private updateUserData({ uid, email, displayName, photoURL }: User) {
 
+    // if uid exist in "dahab-guide/database/users" it update the info
+    // else create NEW ONE
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${uid}`);
     const data = {
       uid,
