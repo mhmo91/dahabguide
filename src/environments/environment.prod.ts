@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   firebase: {
     apiKey: 'AIzaSyBuAM_JIeS6NMa4fnX3Q0SRZxmTc_n8uy8',
-    authDomain: 'dahab-guide.firebaseapp.com',
+    authDomain: 'dahabguide.com',
     databaseURL: 'https://dahab-guide.firebaseio.com',
     projectId: 'dahab-guide',
     storageBucket: '',
