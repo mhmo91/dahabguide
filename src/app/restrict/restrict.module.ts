@@ -1,10 +1,10 @@
-import { RestrictSharedModule } from './restrict-shared/restrict-shared.module';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgModule } from '@angular/core';
 import { RestrictRoutingModule } from './restrict-routing.module';
-import { RestrictComponent } from './restrict.component';
+import { RestrictSharedModule } from './restrict-shared/restrict-shared.module';
 import { RestrictToolbarComponent } from './restrict-toolbar/restrict-toolbar.component';
+import { RestrictComponent } from './restrict.component';
+
 
 
 @NgModule({

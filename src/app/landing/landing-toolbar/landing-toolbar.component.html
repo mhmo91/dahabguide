@@ -1,10 +1,7 @@
-<mat-toolbar class="landing-toolbar mat-elevation-z1">
+<mat-toolbar class="landing-toolbar bg-white mat-elevation-z1">
   <button class="d-block d-lg-none" mat-icon-button (click)="this.toggleSideNav.emit()">
     <mat-icon>menu</mat-icon>
   </button>
 
-  <div class="d-flex align-items-center">
-    <h1 class="mx-3">Dahab Guide</h1>
-    <img src="assets/logo.png" class="" height="50px" alt="palm trees">
-  </div>
+  <dahab-toolbar-logo></dahab-toolbar-logo>
 </mat-toolbar>

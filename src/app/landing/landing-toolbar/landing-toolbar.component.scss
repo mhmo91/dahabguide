@@ -1,9 +1,4 @@
-@import "src/sass/bootstrap";
 @import "src/sass/variables";
-
-.landing-toolbar {
-  @extend .bg-white !optional;
-}
 
 .mobile-view .landing-toolbar {
   position: fixed;
