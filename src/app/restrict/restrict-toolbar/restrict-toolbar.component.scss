@@ -1,9 +1,4 @@
-@import "src/sass/bootstrap";
 @import "src/sass/variables";
-
-.restrict-toolbar {
-  @extend .bg-white !optional;
-}
 
 .mobile-view .restrict-toolbar {
   position: fixed;

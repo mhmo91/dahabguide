@@ -28,10 +28,11 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ToolbarLogoComponent } from './toolbar-logo/toolbar-logo.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [ToolbarLogoComponent],
   imports: [
     CommonModule
   ],
@@ -61,7 +62,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatBadgeModule,
     MatTooltipModule,
     MatAutocompleteModule,
-    MatChipsModule
+    MatChipsModule,
+
+
+    // components
+    ToolbarLogoComponent
   ]
 })
 export class AppSharedModule { }
