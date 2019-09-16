@@ -2,7 +2,6 @@ import { UserService } from './../../services/user.service';
 import { take } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
-import { LogInComponent } from '../log-in/log-in.component';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -21,13 +20,6 @@ export class LandingToolbarComponent implements OnInit {
     this.loadingUser = true;
     this.authService.userObservable.pipe(take(1)).subscribe((res) => {
       this.loadingUser = false;
-    });
-  }
-
-  openAuthModal() {
-    this.matDialog.open(LogInComponent, {
-      minWidth: '30vw',
-      disableClose: true
     });
   }
 

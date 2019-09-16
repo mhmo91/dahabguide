@@ -17,7 +17,7 @@ export class AuthGuard implements CanLoad {
         if (loggedIn) {
           return true;
         } else {
-          console.log('test 2222222222222222222');
+          console.log('You are not authenticated, get out!');
           this.router.navigate(['/landing']);
           return false;
         }
