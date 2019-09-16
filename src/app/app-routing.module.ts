@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './services/guards/auth.guard';
 
 
 const routes: Routes = [
   { path: 'landing', loadChildren: () => import('./landing/landing.module').then(m => m.LandingModule) },
-  { path: 'restrict', loadChildren: () => import('./restrict/restrict.module').then(m => m.RestrictModule) },
-  // canLoad: [AuthGuardService],
+  { path: 'restrict', canLoad: [AuthGuard], loadChildren: () => import('./restrict/restrict.module').then(m => m.RestrictModule) },
+
   { path: '**', redirectTo: 'landing' }
 ];
 
