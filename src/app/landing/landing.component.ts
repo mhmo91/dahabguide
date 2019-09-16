@@ -1,4 +1,4 @@
-import { AuthService } from './../app-shared/services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 
