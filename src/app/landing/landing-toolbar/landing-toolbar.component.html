@@ -1,20 +1,49 @@
-<mat-toolbar class="landing-toolbar mat-elevation-z1">
+<mat-toolbar class="landing-toolbar bg-white mat-elevation-z1">
   <button class="d-block d-lg-none" mat-icon-button (click)="this.toggleSideNav.emit()">
     <mat-icon>menu</mat-icon>
   </button>
 
-  <div class="d-flex align-items-center">
-    <h1 class="mx-3">Dahab Guide</h1>
-    <img src="assets/logo.png" class="" height="50px" alt="palm trees">
-  </div>
+  <dahab-toolbar-logo></dahab-toolbar-logo>
+
   <div class="flex-grow-1"></div>
 
-  <button *ngIf="userService.user | async;else login" mat-raised-button (click)="signOut()" color="accent">Log Out
-  </button>
+  <mat-spinner *ngIf="this.loadingUser;else userLoaded" diameter="25"></mat-spinner>
 
-  <ng-template #login>
-    <button mat-raised-button (click)="openAuthModal()" color="accent">Login | Sign up
-    </button>
-  </ng-template >
+  <ng-template #userLoaded>
+    <section *ngIf="authService.userObservable | async; else login">
+      <a class="profile-img cursor-pointer" [mat-menu-trigger-for]="userMenu">
+        <img [src]="this.userService.fUser.photoURL" width="30" height="30" alt="user photo"
+          class="rounded-circle profile-picture">
+      </a>
+
+      <mat-menu #userMenu="matMenu">
+        <div class="container d-flex overflow-hidden">
+          <img mat-card-avatar height="45" [src]="this.userService.fUser.photoURL" alt="user photo"
+            class="rounded-circle profile-picture mt-1">
+          <!-- <mat-spinner diameter="45" *ngIf="busy"></mat-spinner> -->
+
+          <div class="pl-2">
+            <span class="text-capitalize">
+              {{this.userService.fUser.displayName}}</span>
+            <p class="text-muted">{{this.userService.fUser.email}}</p>
+          </div>
+        </div>
+        <button mat-menu-item (click)="this.signOut()">
+          <mat-icon> exit_to_app </mat-icon>
+          Sign Out
+        </button>
+      </mat-menu>
+    </section>
+
+    <ng-template #login>
+      <button mat-stroked-button color="accent" [matMenuTriggerFor]="loginMenu">Sing in</button>
+      <mat-menu #loginMenu="matMenu">
+        <button mat-menu-item class="facebook" (click)="logInWithFacebook()">Facebook</button>
+        <button mat-menu-item class="google" (click)="logInWithgoogle()">Google</button>
+      </mat-menu>
+    </ng-template>
+  </ng-template>
+
+
 
 </mat-toolbar>

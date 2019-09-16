@@ -1,7 +1,9 @@
+import { UserService } from './../../services/user.service';
+import { take } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { LogInComponent } from '../log-in/log-in.component';
-import { AuthService } from 'src/app/app-shared/services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'dahab-landing-toolbar',
@@ -12,9 +14,14 @@ import { AuthService } from 'src/app/app-shared/services/auth.service';
 export class LandingToolbarComponent implements OnInit {
 
   @Output() toggleSideNav = new EventEmitter();
-  constructor(private matDialog: MatDialog, public userService: AuthService) { }
+  loadingUser: boolean;
+  constructor(private matDialog: MatDialog, public authService: AuthService, public userService: UserService) { }
 
   ngOnInit() {
+    this.loadingUser = true;
+    this.authService.userObservable.pipe(take(1)).subscribe((res) => {
+      this.loadingUser = false;
+    });
   }
 
   openAuthModal() {
@@ -25,7 +32,15 @@ export class LandingToolbarComponent implements OnInit {
   }
 
   signOut() {
-    this.userService.signOut();
+    this.authService.signOut();
   }
 
+  async logInWithFacebook() {
+    this.authService.facebookSignin().then((res) => {
+    });
+  }
+  async logInWithgoogle() {
+    this.authService.googleSignin().then((res) => {
+    });
+  }
 }

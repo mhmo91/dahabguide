@@ -1,16 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { auth } from 'firebase/app';
+import { auth, User } from 'firebase/app';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-interface User {
-  uid: string;
-  email: string;
-  photoURL?: string;
-  displayName?: string;
-}
+import { UserService } from './user.service';
+
 
 
 @Injectable({
@@ -18,20 +14,24 @@ interface User {
 })
 export class AuthService {
 
-  user: Observable<User>;
-  constructor(private angularFireAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {
+  userObservable: Observable<User>;
+  constructor(
+    private angularFireAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router,
+    private userService: UserService) {
 
     // the "this.angularFireAuth.authState" is an Observable<firebase.User> emit when app authState change
-    this.user = this.angularFireAuth.authState.pipe(
-      switchMap(user => {
+    this.userObservable = this.angularFireAuth.authState.pipe(
+      switchMap((user) => {
         if (user) {
-
           // get user info from users Collection from firestore "dahab-guide/database/users"
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
         }
       }));
+    this.userObservable.subscribe(res => {
+      this.userService.fUser = res;
+    });
   }
 
 
@@ -48,10 +48,7 @@ export class AuthService {
     const credential = await this.angularFireAuth.auth.signInWithPopup(provider);
     return this.updateUserData(credential.user);
   }
-  // async Signin(email: string, password: string) {
-  //   const credential = await this.angularFireAuth.auth.signInWithEmailAndPassword(email , password);
-  //   return this.updateUserData(credential.user);
-  //  }
+
 
   async signOut() {
     await this.angularFireAuth.auth.signOut();
@@ -59,17 +56,11 @@ export class AuthService {
   }
 
 
-  private updateUserData({ uid, email, displayName, photoURL }: User) {
+  private updateUserData({ uid, email, displayName, photoURL }) {
 
     // if uid exist in "dahab-guide/database/users" it update the info
     // else create NEW ONE
-    const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${uid}`);
-    const data = {
-      uid,
-      email,
-      displayName,
-      photoURL
-    };
-    return userRef.set(data, { merge: true });
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${uid}`);
+    return userRef.set({ uid, email, displayName, photoURL }, { merge: true });
   }
 }
