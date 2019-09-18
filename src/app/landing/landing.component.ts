@@ -1,4 +1,3 @@
-import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 
@@ -12,7 +11,7 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   private mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public userService: AuthService) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this.mobileQueryListener = () => changeDetectorRef.detectChanges();
     // this.mobileQuery.addListener(this.mobileQueryListener);
