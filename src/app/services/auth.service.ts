@@ -16,8 +16,7 @@ export class AuthService {
 
   userObservable: Observable<User>;
   constructor(
-    private angularFireAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router,
-    private userService: UserService) {
+    private angularFireAuth: AngularFireAuth, private afs: AngularFirestore, private userService: UserService, private router: Router) {
 
     // the "this.angularFireAuth.authState" is an Observable<firebase.User> emit when app authState change
     this.userObservable = this.angularFireAuth.authState.pipe(
