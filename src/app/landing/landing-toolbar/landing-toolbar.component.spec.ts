@@ -1,7 +1,12 @@
+import { RouterTestingModule } from '@angular/router/testing';
+import { LandingSharedModule } from './../landing-shared/landing-shared.module';
+import { FirebaseTestingModule } from 'src/testing/firebase-testing/firebase-testing.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { LandingToolbarComponent } from './landing-toolbar.component';
+import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 describe('LandingToolbarComponent', () => {
   let component: LandingToolbarComponent;
@@ -9,8 +14,10 @@ describe('LandingToolbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [FirebaseTestingModule, RouterTestingModule, LandingSharedModule],
       declarations: [LandingToolbarComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      providers: [UserService, AuthService]
     })
       .compileComponents();
   }));

@@ -14,7 +14,7 @@ export class LandingToolbarComponent implements OnInit {
 
   @Output() toggleSideNav = new EventEmitter();
   loadingUser: boolean;
-  constructor(private matDialog: MatDialog, public authService: AuthService, public userService: UserService) { }
+  constructor(public authService: AuthService, public userService: UserService) { }
 
   ngOnInit() {
     this.loadingUser = true;
