@@ -13,13 +13,13 @@
     <section *ngIf="authService.userObservable | async; else login">
       <a class="profile-img cursor-pointer" [mat-menu-trigger-for]="userMenu">
         <img [src]="this.userService.fUser.photoURL" width="30" height="30" alt="user photo"
-          class="rounded-circle profile-picture">
+          class="rounded-circle mat-elevation-z8">
       </a>
 
       <mat-menu #userMenu="matMenu">
         <div class="container d-flex overflow-hidden">
           <img mat-card-avatar height="45" [src]="this.userService.fUser.photoURL" alt="user photo"
-            class="rounded-circle profile-picture mt-1">
+            class="rounded-circle mat-elevation-z8 mt-1">
           <!-- <mat-spinner diameter="45" *ngIf="busy"></mat-spinner> -->
 
           <div class="pl-2">
