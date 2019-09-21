@@ -1,5 +1,5 @@
 <mat-toolbar class="landing-toolbar bg-white mat-elevation-z1">
-  <button class="d-block d-lg-none" mat-icon-button (click)="this.toggleSideNav.emit()">
+  <button aria-label="Menu" class="d-block d-lg-none" mat-icon-button (click)="this.toggleSideNav.emit()">
     <mat-icon>menu</mat-icon>
   </button>
 
@@ -28,18 +28,24 @@
             <p class="text-muted">{{this.userService.fUser.email}}</p>
           </div>
         </div>
-        <button mat-menu-item (click)="this.signOut()">
+        <button aria-labelledby="signoutBtn" mat-menu-item (click)="this.signOut()">
           <mat-icon> exit_to_app </mat-icon>
-          Sign Out
+          <span id="signoutBtn">Sign Out</span>
         </button>
       </mat-menu>
     </section>
 
     <ng-template #login>
-      <button mat-stroked-button color="accent" [matMenuTriggerFor]="loginMenu">Sing in</button>
+      <button aria-labelledby="signIn" mat-flat-button color="accent" [matMenuTriggerFor]="loginMenu">
+        <span id="signIn">Sign in</span>
+      </button>
       <mat-menu #loginMenu="matMenu">
-        <button mat-menu-item class="facebook" (click)="logInWithFacebook()">Facebook</button>
-        <button mat-menu-item class="google" (click)="logInWithgoogle()">Google</button>
+        <button aria-labelledby="signIn withFacebook" mat-menu-item class="facebook" (click)="logInWithFacebook()">
+          <span id="withFacebook">With Facebook</span>
+        </button>
+        <button aria-labelledby="signIn withGoogle" mat-menu-item class="google" (click)="logInWithgoogle()">
+          <span id="withGoogle">With Google</span>
+        </button>
       </mat-menu>
     </ng-template>
   </ng-template>
