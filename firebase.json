@@ -11,6 +11,12 @@
       "destination": "/index.html"
     }],
     "headers": [{
+        "source": "/",
+        "headers": [{
+          "key": "Link",
+          "value": "</browser/@(main-es2015).js>;rel=preload;as=script"
+        }]
+      }, {
         "source": "**/*.@(jpg|jpeg|gif|png|svg)",
         "headers": [{
             "key": "Cache-Control",
