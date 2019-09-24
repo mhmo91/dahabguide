@@ -1,6 +1,6 @@
-<mat-toolbar class="restrict-toolbar">
-  <button mat-icon-button (click)="this.toggleSideNav.emit()">
+<mat-toolbar class="restrict-toolbar bg-white mat-elevation-z1">
+  <button aria-label="Menu" mat-icon-button (click)="this.toggleSideNav.emit()">
     <mat-icon>menu</mat-icon>
   </button>
-  <h1>Dahab Guide</h1>
+  <dahab-toolbar-logo></dahab-toolbar-logo>
 </mat-toolbar>

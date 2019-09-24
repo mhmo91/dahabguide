@@ -4,3 +4,15 @@
 @import 'material-theme';
 @import 'variables';
 @import 'mixins';
+
+body {
+  // pwa disable highlight and text selection and callouts
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  // pwa end
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

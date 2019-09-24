@@ -1,4 +1,8 @@
+import { UserService } from './../../services/user.service';
+import { take } from 'rxjs/operators';
+import { MatDialog } from '@angular/material';
 import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'dahab-landing-toolbar',
@@ -9,9 +13,26 @@ import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@ang
 export class LandingToolbarComponent implements OnInit {
 
   @Output() toggleSideNav = new EventEmitter();
-  constructor() { }
+  loadingUser: boolean;
+  constructor(public authService: AuthService, public userService: UserService) { }
 
   ngOnInit() {
+    this.loadingUser = true;
+    this.authService.userObservable.pipe(take(1)).subscribe((res) => {
+      this.loadingUser = false;
+    });
   }
 
+  signOut() {
+    this.authService.signOut();
+  }
+
+  async logInWithFacebook() {
+    this.authService.facebookSignin().then((res) => {
+    });
+  }
+  async logInWithgoogle() {
+    this.authService.googleSignin().then((res) => {
+    });
+  }
 }

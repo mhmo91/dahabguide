@@ -13,6 +13,7 @@ import { LandingComponent } from './landing.component';
     CommonModule,
     LandingRoutingModule,
     LandingSharedModule
-  ]
+  ],
+  entryComponents: []
 })
 export class LandingModule { }

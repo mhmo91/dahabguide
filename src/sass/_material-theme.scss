@@ -8,8 +8,8 @@
 
 // Define the default theme (same as the example above).
 $dahab-app-primary: mat-palette($mat-light-blue);
-$dahab-app-accent: mat-palette($mat-green, A200, A100, A400);
-$dahab-app-warn: mat-palette($mat-amber, A200, A100, A400);
+$dahab-app-accent: mat-palette($mat-light-green);
+$dahab-app-warn: mat-palette($mat-amber);
 $dahab-app-theme: mat-light-theme($dahab-app-primary, $dahab-app-accent, $dahab-app-warn);
 
 // Include the default theme styles.
