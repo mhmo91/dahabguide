@@ -10,6 +10,6 @@
 
 ## Analyze bundles size with webpack
 
-    $`ng build --prod --states-json`
-    $`npm run analyze`
+    ng build --prod --states-json
+    npm run analyze
 
