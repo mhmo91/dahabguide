@@ -11,7 +11,7 @@
       "destination": "/index.html"
     }],
     "headers": [{
-        "source": "main-es2015.*.js",
+        "source": "/.*main-es2015.*",
         "headers": [{
           "key": "Link",
           "value": "rel=preload;as=script"
