@@ -11,10 +11,10 @@
       "destination": "/index.html"
     }],
     "headers": [{
-        "source": "/",
+        "source": "main-es2015.*.js",
         "headers": [{
           "key": "Link",
-          "value": "</browser/@(main-es2015).js>;rel=preload;as=script"
+          "value": "rel=preload;as=script"
         }]
       }, {
         "source": "**/*.@(jpg|jpeg|gif|png|svg)",
