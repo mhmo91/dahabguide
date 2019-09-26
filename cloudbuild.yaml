@@ -5,8 +5,11 @@ steps:
 # Lint
 - name: 'gcr.io/cloud-builders/npm:current'
   args: ['run', 'lint']
-# test
+# RE-Build
 - name: 'gcr.io/cloud-builders/npm:current'
+  args: ['rebuild']
+# test
+- name: 'gcr.io/clfoud-builders/npm:current'
   args: ['run', 'test:headless']
 # Build
 - name: 'gcr.io/cloud-builders/npm:current'
