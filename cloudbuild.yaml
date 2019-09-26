@@ -7,10 +7,10 @@ steps:
   args: ['run', 'lint']
 # test
 - name: 'gcr.io/cloud-builders/npm:current'
-  args: ['run', 'test', '-- --no-watch', '-- --no-progress', '-- --browsers=ChromeHeadlessCI']
+  args: ['run', 'test', '-- --no-watch --no-progress --browsers=ChromeHeadlessCI']
 # Build
 - name: 'gcr.io/cloud-builders/npm:current'
   args: ['run', 'build:ssr']
 # Deploy
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app deploy']
+  args: ['app', 'deploy']
