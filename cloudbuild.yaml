@@ -6,7 +6,7 @@ steps:
 - name: 'gcr.io/cloud-builders/npm:current'
   args: ['run', 'lint']
 # test
-- name: 'gcr.io/clfoud-builders/npm:current'
+- name: 'gcr.io/cloud-builders/npm:current'
   args: ['run', 'test:headless']
 # Build
 - name: 'gcr.io/cloud-builders/npm:current'
