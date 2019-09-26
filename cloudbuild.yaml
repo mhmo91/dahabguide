@@ -1,6 +1,6 @@
 steps:
 # Install
-- name: 'gcr.io/cloud-builders/npm'
+- name: 'gcr.io/cloud-builders/npm@sha256:a0fdb1f5e9c36dc84ca7cbd7ecef15eafe6d6804a50344830638b36642896f77'
   args: ['install']
 # Lint
 - name: 'gcr.io/cloud-builders/npm'
