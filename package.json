@@ -7,7 +7,7 @@
     "build": "ng build",
     "build-prod": "ng build --prod",
     "test": "ng test",
-    "test:headless": "ng test --watch=false --browsers=ChromeHeadlessCI",
+    "test:headless": "ng test --watch=false --browsers=HeadlessChrome",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "analyze": "webpack-bundle-analyzer dist/dahabguide/stats-es2015.json",
