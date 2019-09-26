@@ -2,6 +2,9 @@ steps:
 # Install
 - name: 'gcr.io/cloud-builders/npm:current'
   args: ['install']
+# Install
+- name: 'gcr.io/cloud-builders/npm:current'
+  args: ['rebuild']
 # Lint
 - name: 'gcr.io/cloud-builders/npm:current'
   args: ['run', 'lint']
