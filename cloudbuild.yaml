@@ -7,7 +7,7 @@ steps:
   args: ['run', 'lint']
 # test
 - name: 'gcr.io/cloud-builders/npm:current'
-  args: ['run', 'test:ci']
+  args: ['run', 'test:headless']
 # Build
 - name: 'gcr.io/cloud-builders/npm:current'
   args: ['run', 'build:ssr']
