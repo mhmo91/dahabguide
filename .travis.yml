@@ -6,19 +6,8 @@ node_js:
 cache:
   directories:
   - "./node_modules"
-before_install:
-- openssl aes-256-cbc -K $encrypted_fd705369710b_key -iv $encrypted_fd705369710b_iv
-  -in dahab-guide-d672c392d0b1.json.enc -out dahab-guide-d672c392d0b1.json -d
 install:
 - npm install
 script:
-- npm run lint
-- npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-- npm run build:ssr
-deploy:
-  provider: gae
-  keyfile: dahab-guide-d672c392d0b1.json.enc
-  project: dahab-guide
-  no_promote: true
-  on: develop
+- npm run test -- --no-watch --no-progress --browsers=HeadlessChrome
 
