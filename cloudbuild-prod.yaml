@@ -13,4 +13,6 @@ steps:
   args: ['run', 'build-prod']
 # Deploy
 - name: 'gcr.io/$PROJECT_ID/firebase'
-  args: ['deploy']
+  args: ['use' , 'production']
+- name: 'gcr.io/$PROJECT_ID/firebase'
+  args: ['deploy', '--only hosting:prod']
