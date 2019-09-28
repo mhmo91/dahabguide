@@ -1,5 +1,25 @@
 {
   "projects": {
-    "default": "dahab-guide"
+    "production": "dahab-guide",
+    "staging": "dahab-guide-staging"
+  },
+  "targets": {
+    "dahab-guide": {
+      "hosting": {
+        "prod": [
+          "dahab-guide"
+        ],
+        "preprod": [
+          "preprod-dahab-guide"
+        ]
+      }
+    },
+    "dahab-guide-staging": {
+      "hosting": {
+        "staging": [
+          "dahab-guide-staging"
+        ]
+      }
+    }
   }
 }
