@@ -15,4 +15,4 @@ steps:
 - name: 'gcr.io/$PROJECT_ID/firebase'
   args: ['use' , '${_FIREBASE_PROJECT}']
 - name: 'gcr.io/$PROJECT_ID/firebase'
-  args: ['deploy', --only hosting:${_FIREBASE_TARGET}]
+  args: ['deploy --only hosting:${_FIREBASE_TARGET}']
