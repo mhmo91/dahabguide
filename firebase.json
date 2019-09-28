@@ -1,52 +1,137 @@
 {
-  "hosting": {
-    "public": "dist/browser",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [{
-      "source": "**",
-      "destination": "/index.html"
-    }],
-    "headers": [{
-        "source": "/.*main-es2015.*",
-        "headers": [{
-          "key": "Link",
-          "value": "rel=preload;as=script"
-        }]
-      }, {
-        "source": "**/*.@(jpg|jpeg|gif|png|svg)",
-        "headers": [{
+  "hosting": [{
+      "target": "prod",
+      "public": "dist/browser",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [{
+        "source": "**",
+        "destination": "/index.html"
+      }],
+      "headers": [{
+          "source": "**/*.@(jpg|jpeg|gif|png|svg)",
+          "headers": [{
+              "key": "Cache-Control",
+              "value": "max-age=86400"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "gzip"
+            }
+          ]
+        },
+        {
+          "source": "**/*.@(js|css)",
+          "headers": [{
+              "key": "Cache-Control",
+              "value": "max-age=31536000"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "gzip"
+            }
+          ]
+        },
+        {
+          "source": "**/*-sw.js",
+          "headers": [{
             "key": "Cache-Control",
-            "value": "max-age=86400"
-          },
-          {
-            "key": "Content-Encoding",
-            "value": "gzip"
-          }
-        ]
-      },
-      {
-        "source": "**/*.@(js|css)",
-        "headers": [{
+            "value": "no-cache"
+          }]
+        }
+      ]
+    }, {
+      "target": "preprod",
+      "public": "dist/browser",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [{
+        "source": "**",
+        "destination": "/index.html"
+      }],
+      "headers": [{
+          "source": "**/*.@(jpg|jpeg|gif|png|svg)",
+          "headers": [{
+              "key": "Cache-Control",
+              "value": "max-age=86400"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "gzip"
+            }
+          ]
+        },
+        {
+          "source": "**/*.@(js|css)",
+          "headers": [{
+              "key": "Cache-Control",
+              "value": "max-age=31536000"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "gzip"
+            }
+          ]
+        },
+        {
+          "source": "**/*-sw.js",
+          "headers": [{
             "key": "Cache-Control",
-            "value": "max-age=31536000"
-          },
-          {
-            "key": "Content-Encoding",
-            "value": "gzip"
-          }
-        ]
-      },
-      {
-        "source": "**/*-sw.js",
-        "headers": [{
-          "key": "Cache-Control",
-          "value": "no-cache"
-        }]
-      }
-    ]
-  }
+            "value": "no-cache"
+          }]
+        }
+      ]
+    },
+    {
+      "target": "staging",
+      "public": "dist/browser",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [{
+        "source": "**",
+        "destination": "/index.html"
+      }],
+      "headers": [{
+          "source": "**/*.@(jpg|jpeg|gif|png|svg)",
+          "headers": [{
+              "key": "Cache-Control",
+              "value": "max-age=86400"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "gzip"
+            }
+          ]
+        },
+        {
+          "source": "**/*.@(js|css)",
+          "headers": [{
+              "key": "Cache-Control",
+              "value": "max-age=31536000"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "gzip"
+            }
+          ]
+        },
+        {
+          "source": "**/*-sw.js",
+          "headers": [{
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }]
+        }
+      ]
+    }
+  ]
 }
