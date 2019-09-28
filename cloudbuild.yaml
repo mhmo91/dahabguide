@@ -12,7 +12,7 @@ steps:
 - name: 'gcr.io/cloud-builders/npm:current'
   args: ['run', 'build-prod']
 # Deploy
-- name: 'gcr.io/$PROJECT_ID/firebase'
-  args: ['use' , '${_FIREBASE_PROJECT}']
+# - name: 'gcr.io/$PROJECT_ID/firebase'
+#   args: ['use' , '${_FIREBASE_PROJECT}']
 - name: 'gcr.io/$PROJECT_ID/firebase'
   args: ['deploy','--debug', '--token', '${_FIREBASE_TOKEN}' , '--only', 'hosting:${_FIREBASE_TARGET}']
