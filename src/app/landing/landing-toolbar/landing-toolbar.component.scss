@@ -9,23 +9,14 @@
 @import "src/sass/bootstrap";
 @import "src/sass/variables";
 
-.facebook {
-  background: #4C69BA !important;
-  color: white;
 
-  &.mat-menu-item:hover {
-    background: rgb(98, 136, 240) !important;
-    color: white;
 
-  }
+#withFacebook {
+  content: url(https://upload.wikimedia.org/wikipedia/commons/8/87/Facebook_Logo_%282015%29_light.svg);
+  display: inline-block;
 }
 
-.google {
-  background: #DD4B39 !important;
-  color: white;
-
-  &.google.mat-menu-item:hover {
-    background: rgb(224, 113, 98) !important;
-    color: white;
-  }
+#withGoogle {
+  content: url(https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg);
+  display: inline-block;
 }

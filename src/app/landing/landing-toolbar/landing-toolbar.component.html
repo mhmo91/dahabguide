@@ -40,11 +40,11 @@
         <span id="signIn">Sign in</span>
       </button>
       <mat-menu #loginMenu="matMenu">
-        <button aria-labelledby="signIn withFacebook" mat-menu-item class="facebook" (click)="logInWithFacebook()">
-          <span id="withFacebook">With Facebook</span>
+        <button aria-labelledby="signIn withFacebook" mat-menu-item class="text-center" (click)="logInWithFacebook()">
+          <span class="align-middle" id="withFacebook"></span>
         </button>
-        <button aria-labelledby="signIn withGoogle" mat-menu-item class="google" (click)="logInWithgoogle()">
-          <span id="withGoogle">With Google</span>
+        <button aria-labelledby="signIn withGoogle" class="text-center" mat-menu-item (click)="logInWithgoogle()">
+          <span class="align-middle" id="withGoogle"></span>
         </button>
       </mat-menu>
     </ng-template>
