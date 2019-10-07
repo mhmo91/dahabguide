@@ -5,13 +5,14 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyBuAM_JIeS6NMa4fnX3Q0SRZxmTc_n8uy8',
-    authDomain: 'dahab-guide.firebaseapp.com',
-    databaseURL: 'https://dahab-guide.firebaseio.com',
-    projectId: 'dahab-guide',
-    storageBucket: '',
-    messagingSenderId: '443031922646',
-    appId: '1:443031922646:web:e6f8ecd51c6148780fa677'
+    apiKey: 'AIzaSyCwjRqTOl6DbkMW95lz0xtogU9flh78KqU',
+    authDomain: 'dahab-guide-staging.firebaseapp.com',
+    databaseURL: 'https://dahab-guide-staging.firebaseio.com',
+    projectId: 'dahab-guide-staging',
+    storageBucket: 'dahab-guide-staging.appspot.com',
+    messagingSenderId: '185135996612',
+    appId: '1:185135996612:web:cf9c71b287a47fb4b57391',
+    measurementId: 'G-0JMCSM1JJC'
   }
 };
 
