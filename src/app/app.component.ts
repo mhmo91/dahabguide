@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'dahabguide';
+  title = 'dahabguide'
+  constructor() {
+
+  }
 }

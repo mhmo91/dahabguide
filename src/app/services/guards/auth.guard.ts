@@ -1,27 +1,27 @@
-import { Injectable } from '@angular/core';
-import { Router, CanLoad } from '@angular/router';
-import { Observable } from 'rxjs';
-import { take, map, tap } from 'rxjs/operators';
-import { AuthService } from '../auth.service';
+import { IUser, Role } from 'src/app/models/user.model';
+import { Injectable } from '@angular/core'
+import { Router, CanLoad } from '@angular/router'
+import { Observable } from 'rxjs'
+import { take, map, tap } from 'rxjs/operators'
+import { AuthService } from '../auth.service'
+import { AppState } from 'src/app/reducers'
+import { Store } from '@ngrx/store'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanLoad {
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private store: Store<AppState>) { }
   canLoad(next, state): Observable<boolean> {
-    return this.auth.userObservable.pipe(
+    return this.store.select('user').pipe(
       take(1),
-      map(user => !!user),
-      tap(loggedIn => {
-        if (loggedIn) {
-          return true;
+      map((user: IUser) => {
+        if (user.roles.includes(Role.Host)) {
+          return true
         } else {
-          console.log('You are not authenticated, get out!');
-          this.router.navigate(['/landing']);
-          return false;
+          return false
         }
       })
-    );
+    )
   }
 }
