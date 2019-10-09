@@ -6,7 +6,7 @@ export const userFeatureKey = 'user'
 
 
 
-const defaultUser = new User(null)
+export const defaultUser = new User(null)
 export function reducer(state: Partial<IUser> = defaultUser, action: UserActions): Partial<IUser> {
   switch (action.type) {
 

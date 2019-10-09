@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core'
 import { Router, CanLoad } from '@angular/router'
 import { Observable } from 'rxjs'
 import { take, map, tap } from 'rxjs/operators'
-import { AuthService } from '../auth.service'
 import { AppState } from 'src/app/reducers'
 import { Store } from '@ngrx/store'
 

@@ -1,13 +1,13 @@
-import { reducer, initialState } from './user.reducer'
+import { reducer, defaultUser } from './user.reducer'
 
 describe('User Reducer', () => {
   describe('an unknown action', () => {
     it('should return the previous state', () => {
       const action = {} as any
 
-      const result = reducer(initialState, action)
+      const result = reducer(defaultUser, action)
 
-      expect(result).toBe(initialState)
+      expect(result).toEqual({ ...defaultUser, loading: true })
     })
   })
 })

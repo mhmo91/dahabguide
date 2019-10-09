@@ -65,7 +65,6 @@ export class UserEffects {
     ofType(userActions.ActionTypes.FACEBOOK_LOGIN),
     switchMap((x) => this.angularFireAuth.auth.signInWithPopup(new auth.FacebookAuthProvider())),
     map((res) => new userActions.UpdateUser(this.castFirebaseUser(res.user))),
-    // map((res) => new userActions.GetUser()),
     catchError(err => of(new userActions.AuthenticationFail()))
   )
 

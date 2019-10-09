@@ -20,3 +20,7 @@ export const reducers: ActionReducerMap<AppState> = {
 
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : []
+
+export const appStateMock = {
+  user: new User(null)
+}

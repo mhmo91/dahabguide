@@ -1,24 +1,26 @@
-import { RouterTestingModule } from '@angular/router/testing'
-import { TestBed, async, inject } from '@angular/core/testing'
+import { IUser, User } from 'src/app/models/user.model'
+import { TestBed } from '@angular/core/testing'
 
 import { AuthGuard } from './auth.guard'
-import { AuthService } from '../auth.service'
-import { Router } from '@angular/router'
 import { AngularFireAuth } from '@angular/fire/auth'
-import { FirebaseTestingModule } from 'src/testing/firebase-testing/firebase-testing.module'
+import { provideMockStore, MockStore } from '@ngrx/store/testing'
+import { Store } from '@ngrx/store'
+import { appStateMock } from 'src/app/reducers'
 
 describe('AuthGuard', () => {
-  let afAuth: AngularFireAuth
   let authGuard: AngularFireAuth
+  let store: MockStore<{ user: IUser }>
+  const initialState = appStateMock
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [FirebaseTestingModule, RouterTestingModule],
       providers: [
-        AuthGuard
+        AuthGuard,
+        provideMockStore({ initialState }),
       ]
     })
-    afAuth = TestBed.get(AngularFireAuth)
+    store = TestBed.get(Store)
+
     authGuard = TestBed.get(AuthGuard)
 
   })

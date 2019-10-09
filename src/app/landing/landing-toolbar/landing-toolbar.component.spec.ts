@@ -6,17 +6,19 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 
 import { LandingToolbarComponent } from './landing-toolbar.component'
 import { UserService } from 'src/app/services/user.service'
+import { provideMockStore } from '@ngrx/store/testing'
+import { appStateMock } from 'src/app/reducers'
 
 describe('LandingToolbarComponent', () => {
   let component: LandingToolbarComponent
   let fixture: ComponentFixture<LandingToolbarComponent>
-
+  const initialState = appStateMock
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [FirebaseTestingModule, RouterTestingModule, LandingSharedModule],
+      imports: [LandingSharedModule],
       declarations: [LandingToolbarComponent],
-      providers: [UserService]
+      providers: [UserService, provideMockStore({ initialState })]
     })
       .compileComponents()
   }))
