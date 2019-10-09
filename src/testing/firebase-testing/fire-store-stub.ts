@@ -1,1 +1,1 @@
-export let angularFireStoreSpy = jasmine.createSpyObj('AngularFirestore', ['doc']);
+export let angularFireStoreSpy = jasmine.createSpyObj('AngularFirestore', ['doc'])

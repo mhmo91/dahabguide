@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core'
 
 @Component({
   selector: 'dahab-restrict-toolbar',
@@ -8,7 +8,7 @@ import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@ang
 })
 export class RestrictToolbarComponent implements OnInit {
 
-  @Output() toggleSideNav = new EventEmitter();
+  @Output() toggleSideNav = new EventEmitter()
 
   constructor() { }
 
