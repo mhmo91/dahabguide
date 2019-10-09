@@ -1,4 +1,4 @@
-import { IUser, Role } from 'src/app/models/user.model';
+import { IUser, Role } from 'src/app/models/user.model'
 import { Injectable } from '@angular/core'
 import { Router, CanLoad } from '@angular/router'
 import { Observable } from 'rxjs'

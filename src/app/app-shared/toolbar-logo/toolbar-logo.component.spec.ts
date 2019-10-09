@@ -1,25 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { ToolbarLogoComponent } from './toolbar-logo.component';
+import { ToolbarLogoComponent } from './toolbar-logo.component'
 
 describe('ToolbarLogoComponent', () => {
-  let component: ToolbarLogoComponent;
-  let fixture: ComponentFixture<ToolbarLogoComponent>;
+  let component: ToolbarLogoComponent
+  let fixture: ComponentFixture<ToolbarLogoComponent>
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToolbarLogoComponent ]
+      declarations: [ToolbarLogoComponent]
     })
-    .compileComponents();
-  }));
+      .compileComponents()
+  }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ToolbarLogoComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(ToolbarLogoComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})
