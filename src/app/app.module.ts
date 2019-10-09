@@ -15,6 +15,7 @@ import { UserService } from './services/user.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
+import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { reducers, metaReducers } from './reducers';
       }
     })
   ],
-  providers: [UserService],
+  providers: [UserService, AngularFireAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

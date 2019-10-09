@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './services/guards/auth.guard';
 
+// ## using AngularFire guard ##
+import { redirectUnauthorizedTo, canActivate } from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLanding =  redirectUnauthorizedTo(['landing']);
 
 const routes: Routes = [
   { path: 'landing', loadChildren: () => import('./landing/landing.module').then(m => m.LandingModule) },
-  { path: 'restrict', canLoad: [AuthGuard], loadChildren: () => import('./restrict/restrict.module').then(m => m.RestrictModule) },
-
+  
+  // "...canActivate" is an angularfire guard function that Checking  the  authState
+  { path: 'restrict', loadChildren: () => import('./restrict/restrict.module').then(m => m.RestrictModule), ...canActivate(redirectUnauthorizedToLanding )},
   { path: '**', redirectTo: 'landing' }
 ];
 
