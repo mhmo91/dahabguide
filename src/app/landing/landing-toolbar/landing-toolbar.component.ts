@@ -1,5 +1,4 @@
 import * as userActions from './../../actions/user.actions'
-import { UserService } from './../../services/user.service'
 import { take } from 'rxjs/operators'
 import { MatDialog } from '@angular/material'
 import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core'
@@ -18,7 +17,7 @@ export class LandingToolbarComponent implements OnInit {
 
   @Output() toggleSideNav = new EventEmitter()
   user$: Observable<IUser>
-  constructor(public userService: UserService, private store: Store<AppState>) {
+  constructor(private store: Store<AppState>) {
     this.user$ = this.store.select('user')
   }
 

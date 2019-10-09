@@ -11,7 +11,6 @@ import { environment } from '../environments/environment'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
-import { UserService } from './services/user.service'
 import { ServiceWorkerModule } from '@angular/service-worker'
 import { StoreModule } from '@ngrx/store'
 import { reducers, metaReducers } from './reducers'
@@ -51,7 +50,7 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard'
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
   ],
-  providers: [UserService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
