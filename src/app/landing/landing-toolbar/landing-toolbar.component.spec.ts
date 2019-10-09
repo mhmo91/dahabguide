@@ -5,7 +5,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 
 import { LandingToolbarComponent } from './landing-toolbar.component'
-import { UserService } from 'src/app/services/user.service'
 import { provideMockStore } from '@ngrx/store/testing'
 import { appStateMock } from 'src/app/reducers'
 
@@ -18,7 +17,7 @@ describe('LandingToolbarComponent', () => {
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [LandingSharedModule],
       declarations: [LandingToolbarComponent],
-      providers: [UserService, provideMockStore({ initialState })]
+      providers: [provideMockStore({ initialState })]
     })
       .compileComponents()
   }))

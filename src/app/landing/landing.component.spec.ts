@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { LandingComponent } from './landing.component'
 import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, DebugElement } from '@angular/core'
-import { UserService } from '../services/user.service'
 import { MediaMatcher } from '@angular/cdk/layout'
 
 describe('LandingComponent', () => {
@@ -13,7 +12,7 @@ describe('LandingComponent', () => {
     TestBed.configureTestingModule({
       declarations: [LandingComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [ChangeDetectorRef, UserService, MediaMatcher]
+      providers: [ChangeDetectorRef, MediaMatcher]
     })
       .compileComponents()
   }))
