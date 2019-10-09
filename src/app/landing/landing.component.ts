@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { MediaMatcher } from '@angular/cdk/layout';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core'
+import { MediaMatcher } from '@angular/cdk/layout'
 
 @Component({
   selector: 'dahab-landing',
@@ -7,15 +7,15 @@ import { MediaMatcher } from '@angular/cdk/layout';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit, OnDestroy {
-  mobileQuery: MediaQueryList;
+  mobileQuery: MediaQueryList
 
-  private mobileQueryListener: () => void;
+  private mobileQueryListener: () => void
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this.mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery = media.matchMedia('(max-width: 600px)')
+    this.mobileQueryListener = () => changeDetectorRef.detectChanges()
     // this.mobileQuery.addListener(this.mobileQueryListener);
-    this.mobileQuery.addEventListener('change', this.mobileQueryListener);
+    this.mobileQuery.addEventListener('change', this.mobileQueryListener)
   }
 
 
@@ -23,7 +23,7 @@ export class LandingComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.mobileQuery.removeEventListener('change', this.mobileQueryListener);
+    this.mobileQuery.removeEventListener('change', this.mobileQueryListener)
   }
 
 

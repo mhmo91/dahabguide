@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AppSharedModule } from 'src/app/app-shared/app-shared.module';
+import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { AppSharedModule } from 'src/app/app-shared/app-shared.module'
 
 
 

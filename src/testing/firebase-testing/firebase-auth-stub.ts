@@ -1,9 +1,9 @@
-import { BehaviorSubject } from 'rxjs';
-const fakeAuthState = new BehaviorSubject(null);
+import { BehaviorSubject } from 'rxjs'
+const fakeAuthState = new BehaviorSubject(null)
 const fakeSignOutHandler = (): Promise<any> => {
-    fakeAuthState.next(null);
-    return Promise.resolve();
-};
+    fakeAuthState.next(null)
+    return Promise.resolve()
+}
 const angularFireAuthStub = {
     authState: fakeAuthState,
     auth: {
@@ -13,7 +13,7 @@ const angularFireAuthStub = {
             .callFake(fakeSignOutHandler),
         // other functions to be added here
     }
-};
+}
 
-export { angularFireAuthStub, fakeAuthState, fakeSignOutHandler };
+export { angularFireAuthStub, fakeAuthState, fakeSignOutHandler }
 
