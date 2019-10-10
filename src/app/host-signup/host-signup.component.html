@@ -1,0 +1,13 @@
+<mat-progress-bar *ngIf="(this.wizard$ | async).loading else hostWizard" mode="indeterminate"></mat-progress-bar>
+<ng-template #hostWizard>
+  <mat-progress-bar mode="determinate" [value]="(this.wizard$|async).progress"></mat-progress-bar>
+
+  <section class="container-fullscreen d-flex justify-content-between align-items-center">
+    <div>
+      asdfjkdsaj
+    </div>
+    <img class="d-none d-md-block h-100 img-fluid" src="assets/desert-camel.png" alt="">
+
+
+  </section>
+</ng-template>

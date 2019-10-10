@@ -28,6 +28,7 @@ import { MatTabsModule } from '@angular/material/tabs'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { ToolbarLogoComponent } from './toolbar-logo/toolbar-logo.component'
+import { RouterModule } from '@angular/router'
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { ToolbarLogoComponent } from './toolbar-logo/toolbar-logo.component'
     CommonModule
   ],
   exports: [
+    RouterModule,
     MatSelectModule,
     MatInputModule,
     MatProgressSpinnerModule,

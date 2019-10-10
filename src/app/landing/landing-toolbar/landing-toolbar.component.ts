@@ -1,11 +1,12 @@
 import * as userActions from './../../actions/user.actions'
-import { take } from 'rxjs/operators'
-import { MatDialog } from '@angular/material'
+import * as authActions from './../../actions/auth.actions'
 import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core'
 import { Store } from '@ngrx/store'
 import { AppState } from 'src/app/reducers'
 import { Observable } from 'rxjs'
-import { User, IUser } from 'src/app/models/user.model'
+import { IUser } from 'src/app/models/user.model'
+import { IAuthState } from 'src/app/models/auth.state'
+import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'dahab-landing-toolbar',
@@ -17,12 +18,16 @@ export class LandingToolbarComponent implements OnInit {
 
   @Output() toggleSideNav = new EventEmitter()
   user$: Observable<IUser>
+  user: IUser
+  auth$: Observable<IAuthState>
   constructor(private store: Store<AppState>) {
     this.user$ = this.store.select('user')
+    this.auth$ = this.store.select('auth')
   }
 
   ngOnInit() {
-    this.store.dispatch(new userActions.GetUser())
+    this.user$.subscribe((user: IUser) => this.user = user)
+
   }
 
   signOut() {
@@ -30,9 +35,9 @@ export class LandingToolbarComponent implements OnInit {
   }
 
   async logInWithFacebook() {
-    this.store.dispatch(new userActions.FacebookLogin())
+    this.store.dispatch(new authActions.FacebookLogin())
   }
   async logInWithgoogle() {
-    this.store.dispatch(new userActions.GoogleLogin())
+    this.store.dispatch(new authActions.GoogleLogin())
   }
 }

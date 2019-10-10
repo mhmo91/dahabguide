@@ -7,7 +7,7 @@ describe('User Reducer', () => {
 
       const result = reducer(defaultUser, action)
 
-      expect(result).toEqual({ ...defaultUser, loading: true })
+      expect(result).toEqual({ ...defaultUser })
     })
   })
 })

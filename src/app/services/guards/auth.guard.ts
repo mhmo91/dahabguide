@@ -15,7 +15,7 @@ export class AuthGuard implements CanLoad {
     return this.store.select('user').pipe(
       take(1),
       map((user: IUser) => {
-        if (user.roles.includes(Role.Host)) {
+        if (Array.isArray(user.roles) && user.roles.includes(Role.Host)) {
           return true
         } else {
           return false

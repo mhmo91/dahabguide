@@ -7,38 +7,41 @@
 
   <div class="flex-grow-1"></div>
 
-  <section *ngIf="this.user$ | async as user; else login">
-    <mat-spinner *ngIf="user.loading else userLoaded" diameter="25"></mat-spinner>
-    <ng-template #userLoaded>
-      <a class="profile-img cursor-pointer" [mat-menu-trigger-for]="userMenu">
-        <img [src]="user.photoURL" width="30" height="30" alt="user photo" class="rounded-circle mat-elevation-z8">
-      </a>
+  <button class="mr-2" aria-labelledby="signup as host" mat-button color="accent" [routerLink]="['../become-host']"
+    routerLinkActive="router-link-active">
+    <span id="signup as host">Become a host</span>
+  </button>
+  <section *ngIf="(this.auth$ | async).authenticated; else login">
+    <a class="profile-img cursor-pointer" [mat-menu-trigger-for]="userMenu">
+      <img [src]="this.user.photoURL" width="30" height="30" alt="user photo" class="rounded-circle mat-elevation-z8">
+    </a>
 
-      <mat-menu #userMenu="matMenu">
-        <div class="container d-flex overflow-hidden">
-          <img mat-card-avatar height="45" [src]="user.photoURL" alt="user photo"
-            class="rounded-circle mat-elevation-z8 mt-1">
-          <!-- <mat-spinner diameter="45" *ngIf="busy"></mat-spinner> -->
+    <mat-menu #userMenu="matMenu">
+      <div class="container d-flex overflow-hidden">
+        <img *ngIf="user.loading" mat-card-avatar height="45" [src]="user.photoURL" alt="user photo"
+          class="rounded-circle mat-elevation-z8 mt-1">
 
-          <div class="pl-2">
-            <span class="text-capitalize">
-              {{user.displayName}}</span>
-            <p class="text-muted">{{user.email}}</p>
-          </div>
+        <div class="pl-2">
+          <span class="text-capitalize">
+            {{user.displayName}}</span>
+          <p class="text-muted">{{user.email}}</p>
         </div>
-        <button aria-labelledby="signoutBtn" mat-menu-item (click)="this.signOut()">
-          <mat-icon> exit_to_app </mat-icon>
-          <span id="signoutBtn">Sign Out</span>
-        </button>
-      </mat-menu>
-
-    </ng-template>
+      </div>
+      <button aria-labelledby="signoutBtn" mat-menu-item (click)="this.signOut()">
+        <mat-icon> exit_to_app </mat-icon>
+        <span id="signoutBtn">Sign Out</span>
+      </button>
+    </mat-menu>
   </section>
 
   <ng-template #login>
-    <button aria-labelledby="signIn" mat-flat-button color="accent" [matMenuTriggerFor]="loginMenu">
-      <span id="signIn">Sign in</span>
-    </button>
+    <mat-spinner *ngIf="((this.auth$|async).authenticating || this.user.loading) else loginBtn" diameter="25">
+    </mat-spinner>
+    <ng-template #loginBtn>
+      <button aria-labelledby="signIn" mat-raised-button [matMenuTriggerFor]="loginMenu">
+        <span id="signIn">Sign in</span>
+      </button>
+    </ng-template>
     <mat-menu #loginMenu="matMenu">
       <button aria-labelledby="signIn withFacebook" mat-menu-item class="text-center" (click)="logInWithFacebook()">
         <span class="align-middle" id="withFacebook"></span>
