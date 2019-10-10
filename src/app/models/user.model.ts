@@ -7,6 +7,7 @@ export interface IUser extends IFbUser, ApiModel {
     displayName: string
     roles: Array<Role>
     permissions?: Array<Permission>
+    authenticating?: boolean
 }
 
 export enum Role {

@@ -11,6 +11,7 @@ import { FirebaseAuth } from '@angular/fire'
 import { AngularFirestore } from '@angular/fire/firestore'
 import { Router } from '@angular/router'
 
+import * as authActions from '../actions/auth.actions'
 
 
 @Injectable()
@@ -23,7 +24,9 @@ export class UserEffects {
   @Effect()
   getUser = this.actions$.pipe(
     ofType(userActions.ActionTypes.GET_USER),
-    switchMap(() => this.angularFireAuth.authState),
+    switchMap(() => {
+      return this.angularFireAuth.authState
+    }),
     concatMap((user: FbUser) => {
       if (user) {
         console.log('i came here')
@@ -33,16 +36,23 @@ export class UserEffects {
         return of(null)
       }
     }),
-    map((user: User) => {
+    map((user: IUser) => {
       if (user) {
-        console.log(user)
-        return new userActions.Authenticated(user)
+        return new userActions.GetUserSuccess(user)
       } else {
-        return new userActions.NotAuthenticated()
+        return new userActions.GetUserFail('user not logged in') // user not logged in
       }
     }),
-    catchError(err => of(new userActions.AuthenticationFail()))
+    catchError(err => of(new userActions.GetUserFail(err))) // this means api failure
   )
+
+
+  @Effect()
+  getUserSuccess = this.actions$.pipe(
+    ofType(userActions.ActionTypes.GET_USER_SUCCESS),
+    map(() => new authActions.AuthenticationSuccess())
+  )
+
 
   @Effect()
   logout = this.actions$.pipe(
@@ -50,31 +60,10 @@ export class UserEffects {
     switchMap(() => this.angularFireAuth.auth.signOut()),
     map(() => {
       this.router.navigate(['/landing'])
-      return new userActions.NotAuthenticated()
+      return new authActions.NotAuthenticated()
     })
   )
 
-  @Effect()
-  authenticationFail = this.actions$.pipe(
-    ofType(userActions.ActionTypes.AUTH_ERROR),
-    map(() => new userActions.NotAuthenticated())
-  )
-
-  @Effect()
-  facebookLogin = this.actions$.pipe(
-    ofType(userActions.ActionTypes.FACEBOOK_LOGIN),
-    switchMap((x) => this.angularFireAuth.auth.signInWithPopup(new auth.FacebookAuthProvider())),
-    map((res) => new userActions.UpdateUser(this.castFirebaseUser(res.user))),
-    catchError(err => of(new userActions.AuthenticationFail()))
-  )
-
-  @Effect()
-  googleLogin = this.actions$.pipe(
-    ofType(userActions.ActionTypes.GOOGLE_LOGIN),
-    switchMap((x) => this.angularFireAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())),
-    map((res) => new userActions.UpdateUser(this.castFirebaseUser(res.user))),
-    catchError(err => of(new userActions.AuthenticationFail()))
-  )
 
   @Effect()
   updateUser = this.actions$.pipe(
@@ -84,6 +73,11 @@ export class UserEffects {
     catchError(err => of(new userActions.UpdateUserFail(err)))
   )
 
+  @Effect()
+  updateuserSuccess = this.actions$.pipe(
+    ofType(userActions.ActionTypes.UPDATE_USER_SUCCESS),
+    switchMap(() => of(new userActions.GetUser()))
+  )
 
   castFirebaseUser(user: FbUser) {
     return { uid: user.uid, displayName: user.displayName, email: user.email, photoURL: user.photoURL }
