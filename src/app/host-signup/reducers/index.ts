@@ -1,6 +1,6 @@
 import { AppState } from './../../reducers/index'
 import { environment } from './../../../environments/environment.prod'
-import { HostWizard } from './../models/host-wizard'
+import { HostWizard, IHostWizard } from './../models/host-wizard'
 import { reducer as hostWizardReducer } from './host-wizard.reducer'
 
 import {
@@ -11,14 +11,11 @@ import {
     MetaReducer
 } from '@ngrx/store'
 
-export interface IWizardState extends Partial<AppState> {
-    readonly hostWizard
-}
-export const reducers: ActionReducerMap<IWizardState> = {
-    hostWizard: hostWizardReducer
-}
+export const reducers = hostWizardReducer
 
-
+export interface IHostWizardState {
+    hostWizard: IHostWizard
+}
 // export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : []
 
 

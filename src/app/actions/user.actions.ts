@@ -2,7 +2,7 @@ import { Action } from '@ngrx/store'
 import { User, IUser } from '../models/user.model'
 
 export enum ActionTypes {
-  GET_USER = '[AUTH] Get User',
+  GET_USER = '[AUTH,fb] Get User',
   GET_USER_SUCCESS = '[fb] Get User Success',
   GET_USER_FAIL = '[fb] Get User Fail',
 
