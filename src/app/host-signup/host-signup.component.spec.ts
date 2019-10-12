@@ -5,6 +5,7 @@ import { HostSignupComponent } from './host-signup.component'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { provideMockStore } from '@ngrx/store/testing'
 import { appStateMock } from '../reducers'
+import { ReactiveFormsModule } from '@angular/forms'
 
 describe('HostSignupComponent', () => {
   let component: HostSignupComponent
@@ -12,6 +13,7 @@ describe('HostSignupComponent', () => {
   const initialState = { ...appStateMock, ...hostWizardStateMock }
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule],
       declarations: [HostSignupComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [provideMockStore({ initialState })]

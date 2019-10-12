@@ -20,7 +20,6 @@ describe('AuthGuard', () => {
       ]
     })
     store = TestBed.get(Store)
-
     authGuard = TestBed.get(AuthGuard)
 
   })

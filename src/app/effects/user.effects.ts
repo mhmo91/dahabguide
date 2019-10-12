@@ -7,7 +7,6 @@ import { Actions, Effect, ofType } from '@ngrx/effects'
 import { concatMap, switchMap, map, catchError } from 'rxjs/operators'
 import { EMPTY, of, from } from 'rxjs'
 import * as userActions from '../actions/user.actions'
-import { FirebaseAuth } from '@angular/fire'
 import { AngularFirestore } from '@angular/fire/firestore'
 import { Router } from '@angular/router'
 
@@ -27,9 +26,8 @@ export class UserEffects {
     switchMap(() => {
       return this.angularFireAuth.authState
     }),
-    concatMap((user: FbUser) => {
+    switchMap((user: FbUser) => {
       if (user) {
-        console.log('i came here')
         // get user info from users Collection from firestore "dahab-guide/database/users"
         return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
       } else {
@@ -69,14 +67,8 @@ export class UserEffects {
   updateUser = this.actions$.pipe(
     ofType(userActions.ActionTypes.UPDATE_USER),
     switchMap((action) => from(this.afs.doc(`users/${action.payload.uid}`).set(action.payload, { merge: true }))),
-    map(() => new userActions.UpdateUserSuccess()),
+    map(() => new userActions.GetUser()),
     catchError(err => of(new userActions.UpdateUserFail(err)))
-  )
-
-  @Effect()
-  updateuserSuccess = this.actions$.pipe(
-    ofType(userActions.ActionTypes.UPDATE_USER_SUCCESS),
-    switchMap(() => of(new userActions.GetUser()))
   )
 
   castFirebaseUser(user: FbUser) {
