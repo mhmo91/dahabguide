@@ -1,4 +1,3 @@
-import { AppState } from 'src/app/reducers';
 import { auth, User as FbUser } from 'firebase/app'
 import { User, IUser } from 'src/app/models/user.model'
 import { AngularFireAuth } from '@angular/fire/auth'
@@ -8,18 +7,15 @@ import { Actions, Effect, ofType } from '@ngrx/effects'
 import { concatMap, switchMap, map, catchError } from 'rxjs/operators'
 import { EMPTY, of, from } from 'rxjs'
 import * as userActions from '../actions/user.actions'
-import { FirebaseAuth } from '@angular/fire'
 import { AngularFirestore } from '@angular/fire/firestore'
 import { Router } from '@angular/router'
 
 import * as authActions from '../actions/auth.actions'
-import { Store } from '@ngrx/store'
 
 
 @Injectable()
 export class UserEffects {
   constructor(
-    private store: Store<AppState>,
     private actions$: Actions<userActions.UserActions>,
     private angularFireAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) { }
 
