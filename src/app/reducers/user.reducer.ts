@@ -21,7 +21,7 @@ export function reducer(state: Partial<IUser> = defaultUser, action: UserActions
       return { ...state, error: action.payload, loading: false }
 
     case ActionTypes.UPDATE_USER:
-      return { ...state, ...action.payload, loading: false }
+      return { ...state, ...action.payload, loading: true }
 
     case ActionTypes.UPDATE_USER_SUCCESS:
       return { ...state, loading: false }

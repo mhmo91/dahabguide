@@ -2,7 +2,7 @@ import { HostWizard, IHostWizard } from './../models/host-wizard'
 
 import { HostWizardActions, HostWizardActionTypes } from '../actions/host-wizard.actions'
 import { AppState } from 'src/app/reducers'
-import { IUser } from 'src/app/models/user.model'
+import { IUser, Role } from 'src/app/models/user.model'
 
 export const hostWizardFeatureKey = 'hostWizard'
 
@@ -19,7 +19,11 @@ export function reducer(state = initialState, action: HostWizardActions): Partia
     case HostWizardActionTypes.UpdateHostWizardState:
       const user: IUser = action.payload
       if (user.uid) { // means user is logged in
-        return { ...state, userInfo: user, progress: 65, currentStep: 1, loading: false }
+        if (Array.isArray(user.roles) && user.roles.includes(Role.Host)) {
+          return { ...state, userInfo: user, progress: 100, currentStep: 2, loading: false }
+        } else {
+          return { ...state, userInfo: user, progress: 65, currentStep: 1, loading: false }
+        }
       } else {
         return { ...state, progress: 20, currentStep: 0, loading: false }
       }

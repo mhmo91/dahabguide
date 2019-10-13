@@ -9,11 +9,13 @@ import { StoreModule } from '@ngrx/store'
 import { EffectsModule } from '@ngrx/effects'
 import * as fromHostWizard from './reducers/host-wizard.reducer'
 import { HostWizardEffects } from './effects/host-wizard.effects'
+import { UserInfoComponent } from './user-info/user-info.component'
 
 
 @NgModule({
   declarations: [
-    HostSignupComponent
+    HostSignupComponent,
+    UserInfoComponent
   ],
   imports: [
     CommonModule,

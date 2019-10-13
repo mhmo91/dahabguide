@@ -1,11 +1,12 @@
 import { ApiModel } from 'src/app/models/api.model'
 import { IUser } from 'src/app/models/user.model'
+import { CdkStep } from '@angular/cdk/stepper'
 
 export interface IHostWizard extends ApiModel {
     currentStep
     progress
     userInfo: Partial<IUser>
-    // steps: IStep[]
+    steps?: Partial<CdkStep>[]
 }
 
 
@@ -15,7 +16,7 @@ export interface IHostWizard extends ApiModel {
 //     data: object
 // }
 export class HostWizard implements Partial<IHostWizard> {
-    constructor(public progress, public loading = false) {
+    constructor(public progress, public loading = false, public userInfo = {}) {
 
     }
 }

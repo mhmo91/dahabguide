@@ -1,20 +1,22 @@
-import { hostWizardStateMock } from './reducers/index'
+import { appStateMock } from 'src/app/reducers'
+import { hostWizardStateMock } from './../reducers/index'
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { HostSignupComponent } from './host-signup.component'
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { UserInfoComponent } from './user-info.component'
 import { provideMockStore } from '@ngrx/store/testing'
-import { appStateMock } from '../reducers'
+import { CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef, DebugElement } from '@angular/core'
 import { RouterTestingModule } from '@angular/router/testing'
+import { ReactiveFormsModule } from '@angular/forms'
 
-describe('HostSignupComponent', () => {
-  let component: HostSignupComponent
-  let fixture: ComponentFixture<HostSignupComponent>
+describe('UserInfoComponent', () => {
+  let component: UserInfoComponent
+  let fixture: ComponentFixture<UserInfoComponent>
   const initialState = { ...appStateMock, ...hostWizardStateMock }
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [HostSignupComponent],
+      imports: [RouterTestingModule, ReactiveFormsModule],
+      declarations: [UserInfoComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [provideMockStore({ initialState })]
     })
@@ -22,7 +24,7 @@ describe('HostSignupComponent', () => {
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HostSignupComponent)
+    fixture = TestBed.createComponent(UserInfoComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
