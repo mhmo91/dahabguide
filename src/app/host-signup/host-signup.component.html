@@ -1,16 +1,17 @@
 <mat-progress-bar *ngIf="this.wizard.loading else hostWizard" mode="indeterminate"></mat-progress-bar>
 <ng-template #hostWizard>
-  <section class="container-fullscreen d-flex fl justify-content-between align-items-start">
+  <section class="container-fullscreen d-flex  justify-content-between align-items-start">
     <div class="d-flex flex-column flex-grow-1 align-items-center mw-custom">
 
       <mat-progress-bar mode="determinate" [value]="this.wizard?.progress"></mat-progress-bar>
 
-      <img src="assets/logo.svg" class="my-5" height="70" alt="Camel">
+      <img src="assets/logo.svg" class="mt-5 mb-3" height="70" alt="Camel">
 
+      <h4 class="text-muted mb-5">Sign up as a Host </h4>
       <mat-vertical-stepper [selectedIndex]="this.wizard.currentStep" linear #stepper>
         <mat-step [completed]="this.wizard.currentStep >0" editable=false>
           <ng-template matStepLabel>Create an account</ng-template>
-          <div class="pt-3 d-flex flex-column">
+          <div class="pt-4 d-flex flex-column">
             <button aria-labelledby="signIn withFacebook" mat-raised-button
               class="btn-social-login text-center my-3 py-3 px-5" (click)="logInWithFacebook()">
               <img height="25rem"
@@ -34,7 +35,8 @@
         <mat-step>
           <ng-template matStepLabel>What's Next</ng-template>
 
-          <div class="pt-3 d-flex flex-column justify-content-between">
+          <div class="pt-4 container-fluid text-center">
+            <img width="80px" class="img-fluid" src="assets/celebration.svg" alt="">
             <h4 class="my-3">You are now ready to List your place</h4>
             <button class="my-3" mat-raised-button color="accent" [routerLink]="['/restrict']">Add your first
               place</button>
@@ -43,7 +45,6 @@
       </mat-vertical-stepper>
     </div>
     <img class="d-none d-md-block h-100 img-fluid" src="assets/desert-camel.jpg" alt="">
-
 
   </section>
 </ng-template>
