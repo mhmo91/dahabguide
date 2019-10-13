@@ -7,7 +7,8 @@
 
   <div class="flex-grow-1"></div>
 
-  <button class="mr-2" aria-labelledby="signup as host" mat-button color="accent" [routerLink]="['../become-host']"
+  <button [hidden]="(this.auth$ | async).authenticating || this.user.loading || this.IsHost " class="mr-2"
+    aria-labelledby="signup as host" mat-button color="accent" [routerLink]="['/become-host']"
     routerLinkActive="router-link-active">
     <span id="signup as host">Become a host</span>
   </button>

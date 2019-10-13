@@ -1,3 +1,4 @@
+import { ActionTypes } from './../actions/user.actions'
 import { AuthState, IAuthState } from './../models/auth.state'
 
 import { AuthActions, AuthActionTypes } from '../actions/auth.actions'
@@ -29,3 +30,16 @@ export function reducer(state = initialState, action: AuthActions): IAuthState {
       return state
   }
 }
+
+// meta reducer when user logout
+export function clearState(metaReducer) {
+  return (state, action) => {
+
+    if (action.type === ActionTypes.LOGOUT) {
+      state = initialState
+    }
+
+    return metaReducer(state, action)
+  }
+}
+

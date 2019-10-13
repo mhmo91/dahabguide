@@ -1,18 +1,14 @@
+import { Observable } from 'rxjs'
 import * as hostWizardActions from './actions/host-wizard.actions'
 import * as authActions from './../actions/auth.actions'
-import { IUser, Role } from './../models/user.model'
-import { pipe, Observable } from 'rxjs'
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core'
 import { Store } from '@ngrx/store'
 import { AppState } from '../reducers'
-import * as userActions from './../actions/user.actions'
-import { map } from 'rxjs/operators'
 import { IHostWizard } from './models/host-wizard'
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper'
-import { FormGroup, FormBuilder, Validators } from '@angular/forms'
-import { IAuthState } from '../models/auth.state'
 import { MatVerticalStepper } from '@angular/material/stepper'
 import { IHostWizardState } from './reducers'
+import { IAuthState } from '../models/auth.state'
 
 @Component({
   selector: 'dahab-host-signup',
@@ -25,16 +21,20 @@ import { IHostWizardState } from './reducers'
 })
 export class HostSignupComponent implements OnInit, AfterViewInit {
   wizard: Partial<IHostWizard>
-  secondFormGroup: FormGroup
+  auth$: Observable<IAuthState>
   @ViewChild('stepper', { static: false }) stepper: MatVerticalStepper
-  constructor(private store: Store<AppState & IHostWizardState>, private formBuilder: FormBuilder) {
+  constructor(private store: Store<AppState & IHostWizardState>) {
     this.store.dispatch(new hostWizardActions.GetHostWizardState())
-    this.store.select('hostWizard').subscribe(result => this.wizard = result)
+    this.auth$ = this.store.select('auth')
+
   }
 
   ngOnInit() {
-    this.secondFormGroup = this.formBuilder.group({
-      secondCtrl: ['', Validators.required]
+    this.store.select('hostWizard').subscribe(result => {
+      this.wizard = result
+      if (this.stepper) {
+        this.stepper.selectedIndex = this.wizard.currentStep
+      }
     })
   }
   ngAfterViewInit(): void {

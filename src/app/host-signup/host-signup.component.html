@@ -1,53 +1,50 @@
 <mat-progress-bar *ngIf="this.wizard.loading else hostWizard" mode="indeterminate"></mat-progress-bar>
 <ng-template #hostWizard>
-  <section class="container-fullscreen d-flex fl justify-content-between align-items-start">
-    <div class="d-flex flex-column flex-grow-1 mw-custom">
+  <section class="container-fullscreen d-flex  justify-content-between align-items-start">
+    <div class="d-flex flex-column flex-grow-1 align-items-center mw-custom">
 
       <mat-progress-bar mode="determinate" [value]="this.wizard?.progress"></mat-progress-bar>
 
-      <img src="assets/logo.svg" class="mt-5" height="80" alt="Camel">
+      <img src="assets/logo.svg" class="mt-5 mb-3" height="70" alt="Camel">
 
-      <mat-vertical-stepper class="ml-3" [selectedIndex]="this.wizard.currentStep" linear #stepper>
-        <mat-step [completed]="this.wizard.userInfo?.uid" editable=false>
+      <h4 class="text-muted mb-5">Sign up as a Host </h4>
+      <mat-vertical-stepper [selectedIndex]="this.wizard.currentStep" linear #stepper>
+        <mat-step [completed]="this.wizard.currentStep >0" editable=false>
           <ng-template matStepLabel>Create an account</ng-template>
-          <div class="d-flex flex-column">
-            <button aria-labelledby="signIn withFacebook" mat-raised-button class="text-center py-3 px-5"
-              (click)="logInWithFacebook()">
+          <div class="pt-4 d-flex flex-column">
+            <button aria-labelledby="signIn withFacebook" mat-raised-button
+              class="btn-social-login text-center my-3 py-3 px-5" (click)="logInWithFacebook()">
               <img height="25rem"
                 src="https://upload.wikimedia.org/wikipedia/commons/8/87/Facebook_Logo_%282015%29_light.svg"
                 alt="facebook logo">
             </button>
-            <button aria-labelledby="signIn withGoogle" class="mt-3 text-center py-3 px-5" mat-raised-button
-              (click)="logInWithgoogle()">
+            <button aria-labelledby="signIn withGoogle" class="btn-social-login my-3 text-center py-3 px-5"
+              mat-raised-button (click)="logInWithgoogle()">
               <img class="img-fluid" height="25rem"
                 src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_148x48px.svg" alt="">
             </button>
           </div>
+          <div *ngIf="(this.auth$ | async).authenticating" class="loading-shade">
+            <mat-spinner></mat-spinner>
+          </div>
         </mat-step>
-        <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
-          <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Fill out your address</ng-template>
-            <mat-form-field>
-              <input matInput placeholder="Address" formControlName="secondCtrl" required>
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
+        <mat-step [completed]="this.wizard.currentStep >1" editable=false>
+          <ng-template matStepLabel>Update your information</ng-template>
+          <dahab-user-info></dahab-user-info>
         </mat-step>
         <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          You are now done.
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+          <ng-template matStepLabel>What's Next</ng-template>
+
+          <div class="pt-4 container-fluid text-center">
+            <img width="80px" class="img-fluid" src="assets/celebration.svg" alt="">
+            <h4 class="my-3">You are now ready to List your place</h4>
+            <button class="my-3" mat-raised-button color="accent" [routerLink]="['/restrict']">Add your first
+              place</button>
           </div>
         </mat-step>
       </mat-vertical-stepper>
     </div>
     <img class="d-none d-md-block h-100 img-fluid" src="assets/desert-camel.jpg" alt="">
-
 
   </section>
 </ng-template>

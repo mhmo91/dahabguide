@@ -1,12 +1,9 @@
-import { Action } from '@ngrx/store'
 import * as userActions from './../../actions/user.actions'
 import { Injectable } from '@angular/core'
 import { Actions, Effect, ofType } from '@ngrx/effects'
 
 import { concatMap, switchMap, map } from 'rxjs/operators'
-import { EMPTY, of } from 'rxjs'
 import * as hostWizardActions from '../actions/host-wizard.actions'
-import { IUser } from 'src/app/models/user.model'
 
 
 

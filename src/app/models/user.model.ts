@@ -5,6 +5,7 @@ export interface IUser extends IFbUser, ApiModel {
     email: string
     photoURL: string
     displayName: string
+    mobile: string
     roles: Array<Role>
     permissions?: Array<Permission>
     authenticating?: boolean

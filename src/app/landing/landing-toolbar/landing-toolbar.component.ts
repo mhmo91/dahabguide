@@ -4,7 +4,7 @@ import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@ang
 import { Store } from '@ngrx/store'
 import { AppState } from 'src/app/reducers'
 import { Observable } from 'rxjs'
-import { IUser } from 'src/app/models/user.model'
+import { IUser, Role } from 'src/app/models/user.model'
 import { IAuthState } from 'src/app/models/auth.state'
 import { map } from 'rxjs/operators'
 
@@ -27,7 +27,6 @@ export class LandingToolbarComponent implements OnInit {
 
   ngOnInit() {
     this.user$.subscribe((user: IUser) => this.user = user)
-
   }
 
   signOut() {
@@ -39,5 +38,8 @@ export class LandingToolbarComponent implements OnInit {
   }
   async logInWithgoogle() {
     this.store.dispatch(new authActions.GoogleLogin())
+  }
+  get IsHost(): boolean {
+    return Array.isArray(this.user.roles) && this.user.roles.includes(Role.Host)
   }
 }

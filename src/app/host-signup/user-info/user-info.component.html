@@ -1,0 +1,17 @@
+<form class="pt-4 d-flex flex-column" [formGroup]="userFormGroup" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input matInput placeholder="Name" formControlName="displayName" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="email" placeholder="Email" formControlName="email" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="tel" placeholder="Mobile number" formControlName="mobile" required>
+  </mat-form-field>
+  <div>
+    <button type="submit" mat-raised-button color="accent" [disabled]="this.userFormGroup?.invalid">Next</button>
+  </div>
+</form>
+<div *ngIf="(this.user$ | async).loading" class="loading-shade">
+  <mat-spinner></mat-spinner>
+</div>
