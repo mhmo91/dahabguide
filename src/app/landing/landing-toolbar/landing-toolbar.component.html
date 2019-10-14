@@ -8,9 +8,9 @@
   <div class="flex-grow-1"></div>
 
   <button [hidden]="(this.auth$ | async).authenticating || this.user.loading || this.IsHost " class="mr-2"
-    aria-labelledby="signup as host" mat-button color="accent" [routerLink]="['/become-host']"
+    aria-labelledby="sign_up_as_host" mat-button color="accent" [routerLink]="['/become-host']"
     routerLinkActive="router-link-active">
-    <span id="signup as host">Become a host</span>
+    <span id="sign_up_as_host">Become a host</span>
   </button>
   <section *ngIf="(this.auth$ | async).authenticated; else login">
     <a class="profile-img cursor-pointer" [mat-menu-trigger-for]="userMenu">
