@@ -90,11 +90,10 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/favicon.ico",
               "src/assets",
-              "src/manifest.json",
               "src/manifest.webmanifest",
-              "src/manifest.webmanifest"
+              "src/robot.txt",
+              "src/sitemap.xml"
             ],
             "styles": [
               "src/sass/styles.scss"
