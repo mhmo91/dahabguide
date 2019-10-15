@@ -40,6 +40,7 @@ export class LandingToolbarComponent implements OnInit {
     this.store.dispatch(new authActions.GoogleLogin())
   }
   get IsHost(): boolean {
+    console.log('i came here')
     return Array.isArray(this.user.roles) && this.user.roles.includes(Role.Host)
   }
 }
