@@ -1,4 +1,4 @@
-import { appStateMock } from './../../reducers/index';
+import { appStateMock } from './../../reducers/index'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 import { RestrictToolbarComponent } from './restrict-toolbar.component'
