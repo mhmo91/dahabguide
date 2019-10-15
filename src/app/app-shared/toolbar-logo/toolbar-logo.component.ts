@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Input } from '@angular/core'
+import { DomSanitizer } from '@angular/platform-browser'
+import { MatIconRegistry } from '@angular/material/icon'
 
 @Component({
   selector: 'dahab-toolbar-logo',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core'
 })
 export class ToolbarLogoComponent implements OnInit {
 
-  constructor() { }
+  @Input() hideText = true
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon(
+      'logo',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/logo.svg'))
+  }
 
   ngOnInit() {
+
   }
 
 }

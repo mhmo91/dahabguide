@@ -1,4 +1,13 @@
 <div class="d-flex align-items-center">
-  <h1 class="mx-1">Dahab </h1>
-  <img src="assets/logo.svg" class="" height="40" alt="Camel">
+  <div class="flip-box">
+    <div class="flip-box-inner">
+      <div class="flip-box-front">
+        <mat-icon class="logo" svgIcon="logo" aria-hidden="false" aria-label="Logo of Camel"></mat-icon>
+      </div>
+      <div class="flip-box-back">
+        <mat-icon class="logo flip" svgIcon="logo" aria-hidden="false" aria-label="Logo of Camel"></mat-icon>
+      </div>
+    </div>
+  </div>
+  <h1 *ngIf="!this.hideText" class="mx-1 d-none d-md-block">Dahab Guide</h1>
 </div>
