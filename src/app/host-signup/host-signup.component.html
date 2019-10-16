@@ -5,8 +5,7 @@
 
       <mat-progress-bar mode="determinate" [value]="this.wizard?.progress"></mat-progress-bar>
 
-      <img src="assets/logo.svg" class="mt-5 mb-3" height="70" alt="Camel">
-
+      <dahab-toolbar-logo class="mt-5 mb-3" [size]="'4rem'"></dahab-toolbar-logo>
       <h4 class="text-muted mb-5">Sign up as a Host </h4>
       <mat-vertical-stepper [selectedIndex]="this.wizard.currentStep" linear #stepper>
         <mat-step [completed]="this.wizard.currentStep >0" editable=false>

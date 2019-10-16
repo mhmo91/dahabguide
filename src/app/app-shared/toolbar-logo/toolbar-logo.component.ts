@@ -8,8 +8,7 @@ import { MatIconRegistry } from '@angular/material/icon'
   styleUrls: ['./toolbar-logo.component.scss']
 })
 export class ToolbarLogoComponent implements OnInit {
-
-  @Input() hideText = true
+  @Input() size = '2.5rem'
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon(
       'logo',

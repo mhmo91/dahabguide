@@ -1,3 +1,4 @@
+import { Router, NavigationStart, NavigationEnd } from '@angular/router'
 import * as  userActions from './actions/user.actions'
 import * as  authActions from './actions/auth.actions'
 import { Component } from '@angular/core'
@@ -11,7 +12,16 @@ import { Store } from '@ngrx/store'
 })
 export class AppComponent {
   title = 'dahabguide'
-  constructor(private store: Store<AppState>) {
+  navigating: boolean
+  constructor(private store: Store<AppState>, private router: Router) {
     this.store.dispatch(new userActions.GetUser())
+    this.router.events.subscribe((url: any) => {
+      if (url instanceof NavigationStart) {
+        this.navigating = true
+      } else if (url instanceof NavigationEnd) {
+        this.navigating = false
+      }
+    })
   }
+
 }
