@@ -1,4 +1,8 @@
+import * as userActions from './../../actions/user.actions'
 import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core'
+import { AppState } from 'src/app/reducers'
+import { Store } from '@ngrx/store'
+import { IUser } from 'src/app/models/user.model'
 
 @Component({
   selector: 'dahab-restrict-toolbar',
@@ -9,10 +13,15 @@ import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@ang
 export class RestrictToolbarComponent implements OnInit {
 
   @Output() toggleSideNav = new EventEmitter()
-
-  constructor() { }
+  user: IUser
+  constructor(private store: Store<AppState>) {
+    this.store.select('user').subscribe((user) => this.user = user)
+  }
 
   ngOnInit() {
   }
 
+  signOut() {
+    this.store.dispatch(new userActions.Logout())
+  }
 }

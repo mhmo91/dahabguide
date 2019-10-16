@@ -1,6 +1,29 @@
-<mat-toolbar class="restrict-toolbar bg-white mat-elevation-z1">
+<mat-toolbar color="accent" class="restrict-toolbar">
   <button aria-label="Menu" mat-icon-button (click)="this.toggleSideNav.emit()">
     <mat-icon>menu</mat-icon>
   </button>
+  <span class="flex-grow-1"></span>
+
   <dahab-toolbar-logo></dahab-toolbar-logo>
+  <span class="flex-grow-1"></span>
+  <a class="profile-img cursor-pointer" [mat-menu-trigger-for]="userMenu">
+    <img [src]="this.user.photoURL" width="30" height="30" alt="user photo" class="rounded-circle mat-elevation-z8">
+  </a>
+
+  <mat-menu #userMenu="matMenu">
+    <div class="container d-flex overflow-hidden">
+      <img *ngIf="user.loading" mat-card-avatar height="45" [src]="user.photoURL" alt="user photo"
+        class="rounded-circle mat-elevation-z8 mt-1">
+
+      <div class="pl-2">
+        <span class="text-capitalize">
+          {{user.displayName}}</span>
+        <p class="text-muted">{{user.email}}</p>
+      </div>
+    </div>
+    <button aria-labelledby="signoutBtn" mat-menu-item (click)="this.signOut()">
+      <mat-icon> exit_to_app </mat-icon>
+      <span id="signoutBtn">Sign Out</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>

@@ -1,16 +1,22 @@
+import { appStateMock } from './../../reducers/index'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 import { RestrictToolbarComponent } from './restrict-toolbar.component'
+import { provideMockStore } from '@ngrx/store/testing'
+import { RestrictSharedModule } from '../restrict-shared/restrict-shared.module'
 
 
 describe('RestrictToolbarComponent', () => {
   let component: RestrictToolbarComponent
   let fixture: ComponentFixture<RestrictToolbarComponent>
-
+  // tslint:disable-next-line: prefer-const
+  let initialState = appStateMock
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [RestrictToolbarComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [RestrictSharedModule],
+      providers: [provideMockStore({ initialState })]
     })
       .compileComponents()
   }))

@@ -6,6 +6,7 @@ import { AngularFireAuth } from '@angular/fire/auth'
 import { provideMockStore, MockStore } from '@ngrx/store/testing'
 import { Store } from '@ngrx/store'
 import { appStateMock } from 'src/app/reducers'
+import { RouterTestingModule } from '@angular/router/testing'
 
 describe('AuthGuard', () => {
   let authGuard: AngularFireAuth
@@ -14,13 +15,13 @@ describe('AuthGuard', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       providers: [
         AuthGuard,
         provideMockStore({ initialState }),
       ]
     })
     store = TestBed.get(Store)
-
     authGuard = TestBed.get(AuthGuard)
 
   })

@@ -28,14 +28,22 @@ import { MatTabsModule } from '@angular/material/tabs'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { ToolbarLogoComponent } from './toolbar-logo/toolbar-logo.component'
+import { RouterModule } from '@angular/router'
+import { ReactiveFormsModule } from '@angular/forms'
+import { HttpClientModule } from '@angular/common/http'
 
 
 @NgModule({
   declarations: [ToolbarLogoComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    MatIconModule,
+    HttpClientModule
+
   ],
   exports: [
+    ReactiveFormsModule,
+    RouterModule,
     MatSelectModule,
     MatInputModule,
     MatProgressSpinnerModule,

@@ -15,7 +15,7 @@ describe('LandingToolbarComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [LandingSharedModule],
+      imports: [LandingSharedModule, RouterTestingModule],
       declarations: [LandingToolbarComponent],
       providers: [provideMockStore({ initialState })]
     })

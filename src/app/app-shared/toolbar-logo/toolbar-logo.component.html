@@ -1,4 +1,12 @@
 <div class="d-flex align-items-center">
-  <h1 class="mx-3">Dahab Guide</h1>
-  <img src="assets/logo.png" class="" height="50px" alt="palm trees">
+  <div class="flip-box" [style.height]="this.size" [style.width]="this.size">
+    <div class="flip-box-inner">
+      <div class="flip-box-front">
+        <mat-icon class="w-100 h-100" svgIcon="logo" aria-hidden="false" aria-label="Logo of Camel"></mat-icon>
+      </div>
+      <div class="flip-box-back">
+        <mat-icon class="w-100 h-100" svgIcon="logo" aria-hidden="false" aria-label="Logo of Camel"></mat-icon>
+      </div>
+    </div>
+  </div>
 </div>

@@ -4,8 +4,8 @@
 
   <mat-sidenav-container class="restrict-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 4">
 
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56">
+    <mat-sidenav #snav opened="{{mobileQuery.matches ? false : true}}" [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list>
         <span>some content here</span>
       </mat-nav-list>

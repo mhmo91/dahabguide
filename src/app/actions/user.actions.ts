@@ -1,15 +1,13 @@
-import { User as FirebaseUser } from 'firebase/app'
 import { Action } from '@ngrx/store'
 import { User, IUser } from '../models/user.model'
 
 export enum ActionTypes {
-  GET_USER = '[AUTH] Get User',
-  AUTHENTICATED = '[Auth] Authenticated',
-  NOT_AUTHENTICATED = '[Auth] Not Authenticated',
-  GOOGLE_LOGIN = '[Auth] Google login attempt',
-  FACEBOOK_LOGIN = '[Auth] facebook login attempt',
+  GET_USER = '[AUTH,fb] Get User',
+  GET_USER_SUCCESS = '[fb] Get User Success',
+  GET_USER_FAIL = '[fb] Get User Fail',
+
   LOGOUT = '[Auth] Logout',
-  AUTH_ERROR = '[Auth] Error',
+
   UPDATE_USER = '[fb] Update User',
   UPDATE_USER_SUCCESS = '[fb] Update User Success',
   UPDATE_USER_FAIL = '[fb] Update User Fail',
@@ -18,26 +16,17 @@ export enum ActionTypes {
 export class GetUser implements Action {
   readonly type = ActionTypes.GET_USER
 }
-
-export class Authenticated implements Action {
-  readonly type = ActionTypes.AUTHENTICATED
-  constructor(public payload: User) {
-  }
+export class GetUserSuccess implements Action {
+  readonly type = ActionTypes.GET_USER_SUCCESS
+  constructor(public payload: IUser) { }
 }
 
-export class NotAuthenticated implements Action {
-  readonly type = ActionTypes.NOT_AUTHENTICATED
+export class GetUserFail implements Action {
+  readonly type = ActionTypes.GET_USER_FAIL
   constructor(public payload?: any) {
   }
 }
 
-export class GoogleLogin implements Action {
-  readonly type = ActionTypes.GOOGLE_LOGIN
-}
-
-export class FacebookLogin implements Action {
-  readonly type = ActionTypes.FACEBOOK_LOGIN
-}
 
 export class Logout implements Action {
   readonly type = ActionTypes.LOGOUT
@@ -53,11 +42,6 @@ export class UpdateUserSuccess implements Action {
   readonly type = ActionTypes.UPDATE_USER_SUCCESS
 }
 
-export class AuthenticationFail implements Action {
-  readonly type = ActionTypes.AUTH_ERROR
-  constructor(public payload?: any) {
-  }
-}
 
 export class UpdateUserFail implements Action {
   readonly type = ActionTypes.UPDATE_USER_FAIL
@@ -65,5 +49,4 @@ export class UpdateUserFail implements Action {
   }
 }
 
-export type UserActions = GetUser | Authenticated | NotAuthenticated | AuthenticationFail
-  | GoogleLogin | FacebookLogin | Logout | UpdateUser | UpdateUserSuccess | UpdateUserFail
+export type UserActions = GetUser | GetUserSuccess | GetUserFail | Logout | UpdateUser | UpdateUserSuccess | UpdateUserFail

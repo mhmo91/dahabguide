@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { ToolbarLogoComponent } from './toolbar-logo.component'
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 
 describe('ToolbarLogoComponent', () => {
   let component: ToolbarLogoComponent
@@ -8,7 +9,8 @@ describe('ToolbarLogoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ToolbarLogoComponent]
+      declarations: [ToolbarLogoComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents()
   }))
