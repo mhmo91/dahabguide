@@ -3,14 +3,18 @@ import { RouterTestingModule } from '@angular/router/testing'
 import { AppComponent } from './app.component'
 import { provideMockStore } from '@ngrx/store/testing'
 import { appStateMock } from './reducers'
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { AppSharedModule } from './app-shared/app-shared.module'
 
 describe('AppComponent', () => {
   const initialState = appStateMock
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        AppSharedModule
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [
         AppComponent
       ],
@@ -24,16 +28,13 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy()
   })
 
-  it(`should have as title 'dahabguide'`, () => {
-    const fixture = TestBed.createComponent(AppComponent)
-    const app = fixture.debugElement.componentInstance
-    expect(app.title).toEqual('dahabguide')
-  })
 
-  // it('should render title', () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.debugElement.nativeElement;
-  //   expect(compiled.querySelector('.content span').textContent).toContain('dahabguide app is running!');
-  // });
+  it('should render when router is navigating mat progress bar', () => {
+    const fixture = TestBed.createComponent(AppComponent)
+    fixture.componentInstance.navigating = true
+    const app = fixture.debugElement.componentInstance
+    fixture.detectChanges()
+    const nativeEl: HTMLElement = fixture.debugElement.nativeElement
+    expect(nativeEl.querySelector('mat-progress-bar')).toBeTruthy()
+  })
 })
