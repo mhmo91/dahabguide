@@ -6,13 +6,11 @@
 
     <mat-sidenav #snav opened="{{mobileQuery.matches ? false : true}}" [mode]="mobileQuery.matches ? 'over' : 'side'"
       [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-      <mat-nav-list>
-        <span>some content here</span>
-      </mat-nav-list>
+
+      <dahab-host-nav-list></dahab-host-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content class="d-flex justify-content-center align-items-center">
-      <h2 class="text-secondary">Stay tuned...</h2>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
 
