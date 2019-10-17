@@ -5,6 +5,7 @@ import { Observable } from 'rxjs'
 import { PlaceEffects } from './place.effects'
 
 describe('PlaceEffects', () => {
+  // tslint:disable-next-line: prefer-const
   let actions$: Observable<any>
   let effects: PlaceEffects
 
