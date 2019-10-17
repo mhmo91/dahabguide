@@ -31,10 +31,11 @@ import { ToolbarLogoComponent } from './toolbar-logo/toolbar-logo.component'
 import { RouterModule } from '@angular/router'
 import { ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
+import { NiceImageComponent } from './nice-image/nice-image.component'
 
 
 @NgModule({
-  declarations: [ToolbarLogoComponent],
+  declarations: [ToolbarLogoComponent, NiceImageComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -74,7 +75,8 @@ import { HttpClientModule } from '@angular/common/http'
 
 
     // components
-    ToolbarLogoComponent
+    ToolbarLogoComponent,
+    NiceImageComponent
   ]
 })
 export class AppSharedModule { }
