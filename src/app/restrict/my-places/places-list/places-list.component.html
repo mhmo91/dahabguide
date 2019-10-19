@@ -1,1 +1,30 @@
-<p>places-list works!</p>
+<div class="container-fluid h-100">
+
+  <div *ngIf="false else loaded" class="loading-shade">
+    <mat-spinner></mat-spinner>
+  </div>
+
+
+  <ng-template #loaded>
+    <section *ngIf="false else noPropertiesFound">
+
+      <a aria-label="Add place" [routerLink]="['add-place']" class="float-bottom" mat-fab color="primary">
+        <mat-icon>add</mat-icon>
+      </a>
+    </section>
+
+    <ng-template #noPropertiesFound>
+
+      <div class="d-flex flex-column align-items-center justify-content-center h-100">
+        <dahab-nice-image class="my-3" size="6rem" icon="cactus"></dahab-nice-image>
+        <p class="my-3">You have not added any properties yet</p>
+        <a class="my-3" aria-labelledby="addNewPlaceBtn" mat-raised-button color="primary" [routerLink]="['add-place']">
+          <mat-icon class="mr-3">add</mat-icon>
+          <span id="addNewPlaceBtn">Add Place</span>
+        </a>
+      </div>
+    </ng-template>
+  </ng-template>
+
+
+</div>

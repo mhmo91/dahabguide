@@ -30,3 +30,9 @@ body {
   justify-content: center;
   border-radius: 10px !important;
 }
+
+.float-bottom {
+  position: fixed !important;
+  bottom: 1rem;
+  right: 1rem;
+}

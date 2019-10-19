@@ -2,15 +2,15 @@
 
   <dahab-restrict-toolbar (toggleSideNav)="snav.toggle()"></dahab-restrict-toolbar>
 
-  <mat-sidenav-container class="restrict-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 4">
+  <mat-sidenav-container class="restrict-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
 
-    <mat-sidenav #snav opened="{{mobileQuery.matches ? false : true}}" [mode]="mobileQuery.matches ? 'over' : 'side'"
-      [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+    <mat-sidenav class="pr-2" #snav opened="{{mobileQuery.matches ? false : true}}"
+      [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
 
       <dahab-host-nav-list></dahab-host-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content class="d-flex justify-content-center align-items-center">
+    <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
 
