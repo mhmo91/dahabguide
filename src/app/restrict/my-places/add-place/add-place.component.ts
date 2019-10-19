@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { Store } from '@ngrx/store'
 
 @Component({
   selector: 'dahab-add-place',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core'
 })
 export class AddPlaceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<any>) { }
 
   ngOnInit() {
   }

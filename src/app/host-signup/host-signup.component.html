@@ -11,16 +11,13 @@
         <mat-step [completed]="this.wizard.currentStep >0" editable=false>
           <ng-template matStepLabel>Create an account</ng-template>
           <div class="pt-4 d-flex flex-column">
-            <button aria-label="signIn with Facebook" mat-raised-button
-              class="btn-social-login text-center my-3 py-3 px-5" (click)="logInWithFacebook()">
-              <img height="25rem"
-                src="https://upload.wikimedia.org/wikipedia/commons/8/87/Facebook_Logo_%282015%29_light.svg"
-                alt="facebook logo">
+            <button aria-label="signIn with Facebook" mat-stroked-button color="accent"
+              class="btn-social-login text-center my-3 py-3 px-3" (click)="logInWithFacebook()">
+              <img width="150" src="assets/social/facebook.svg" alt="facebook logo">
             </button>
-            <button aria-label="signIn with Google" class="btn-social-login my-3 text-center py-3 px-5"
-              mat-raised-button (click)="logInWithgoogle()">
-              <img class="img-fluid" height="25rem"
-                src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_148x48px.svg" alt="">
+            <button aria-label="signIn with Google" class="btn-social-login my-3 text-center py-3 px-3"
+              mat-stroked-button color="accent" (click)="logInWithgoogle()">
+              <img class="img-fluid" width="150" src="assets/social/google.svg" alt="">
             </button>
           </div>
           <div *ngIf="(this.auth$ | async).authenticating" class="loading-shade">

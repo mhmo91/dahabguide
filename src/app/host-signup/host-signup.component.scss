@@ -1,4 +1,5 @@
 .container-fullscreen {
+  overflow-x: hidden;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -11,5 +12,5 @@
 }
 
 .btn-social-login {
-  min-width: 20rem;
+  min-width: 15rem;
 }

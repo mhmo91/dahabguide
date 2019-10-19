@@ -48,11 +48,11 @@
       </button>
     </ng-template>
     <mat-menu #loginMenu="matMenu">
-      <button aria-labelledby="signIn withFacebook" mat-menu-item class="text-center" (click)="logInWithFacebook()">
-        <span class="align-middle" id="withFacebook"></span>
+      <button aria-label="Sign in with facebook" mat-menu-item class="text-center" (click)="logInWithFacebook()">
+        <img width="100px" src="assets/social/facebook.svg" alt="facebook logo">
       </button>
-      <button aria-labelledby="signIn withGoogle" class="text-center" mat-menu-item (click)="logInWithgoogle()">
-        <span class="align-middle" id="withGoogle"></span>
+      <button aria-label="Sign in with google" class="text-center" mat-menu-item (click)="logInWithgoogle()">
+        <img width="100px" src="assets/social/google.svg" alt="facebook logo">
       </button>
     </mat-menu>
   </ng-template>

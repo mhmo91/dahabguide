@@ -4,20 +4,21 @@ import { PlaceActions, PlaceActionTypes } from '../actions/place.actions'
 
 export const placesFeatureKey = 'places'
 
-export interface State extends EntityState<Place> {
+export interface IPlacesState extends EntityState<Place> {
   // additional entities state properties
 }
 
 export const adapter: EntityAdapter<Place> = createEntityAdapter<Place>()
 
-export const initialState: State = adapter.getInitialState({
+export const initialState: IPlacesState = adapter.getInitialState({
   // additional entity state properties
 })
 
+console.log(initialState)
 export function reducer(
   state = initialState,
   action: PlaceActions
-): State {
+): IPlacesState {
   switch (action.type) {
     case PlaceActionTypes.AddPlace: {
       return adapter.addOne(action.payload.place, state)
