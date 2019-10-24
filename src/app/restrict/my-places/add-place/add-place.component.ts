@@ -21,7 +21,6 @@ export class AddPlaceComponent implements OnInit {
     this.place = {}
     this.place.id = this.afs.createId()
     this.store.select(fromUserState.selectUserId).subscribe((res: any) => {
-      console.log(1)
       this.place.creatorId = res
     })
     this.placeWizard$ = this.store.select('placeWizard')

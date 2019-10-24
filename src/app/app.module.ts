@@ -5,7 +5,6 @@ import { AngularFireModule } from '@angular/fire'
 import { AngularFirestoreModule } from '@angular/fire/firestore'
 import { AngularFireStorageModule } from '@angular/fire/storage'
 import { AngularFireAuthModule } from '@angular/fire/auth'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { environment } from '../environments/environment'
 
@@ -33,7 +32,6 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard'
     AngularFireAuthModule,
     AngularFireAuthGuardModule,
     AngularFireStorageModule,
-    BrowserAnimationsModule,
     AppSharedModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     StoreModule.forRoot(reducers, {

@@ -3,6 +3,7 @@ import { provideMockActions } from '@ngrx/effects/testing'
 import { Observable } from 'rxjs'
 
 import { PlaceEffects } from './place.effects'
+import { FirebaseTestingModule } from 'src/testing/firebase-testing/firebase-testing.module'
 
 describe('PlaceEffects', () => {
   // tslint:disable-next-line: prefer-const
@@ -11,6 +12,7 @@ describe('PlaceEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [FirebaseTestingModule],
       providers: [
         PlaceEffects,
         provideMockActions(() => actions$)

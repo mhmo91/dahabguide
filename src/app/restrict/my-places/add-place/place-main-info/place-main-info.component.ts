@@ -21,10 +21,9 @@ export class PlaceMainInfoComponent implements OnInit {
   resources$: Observable<IResources>
   placeWizard$: Observable<IPlaceWizard>
   @Input() place: Partial<IPlace>
-  loading
   constructor(
     private formBuilder: FormBuilder, private store: Store<AppState & IPlaceWizardState>,
-    private matSnackBar: MatSnackBar, private afs: AngularFirestore
+    private matSnackBar: MatSnackBar
   ) {
     this.resources$ = this.store.select('resources')
     this.placeWizard$ = this.store.select('placeWizard')
@@ -65,7 +64,6 @@ export class PlaceMainInfoComponent implements OnInit {
       this.matSnackBar.open('Please enter the missing information', 'dismiss')
       return
     }
-    this.loading = true
     this.store.dispatch(new placesActions.AddPlace(
       { place: { ...this.place, ...value } })
     )

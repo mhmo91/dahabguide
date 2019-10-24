@@ -1,16 +1,24 @@
+import { provideMockStore } from '@ngrx/store/testing'
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { PlacesListComponent } from './places-list.component'
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { AppSharedModule } from 'src/app/app-shared/app-shared.module'
+import { appStateMock } from 'src/app/reducers'
 
 describe('PlacesListComponent', () => {
   let component: PlacesListComponent
   let fixture: ComponentFixture<PlacesListComponent>
-
+  // tslint:disable-next-line: prefer-const
+  let initialState = appStateMock
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlacesListComponent ]
+      imports: [AppSharedModule],
+      declarations: [PlacesListComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [provideMockStore({ initialState })]
     })
-    .compileComponents()
+      .compileComponents()
   }))
 
   beforeEach(() => {

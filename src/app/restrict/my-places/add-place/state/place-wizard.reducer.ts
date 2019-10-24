@@ -40,3 +40,10 @@ export function reducer(state = initialState, action: PlaceWizardActions): IPlac
       return state
   }
 }
+
+export const placeWizardStateMock = {
+  mode: WizardMode.Add,
+  busy: false,
+  currentPlaceId: null,
+  currentWizardStep: 0
+}
