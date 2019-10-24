@@ -1,5 +1,11 @@
+import { IPlaceWizard, IPlaceWizardState } from './state/place-wizard.reducer'
+import { AppState } from 'src/app/reducers'
 import { Component, OnInit } from '@angular/core'
 import { Store } from '@ngrx/store'
+import { AngularFirestore } from '@angular/fire/firestore'
+import { IPlace } from 'src/app/models/place.model'
+import { Observable } from 'rxjs'
+import * as fromUserState from 'src/app/reducers/user.reducer'
 
 @Component({
   selector: 'dahab-add-place',
@@ -8,7 +14,18 @@ import { Store } from '@ngrx/store'
 })
 export class AddPlaceComponent implements OnInit {
 
-  constructor(private store: Store<any>) { }
+  creatorId: string // get current userId incase if this is an attempt to add
+  place: Partial<IPlace>
+  placeWizard$: Observable<IPlaceWizard>
+  constructor(private store: Store<AppState & IPlaceWizardState>, private afs: AngularFirestore) {
+    this.place = {}
+    this.place.id = this.afs.createId()
+    this.store.select(fromUserState.selectUserId).subscribe((res: any) => {
+      this.place.creatorId = res
+    })
+    this.placeWizard$ = this.store.select('placeWizard')
+
+  }
 
   ngOnInit() {
   }

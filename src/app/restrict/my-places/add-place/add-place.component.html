@@ -1,15 +1,32 @@
-<mat-vertical-stepper linear="true" #stepper>
-  <mat-step>
-    <ng-template matStepLabel>Describe your place</ng-template>
+<section class="container-fluid my-3">
+  <mat-vertical-stepper [selectedIndex]="(this.placeWizard$|async)?.currentWizardStep " class="mat-elevation-z2" linear
+    #addPlaceStepper>
+    <mat-step [stepControl]="placeMainInfoComp?.placeInfoFormGroup">
+      <ng-template matStepLabel>Basic Information</ng-template>
+      <dahab-place-main-info #placeMainInfoComp [place]="this.place"></dahab-place-main-info>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Location</ng-template>
 
-    <!-- <form [formGroup]="firstFormGroup">
-      <mat-form-field>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
+
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Photos</ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Pricing and Booking details</ng-template>
+
+
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>What's Next</ng-template>
+
+      <div class="pt-4 container-fluid text-center">
+        <img width="80px" class="img-fluid" src="assets/celebration.svg" alt="">
+        <h4 class="my-3">You are now ready to List your place</h4>
+        <button class="my-3" mat-raised-button color="accent" [routerLink]="['/restrict']">Add your first
+          place</button>
       </div>
-    </form> -->
-  </mat-step>
-
-</mat-vertical-stepper>
+    </mat-step>
+  </mat-vertical-stepper>
+</section>

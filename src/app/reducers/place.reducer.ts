@@ -1,25 +1,46 @@
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity'
-import { Place } from '../models/place.model'
+import { EntityState, EntityAdapter, createEntityAdapter, Dictionary } from '@ngrx/entity'
+import { IPlace as Place } from '../models/place.model'
 import { PlaceActions, PlaceActionTypes } from '../actions/place.actions'
-
+import { createFeatureSelector, createSelector } from '@ngrx/store'
+import { ApiModel } from '../models/api.model'
 export const placesFeatureKey = 'places'
 
-export interface IPlacesState extends EntityState<Place> {
+export interface IPlacesState extends EntityState<Place>, ApiModel {
   // additional entities state properties
+  currentPlaceId: string
+
 }
 
 export const adapter: EntityAdapter<Place> = createEntityAdapter<Place>()
 
 export const initialState: IPlacesState = adapter.getInitialState({
   // additional entity state properties
+  currentPlaceId: null,
+
 })
 
-console.log(initialState)
 export function reducer(
   state = initialState,
   action: PlaceActions
 ): IPlacesState {
   switch (action.type) {
+    case PlaceActionTypes.AddPlace: {
+      return adapter.addOne(
+        { ...action.payload.place, loading: true },
+        { ...state, currentPlaceId: action.payload.place.id }
+      )
+    }
+
+    case PlaceActionTypes.AddPlaceSuccess: {
+      return adapter.upsertOne(
+        { ...action.payload.place, loading: false }, state
+      )
+    }
+
+    case PlaceActionTypes.AddPlaceFailure: {
+      return adapter.upsertOne({ ...action.payload.place, loading: false }, state)
+    }
+
     case PlaceActionTypes.AddPlace: {
       return adapter.addOne(action.payload.place, state)
     }
@@ -52,8 +73,12 @@ export function reducer(
       return adapter.removeMany(action.payload.ids, state)
     }
 
+    case PlaceActionTypes.InitLoadPlaces: {
+      return { ...state, loading: true }
+    }
+
     case PlaceActionTypes.LoadPlaces: {
-      return adapter.addAll(action.payload.places, state)
+      return adapter.addAll(action.payload.places, { ...state, loading: false })
     }
 
     case PlaceActionTypes.ClearPlaces: {
@@ -66,9 +91,17 @@ export function reducer(
   }
 }
 
+
 export const {
   selectIds,
   selectEntities,
   selectAll,
   selectTotal,
 } = adapter.getSelectors()
+
+
+
+
+// even though this is an observable, but it bahaves as a promise, so it doesn't subscribe to changes in the object
+
+

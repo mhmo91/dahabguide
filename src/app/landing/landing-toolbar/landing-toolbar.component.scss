@@ -8,3 +8,7 @@
 
 @import "src/sass/bootstrap";
 @import "src/sass/variables";
+
+mat-toolbar {
+  background-image: src("assets/homepage_header_background.svg");
+}

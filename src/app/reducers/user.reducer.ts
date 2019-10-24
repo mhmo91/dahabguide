@@ -1,3 +1,5 @@
+import { take } from 'rxjs/operators'
+import { createFeatureSelector, createSelector } from '@ngrx/store'
 import { User, IUser } from './../models/user.model'
 
 import { UserActions, ActionTypes } from '../actions/user.actions'
@@ -36,3 +38,6 @@ export function reducer(state: Partial<IUser> = defaultUser, action: UserActions
       return { ...state }
   }
 }
+
+export const userState = createFeatureSelector(userFeatureKey)
+export const selectUserId = createSelector(userState, (user: IUser) => user.uid)
