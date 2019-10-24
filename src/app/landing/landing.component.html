@@ -1,7 +1,7 @@
 <div class="landing-container" [class.mobile-view]="mobileQuery.matches">
 
   <dahab-landing-toolbar (toggleSideNav)="snav.toggle()"></dahab-landing-toolbar>
-  <mat-sidenav-container class="landing-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 4">
+  <mat-sidenav-container class="landing-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
 
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56">
@@ -10,8 +10,11 @@
       </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content class="d-flex justify-content-center align-items-center">
-      <img class="img-fluid" src="assets/homepage_header_background.svg" alt="">
+    <mat-sidenav-content>
+      <section class="d-flex justify-content-center align-items-center">
+        <!-- <img class="img-fluid" src="assets/homepage_header_background.svg" alt=""> -->
+
+      </section>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
 

@@ -1,3 +1,6 @@
 import { UserEffects } from './user.effects'
 import { AuthEffects } from './auth.effects'
-export const effects = [UserEffects, AuthEffects]
+import { ResourcesEffects } from './resources.effects'
+import { PlaceEffects } from './place.effects'
+
+export const effects = [UserEffects, AuthEffects, ResourcesEffects, PlaceEffects]

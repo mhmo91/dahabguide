@@ -1,4 +1,4 @@
-<mat-toolbar class="landing-toolbar bg-white mat-elevation-z1">
+<mat-toolbar class="landing-toolbar bg-transparent">
   <!-- <button aria-label="Menu" class="d-block d-lg-none" mat-icon-button (click)="this.toggleSideNav.emit()">
     <mat-icon>menu</mat-icon>
   </button> -->
@@ -7,16 +7,16 @@
 
   <div class="flex-grow-1"></div>
 
-  <button [hidden]="(this.auth$ | async).authenticating || this.user.loading || this.IsHost" class="mr-2"
+  <a [hidden]="(this.auth$ | async).authenticating || this.user.loading || this.IsHost" class="mr-2"
     aria-labelledby="sign_up_as_host" mat-button color="accent" [routerLink]="['/become-host']"
     routerLinkActive="router-link-active">
     <span id="sign_up_as_host">Become a host</span>
-  </button>
+  </a>
   <section *ngIf="(this.auth$ | async).authenticated; else login">
-    <button *ngIf="this.IsHost" class="mr-2" aria-labelledby="my_account" mat-flat-button color="accent"
+    <a *ngIf="this.IsHost" class="mr-2" aria-labelledby="my_account" mat-flat-button color="accent"
       [routerLink]="['/restrict']" routerLinkActive="router-link-active">
       <span id="my_account">My Account</span>
-    </button>
+    </a>
     <a class="profile-img cursor-pointer" [mat-menu-trigger-for]="userMenu">
       <img [src]="this.user.photoURL" width="30" height="30" alt="user photo" class="rounded-circle mat-elevation-z8">
     </a>
@@ -48,11 +48,11 @@
       </button>
     </ng-template>
     <mat-menu #loginMenu="matMenu">
-      <button aria-labelledby="signIn withFacebook" mat-menu-item class="text-center" (click)="logInWithFacebook()">
-        <span class="align-middle" id="withFacebook"></span>
+      <button aria-label="Sign in with facebook" mat-menu-item class="text-center" (click)="logInWithFacebook()">
+        <img width="100px" src="assets/social/facebook.svg" alt="facebook logo">
       </button>
-      <button aria-labelledby="signIn withGoogle" class="text-center" mat-menu-item (click)="logInWithgoogle()">
-        <span class="align-middle" id="withGoogle"></span>
+      <button aria-label="Sign in with google" class="text-center" mat-menu-item (click)="logInWithgoogle()">
+        <img width="100px" src="assets/social/google.svg" alt="facebook logo">
       </button>
     </mat-menu>
   </ng-template>

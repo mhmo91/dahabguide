@@ -1,5 +1,3 @@
-import { AppState } from './../../reducers/index'
-import { environment } from './../../../environments/environment.prod'
 import { HostWizard, IHostWizard } from './../models/host-wizard'
 import { reducer as hostWizardReducer } from './host-wizard.reducer'
 

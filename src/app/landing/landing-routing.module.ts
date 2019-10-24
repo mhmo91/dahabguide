@@ -7,7 +7,8 @@ const routes: Routes = [{
   path: '',
   component: LandingComponent,
   children: [
-
+    { path: '', loadChildren: () => import('./places/places.module').then(m => m.PlacesModule) },
+    // { path: '**', redirectTo: 'places' }
   ]
 }
 ]

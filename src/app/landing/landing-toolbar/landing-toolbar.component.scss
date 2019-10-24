@@ -9,14 +9,6 @@
 @import "src/sass/bootstrap";
 @import "src/sass/variables";
 
-
-
-#withFacebook {
-  content: url(https://upload.wikimedia.org/wikipedia/commons/8/87/Facebook_Logo_%282015%29_light.svg);
-  display: inline-block;
-}
-
-#withGoogle {
-  content: url(https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg);
-  display: inline-block;
+mat-toolbar {
+  background-image: src("assets/homepage_header_background.svg");
 }

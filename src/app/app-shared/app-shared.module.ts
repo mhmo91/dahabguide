@@ -31,17 +31,27 @@ import { ToolbarLogoComponent } from './toolbar-logo/toolbar-logo.component'
 import { RouterModule } from '@angular/router'
 import { ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
+import { NiceImageComponent } from './nice-image/nice-image.component'
+import { NotPipe } from './not.pipe'
+import { PlaceCardComponent } from './place-card/place-card.component'
+import { NgbCarouselModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
 @NgModule({
-  declarations: [ToolbarLogoComponent],
+  declarations: [ToolbarLogoComponent, NiceImageComponent, NotPipe, PlaceCardComponent],
   imports: [
     CommonModule,
     MatIconModule,
-    HttpClientModule
-
+    HttpClientModule,
+    MatCardModule,
+    NgbCarouselModule,
+    NgbDatepickerModule,
+    MatListModule,
+    BrowserAnimationsModule
   ],
   exports: [
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     RouterModule,
     MatSelectModule,
@@ -71,10 +81,17 @@ import { HttpClientModule } from '@angular/common/http'
     MatAutocompleteModule,
     MatChipsModule,
     MatStepperModule,
-
+    // bootstrap module
+    NgbCarouselModule,
+    NgbDatepickerModule,
 
     // components
-    ToolbarLogoComponent
+    ToolbarLogoComponent,
+    NiceImageComponent,
+    PlaceCardComponent,
+
+    // pipes
+    NotPipe,
   ]
 })
 export class AppSharedModule { }

@@ -1,0 +1,10 @@
+<section class="container-fluid">
+  <div class="row">
+    <article class="col-md-12 col-lg-7 col-xl-6">
+      <dahab-place-card *ngFor="let place of this.places$ | async" [place]="place"></dahab-place-card>
+    </article>
+    <article class="d-block d-md-none flex-grow-1">
+
+    </article>
+  </div>
+</section>
