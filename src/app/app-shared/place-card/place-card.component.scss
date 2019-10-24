@@ -1,0 +1,71 @@
+mat-list-item {
+  font-size: 12px !important;
+
+  .mat-list-item-content {
+    padding: 0 !important;
+  }
+
+  .mat-list-text {
+    padding: 0 !important;
+  }
+
+
+}
+
+mat-card {
+  //   min-height: 10rem;
+}
+
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+.ngb-carousel-height {
+  height: 10rem;
+  overflow: hidden;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 375px) {
+  .ngb-carousel-height {
+    height: 12rem;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 425px) {
+  .ngb-carousel-height {
+    height: 14rem;
+    overflow: hidden;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .ngb-carousel-height {
+    height: 14rem;
+    overflow: hidden;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .ngb-carousel-height {
+    height: 14rem;
+    overflow: hidden;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .ngb-carousel-height {
+    height: 10rem;
+    overflow: hidden;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .ngb-carousel-height {
+    height: 11rem;
+    overflow: hidden;
+  }
+}

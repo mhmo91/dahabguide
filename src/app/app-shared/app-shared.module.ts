@@ -32,15 +32,21 @@ import { RouterModule } from '@angular/router'
 import { ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
 import { NiceImageComponent } from './nice-image/nice-image.component'
+import { NotPipe } from './not.pipe'
+import { PlaceCardComponent } from './place-card/place-card.component'
+import { NgbCarouselModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap'
 
 
 @NgModule({
-  declarations: [ToolbarLogoComponent, NiceImageComponent],
+  declarations: [ToolbarLogoComponent, NiceImageComponent, NotPipe, PlaceCardComponent],
   imports: [
     CommonModule,
     MatIconModule,
-    HttpClientModule
-
+    HttpClientModule,
+    MatCardModule,
+    NgbCarouselModule,
+    NgbDatepickerModule,
+    MatListModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -72,11 +78,17 @@ import { NiceImageComponent } from './nice-image/nice-image.component'
     MatAutocompleteModule,
     MatChipsModule,
     MatStepperModule,
-
+    // bootstrap module
+    NgbCarouselModule,
+    NgbDatepickerModule,
 
     // components
     ToolbarLogoComponent,
-    NiceImageComponent
+    NiceImageComponent,
+    PlaceCardComponent,
+
+    // pipes
+    NotPipe,
   ]
 })
 export class AppSharedModule { }

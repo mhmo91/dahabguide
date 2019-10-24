@@ -8,6 +8,8 @@ import {
 import { environment } from '../../environments/environment'
 import { reducer as userReducer } from './user.reducer'
 import { reducer as authReducer, clearState } from './auth.reducer'
+import { reducer as resourcesReducer } from './resources.reducer'
+import { reducer as placesReducer } from './place.reducer'
 // tslint:disable-next-line: semicolon
 import { User } from '../models/user.model'
 import { AuthState } from '../models/auth.state'
@@ -15,11 +17,15 @@ import { AuthState } from '../models/auth.state'
 export interface AppState {
   readonly user
   readonly auth
+  readonly resources?
+  readonly places?
 }
 
 export const reducers: ActionReducerMap<AppState> = {
   user: userReducer,
-  auth: authReducer
+  auth: authReducer,
+  resources: resourcesReducer,
+  places: placesReducer
 }
 
 export const metaReducers: MetaReducer<any>[] = !environment.production ? [clearState] : [clearState]
