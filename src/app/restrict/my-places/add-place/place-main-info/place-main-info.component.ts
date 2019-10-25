@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
-import { Store, select } from '@ngrx/store'
+import { Store } from '@ngrx/store'
 import { AppState } from 'src/app/reducers'
 import { Observable } from 'rxjs'
 import { IResources } from 'src/app/models/resources.model'
@@ -8,7 +8,6 @@ import * as placesActions from 'src/app/actions/place.actions'
 import * as placeWizardActions from '../state/place-wizard.actions'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { IPlace } from 'src/app/models/place.model'
-import { AngularFirestore } from '@angular/fire/firestore'
 import { IPlaceWizardState, IPlaceWizard } from '../state/place-wizard.reducer'
 @Component({
   selector: 'dahab-place-main-info',

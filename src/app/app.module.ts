@@ -17,6 +17,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { EffectsModule } from '@ngrx/effects'
 import { effects } from './effects'
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
 
@@ -26,6 +27,7 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard'
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
