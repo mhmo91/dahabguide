@@ -1,4 +1,4 @@
-<mat-card class="d-flex flex-column flex-md-row m-3 p-0" role="place short info">
+<mat-card class="d-flex flex-column flex-md-row m-3 p-0 w-100" role="place short info">
 
   <ngb-carousel class="col-sm-12 col-md-6 col-lg-5 ngb-carousel-height p-0" #carousel interval="4000" pauseOnHover=true>
     <ng-template ngbSlide *ngFor="let img of images; index as i">
@@ -12,7 +12,7 @@
 
 
   <div class="flex-grow-1 d-flex">
-    <mat-list class="col-6">
+    <mat-list class="col-6 pr-0">
       <mat-list-item class="text-muted h-auto mb-2">
         <mat-icon mat-list-icon>local_hotel</mat-icon>
         <h4 mat-line>
@@ -34,7 +34,7 @@
       </mat-list-item>
     </mat-list>
 
-    <mat-list class="col-6">
+    <mat-list class="col-6 pl-0">
       <mat-list-item class="text-muted h-auto mb-2">
         <mat-icon mat-list-icon>local_hotel</mat-icon>
         <h4 mat-line>
