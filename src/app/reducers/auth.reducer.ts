@@ -31,15 +31,3 @@ export function reducer(state = initialState, action: AuthActions): IAuthState {
   }
 }
 
-// meta reducer when user logout
-export function clearState(metaReducer) {
-  return (state, action) => {
-
-    if (action.type === ActionTypes.LOGOUT) {
-      state = initialState
-    }
-
-    return metaReducer(state, action)
-  }
-}
-

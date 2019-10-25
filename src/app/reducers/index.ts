@@ -1,4 +1,5 @@
 import { IUser } from './../models/user.model'
+import { clearUserState } from './logout.meta.reducer'
 import {
   ActionReducer,
   ActionReducerMap,
@@ -8,7 +9,7 @@ import {
 } from '@ngrx/store'
 import { environment } from '../../environments/environment'
 import { reducer as userReducer } from './user.reducer'
-import { reducer as authReducer, clearState } from './auth.reducer'
+import { reducer as authReducer } from './auth.reducer'
 import { reducer as resourcesReducer } from './resources.reducer'
 import { reducer as placesReducer, IPlacesState } from './place.reducer'
 // tslint:disable-next-line: semicolon
@@ -36,7 +37,7 @@ export const reducers: ActionReducerMap<AppState> = {
   places: placesReducer
 }
 
-export const metaReducers: MetaReducer<any>[] = !environment.production ? [clearState] : [clearState]
+export const metaReducers: MetaReducer<any>[] = !environment.production ? [clearUserState] : [clearUserState]
 
 
 // app state mock for testing purposes
