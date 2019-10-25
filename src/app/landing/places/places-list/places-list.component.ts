@@ -5,6 +5,7 @@ import { Observable } from 'rxjs'
 import { IPlace } from 'src/app/models/place.model'
 import * as placeActions from 'src/app/actions/place.actions'
 import * as appState from 'src/app/selectors'
+import { MapStyle } from 'src/app/constants/map.config'
 
 @Component({
   selector: 'dahab-places-list',
@@ -14,7 +15,14 @@ import * as appState from 'src/app/selectors'
 export class PlacesListComponent implements OnInit {
   places$: Observable<IPlace[]>
   isLoading$: Observable<boolean>
+  mapConfigurations
+
   constructor(private store: Store<AppState>) {
+    this.mapConfigurations = {
+      latitude: 28.5001444,
+      longitude: 34.5201866,
+      style: MapStyle
+    }
   }
 
   ngOnInit() {
