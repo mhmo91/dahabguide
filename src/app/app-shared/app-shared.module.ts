@@ -35,6 +35,7 @@ import { NiceImageComponent } from './nice-image/nice-image.component'
 import { NotPipe } from './not.pipe'
 import { PlaceCardComponent } from './place-card/place-card.component'
 import { NgbCarouselModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap'
+import { AgmCoreModule } from '@agm/core'
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { NgbCarouselModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstr
   ],
   exports: [
     ReactiveFormsModule,
+    AgmCoreModule,
     RouterModule,
     MatSelectModule,
     MatInputModule,

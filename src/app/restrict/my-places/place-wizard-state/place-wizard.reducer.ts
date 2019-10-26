@@ -28,8 +28,14 @@ export const initialState: IPlaceWizard = {
 
 export function reducer(state = initialState, action: PlaceWizardActions): IPlaceWizard {
   switch (action.type) {
+
+
+    case PlaceWizardActionTypes.AddNewPlaceInit:
+      return initialState
+
     case PlaceWizardActionTypes.SaveMainInfo:
       return { ...state, busy: true }
+
 
 
     case PlaceWizardActionTypes.SaveMainInfoSuccess:

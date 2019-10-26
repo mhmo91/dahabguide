@@ -37,3 +37,24 @@ export interface IPlace extends ApiModel {
   }
   photos: Array<string>
 }
+
+
+export class Place implements Partial<IPlace> {
+  constructor(
+    public type = null,
+    public inside = null,
+    public brandName = null,
+    public layout = {
+      beds: 1,
+      bedrooms: 1,
+      bathrooms: 1
+    },
+    public guests = {
+      adults: 2,
+      children: 2,
+      infants: 2
+    }
+  ) {
+
+  }
+}

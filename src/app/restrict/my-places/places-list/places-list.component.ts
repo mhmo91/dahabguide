@@ -13,8 +13,9 @@ export class PlacesListComponent implements OnInit {
 
   myPlaces$: Observable<IPlace[]>
   isLoading$: Observable<boolean>
-
-  constructor(private store: Store<AppState>) { }
+  mapConfig: any
+  constructor(private store: Store<AppState>) {
+  }
 
   ngOnInit() {
     this.myPlaces$ = this.store.select(fromPlaces.myCreatedPlaces)

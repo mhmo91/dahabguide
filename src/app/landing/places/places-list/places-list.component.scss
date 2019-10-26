@@ -1,0 +1,10 @@
+agm-map {
+  height: calc(100vh - 128px);
+  width: 50vw;
+  position: fixed;
+}
+
+.places-list-container {
+  height: calc(100vh - 128px);
+  overflow-y: auto;
+}

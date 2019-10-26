@@ -1,10 +1,16 @@
-<section class="container-fluid">
+<dahab-places-filter></dahab-places-filter>
+<section class="container-fluid mh-100">
   <div class="row">
-    <article class="col-md-12 col-lg-7 col-xl-6">
-      <dahab-place-card *ngFor="let place of this.places$ | async" [place]="place"></dahab-place-card>
+    <article class="places-list-container col-md-12 col-lg-7 col-xl-6">
+      <div *ngFor="let place of this.places$ | async" class="my-2">
+        <dahab-place-card [place]="place"></dahab-place-card>
+      </div>
     </article>
-    <article class="d-block d-md-none flex-grow-1">
-
+    <article class="d-none d-lg-block col-lg-5 col-xl-6 p-0 mat-elevation-z8">
+      <agm-map [disableDefaultUI]="true" [styles]="this.mapConfigurations.style" [clickableIcons]="false"
+        [mapTypeId]="'roadmap'" [zoom]="15" [latitude]="this.mapConfigurations.latitude"
+        [longitude]="this.mapConfigurations.longitude">
+      </agm-map>
     </article>
   </div>
 </section>

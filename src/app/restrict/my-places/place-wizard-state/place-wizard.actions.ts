@@ -1,12 +1,16 @@
 import { Action } from '@ngrx/store'
 
 export enum PlaceWizardActionTypes {
+  AddNewPlaceInit = '[User action] click add new place',
   SaveMainInfo = '[PlaceWizard] saveMainInfo',
   SaveMainInfoSuccess = '[PlaceWizard] saveMainInfo success',
   UpdatePlaceWizard = '[PlaceWizard] update state'
 
 }
 
+export class AddNewPlaceInit implements Action {
+  readonly type = PlaceWizardActionTypes.AddNewPlaceInit
+}
 export class UpdatePlaceWizard implements Action {
   readonly type = PlaceWizardActionTypes.UpdatePlaceWizard
 }
@@ -18,4 +22,4 @@ export class SaveMainInfoSuccess implements Action {
 }
 
 
-export type PlaceWizardActions = UpdatePlaceWizard | SaveMainInfo | SaveMainInfoSuccess
+export type PlaceWizardActions = AddNewPlaceInit | UpdatePlaceWizard | SaveMainInfo | SaveMainInfoSuccess

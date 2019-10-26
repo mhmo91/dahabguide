@@ -1,53 +1,64 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core'
+import { Component, OnInit, ViewEncapsulation, Input, SimpleChanges, OnChanges } from '@angular/core'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Store } from '@ngrx/store'
 import { AppState } from 'src/app/reducers'
 import { Observable } from 'rxjs'
 import { IResources } from 'src/app/models/resources.model'
 import * as placesActions from 'src/app/actions/place.actions'
-import * as placeWizardActions from '../state/place-wizard.actions'
+import * as placeWizardActions from '../../my-places/place-wizard-state/place-wizard.actions'
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { IPlace } from 'src/app/models/place.model'
-import { IPlaceWizardState, IPlaceWizard } from '../state/place-wizard.reducer'
+import { IPlaceWizardState, IPlaceWizard } from '../../my-places/place-wizard-state/place-wizard.reducer'
 @Component({
   selector: 'dahab-place-main-info',
   templateUrl: './place-main-info.component.html',
   styleUrls: ['./place-main-info.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class PlaceMainInfoComponent implements OnInit {
+export class PlaceMainInfoComponent implements OnInit, OnChanges {
+  @Input() place: Partial<IPlace>
   placeInfoFormGroup: FormGroup
   resources$: Observable<IResources>
   placeWizard$: Observable<IPlaceWizard>
-  @Input() place: Partial<IPlace>
   constructor(
     private formBuilder: FormBuilder, private store: Store<AppState & IPlaceWizardState>,
     private matSnackBar: MatSnackBar
   ) {
     this.resources$ = this.store.select('resources')
     this.placeWizard$ = this.store.select('placeWizard')
+    this.constructForm()
+
+  }
+
+  ngOnInit() {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const place = changes.place.currentValue
+    if (place) {
+      this.placeInfoFormGroup.patchValue(place)
+    }
+  }
+
+  constructForm() {
     const layoutFormGroup = this.formBuilder.group({
-      beds: ['', Validators.required],
-      bedrooms: ['', Validators.required],
-      bathrooms: ['', Validators.required],
+      beds: [null, Validators.required],
+      bedrooms: [null, Validators.required],
+      bathrooms: [null, Validators.required],
     })
     const guestsFormGroup = this.formBuilder.group({
-      adults: ['', Validators.required],
-      children: ['', Validators.required],
-      Infants: ['', Validators.required]
+      adults: [null, Validators.required],
+      children: [null, Validators.required],
+      Infants: [null, Validators.required]
     })
     this.placeInfoFormGroup = this.formBuilder.group({
-      type: ['', Validators.required],
-      inside: [{ value: '', disabled: true }, Validators.required],
-      brandName: [''],
+      type: [null, Validators.required],
+      inside: [{ value: null, disabled: true }, Validators.required],
+      brandName: [null],
       layout: layoutFormGroup,
       guests: guestsFormGroup
 
     })
-  }
-
-  ngOnInit() {
-
   }
 
 

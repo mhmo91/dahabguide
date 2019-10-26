@@ -5,6 +5,7 @@ import { PlacesListComponent } from './places-list.component'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { AppSharedModule } from 'src/app/app-shared/app-shared.module'
 import { appStateMock } from 'src/app/reducers'
+import { MapsAPILoader } from '@agm/core'
 
 describe('PlacesListComponent', () => {
   let component: PlacesListComponent
@@ -16,7 +17,14 @@ describe('PlacesListComponent', () => {
       imports: [AppSharedModule],
       declarations: [PlacesListComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [provideMockStore({ initialState })]
+      providers: [provideMockStore({ initialState }),
+      {
+        provide: MapsAPILoader,
+        useValue: {
+          load: jasmine.createSpy('load').and.returnValue(new Promise(() => true))
+        }
+      }
+      ]
     })
       .compileComponents()
   }))

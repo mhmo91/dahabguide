@@ -8,8 +8,9 @@
   <ng-template #loaded>
     <section class="container-fluid" *ngIf="(this.myPlaces$|async).length > 0 else noPropertiesFound">
       <div class="row">
-        <dahab-place-card class="col-md-12  col-lg-6" *ngFor="let place of this.myPlaces$ | async" [place]="place">
-        </dahab-place-card>
+        <div class="col-md-12  col-lg-6 my-2" *ngFor="let place of this.myPlaces$ | async">
+          <dahab-place-card [place]="place"> </dahab-place-card>
+        </div>
       </div>
 
       <a aria-label="Add place" [routerLink]="['add-place']" class="float-bottom" mat-fab color="accent">

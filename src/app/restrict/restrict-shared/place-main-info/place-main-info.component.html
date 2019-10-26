@@ -1,8 +1,8 @@
 <form (ngSubmit)="addPlace(placeInfoFormGroup.value)" [formGroup]="placeInfoFormGroup">
   <section class="d-flex flex-column align-items-center">
     <mat-divider class="my-3 col-12"></mat-divider>
-    <mat-label class="col-12 mb-3">Describe your place</mat-label>
-    <article class="d-flex flex-column flex-md-row align-items-center">
+    <mat-label class="col-12 pl-0 mb-3">Describe your place</mat-label>
+    <article class="row flex-column flex-md-row align-items-center">
       <mat-form-field class="col">
         <mat-label>My guest can book?</mat-label>
         <mat-select (valueChange)="whenPlaceTypeChange($event)" #palceTypeCtrl formControlName="type" required>
@@ -28,7 +28,7 @@
         <mat-hint align="start">Select Stand-alone property if you are not sure</mat-hint>
 
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="col">
         <input matInput placeholder="And it's called" formControlName="brandName">
         <mat-hint align="start">optional</mat-hint>
       </mat-form-field>
@@ -36,8 +36,8 @@
 
 
     <mat-divider class="my-3 col-12"></mat-divider>
-    <mat-label class="col-12 mb-3">My Place has</mat-label>
-    <article formGroupName="layout" class="d-flex flex-column flex-md-row align-items-center">
+    <mat-label class="col-12 pl-0 mb-3">My Place has</mat-label>
+    <article formGroupName="layout" class="row flex-column flex-md-row align-items-center">
 
       <mat-form-field class="col">
         <mat-label>Bedrooms</mat-label>
@@ -67,8 +67,8 @@
     </article>
 
     <mat-divider class="my-3 col-12"></mat-divider>
-    <mat-label class="col-12 mb-3">My place can fit up to</mat-label>
-    <article formGroupName="guests" class="d-flex flex-column flex-md-row align-items-center">
+    <mat-label class="col-12 pl-0 mb-3">My place can fit up to</mat-label>
+    <article formGroupName="guests" class="row flex-column flex-md-row align-items-center">
 
       <mat-form-field class="col">
         <mat-label>Adults</mat-label>

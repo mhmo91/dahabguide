@@ -1,4 +1,4 @@
-import { placeWizardStateMock } from './state/place-wizard.reducer'
+import { placeWizardStateMock } from '../place-wizard-state/place-wizard.reducer'
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { AddPlaceComponent } from './add-place.component'
