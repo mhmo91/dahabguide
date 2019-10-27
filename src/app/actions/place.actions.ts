@@ -14,6 +14,8 @@ export enum PlaceActionTypes {
   AddPlaces = '[Place] Add Places',
   UpsertPlaces = '[Place] Upsert Places',
   UpdatePlace = '[Place] Update Place',
+  UpdatePlaceSuccess = '[From Firebase] Update Place Success',
+  UpdatePlaceFailure = '[From Firebase] Updating Place failed',
   UpdatePlaces = '[Place] Update Places',
   DeletePlace = '[Place] Delete Place',
   DeletePlaces = '[Place] Delete Places',
@@ -66,6 +68,15 @@ export class UpdatePlace implements Action {
   constructor(public payload: { place: Update<IPlace> }) { }
 }
 
+
+export class UpdatePlaceSuccess implements Action {
+  readonly type = PlaceActionTypes.UpdatePlaceSuccess
+}
+export class UpdatePlaceFailure implements Action {
+  readonly type = PlaceActionTypes.UpdatePlaceFailure
+  constructor(public payload?: { place: IPlace }) { }
+}
+
 export class UpdatePlaces implements Action {
   readonly type = PlaceActionTypes.UpdatePlaces
 
@@ -98,6 +109,8 @@ export type PlaceActions =
   | AddPlaces
   | UpsertPlaces
   | UpdatePlace
+  | UpdatePlaceSuccess
+  | UpdatePlaceFailure
   | UpdatePlaces
   | DeletePlace
   | DeletePlaces

@@ -32,27 +32,52 @@ import { RouterModule } from '@angular/router'
 import { ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
 import { NiceImageComponent } from './nice-image/nice-image.component'
-import { NotPipe } from './not.pipe'
+import { NotPipe } from './pipes/not.pipe'
 import { PlaceCardComponent } from './place-card/place-card.component'
 import { NgbCarouselModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap'
 import { AgmCoreModule } from '@agm/core'
-
+import { PlacesPipe } from './pipes/places.pipe'
+import { MatSelectExtensionComponent } from './mat-select-extension/mat-select-extension.component';
+import { SelectNumberComponent } from './select-number/select-number.component'
+import { PlacesFilterComponent } from './places-filter/places-filter.component'
+import { MatRippleModule } from '@angular/material/core'
+import { MatSliderModule } from '@angular/material/slider'
 
 @NgModule({
-  declarations: [ToolbarLogoComponent, NiceImageComponent, NotPipe, PlaceCardComponent],
+  declarations: [
+    ToolbarLogoComponent, NiceImageComponent,
+    NotPipe, PlacesPipe, PlaceCardComponent,
+    MatSelectExtensionComponent,
+    SelectNumberComponent,
+    PlacesFilterComponent
+  ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MatIconModule,
+    MatSelectModule,
     HttpClientModule,
     MatCardModule,
     NgbCarouselModule,
     NgbDatepickerModule,
     MatListModule,
+    MatListModule,
+    MatButtonModule,
+    MatProgressBarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatRippleModule,
+    MatCheckboxModule,
+    MatSliderModule,
   ],
   exports: [
     ReactiveFormsModule,
     AgmCoreModule,
     RouterModule,
+
+    // Material modules
+    MatRippleModule,
     MatSelectModule,
     MatInputModule,
     MatProgressSpinnerModule,
@@ -80,6 +105,7 @@ import { AgmCoreModule } from '@agm/core'
     MatAutocompleteModule,
     MatChipsModule,
     MatStepperModule,
+    MatSliderModule,
     // bootstrap module
     NgbCarouselModule,
     NgbDatepickerModule,
@@ -88,9 +114,12 @@ import { AgmCoreModule } from '@agm/core'
     ToolbarLogoComponent,
     NiceImageComponent,
     PlaceCardComponent,
-
+    MatSelectExtensionComponent,
+    SelectNumberComponent,
+    PlacesFilterComponent,
     // pipes
     NotPipe,
+    PlacesPipe
   ]
 })
 export class AppSharedModule { }

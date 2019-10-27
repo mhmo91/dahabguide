@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core'
+import { Component, OnInit, Input, ViewEncapsulation, ViewChild } from '@angular/core'
 import { IPlace } from 'src/app/models/place.model'
+import { MatRipple } from '@angular/material/core';
 
 @Component({
   selector: 'dahab-place-card',
@@ -10,6 +11,7 @@ import { IPlace } from 'src/app/models/place.model'
 export class PlaceCardComponent implements OnInit {
 
   @Input() place: IPlace
+
   images = [
     'https://a0.muscache.com/im/pictures/3e19651f-4987-4922-8233-4dee67293794.jpg?aki_policy=large',
     'https://a0.muscache.com/im/pictures/cff67781-a301-4d7f-8937-5e6d1908835f.jpg',
@@ -21,5 +23,10 @@ export class PlaceCardComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  openPlace() {
+
+  }
+
 
 }

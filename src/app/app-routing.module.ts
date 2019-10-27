@@ -18,7 +18,7 @@ const routes: Routes = [
     loadChildren: () => import('./restrict/restrict.module').then(m => m.RestrictModule)
   },
   // default path // need to create 404 later
-  { path: '**', redirectTo: 'landing' }
+  { path: '**', redirectTo: 'landing/places' }
 ]
 
 @NgModule({

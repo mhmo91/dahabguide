@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
+import { AppSharedModule } from '../app-shared.module'
 import { PlacesFilterComponent } from './places-filter.component'
 
 describe('PlacesFilterComponent', () => {
@@ -8,9 +9,10 @@ describe('PlacesFilterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlacesFilterComponent ]
+      imports: [AppSharedModule],
+      declarations: []
     })
-    .compileComponents()
+      .compileComponents()
   }))
 
   beforeEach(() => {

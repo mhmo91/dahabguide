@@ -1,0 +1,50 @@
+<section class="filter-container sticky-top bg-white  mat-elevation-z1">
+
+  <article class="d-flex align-items-center">
+    <form class="d-flex align-items-center" [formGroup]="this.filterFormGroup">
+      <mat-form-field floatLabel="never" class="col-sm-6 col-md-auto">
+        <mat-label id="placeTypeId">
+          <div class="d-flex justify-content-between">
+            <span>Place Type</span>
+            <mat-spinner color="accent" *ngIf="(this.resources$|async)?.loading" diameter="20"></mat-spinner>
+          </div>
+        </mat-label>
+        <mat-select aria-labelledby="placeTypeId" #typesCtrl formControlName="types" multiple>
+          <mat-option *ngFor="let place of (this.resources$|async)?.placesTypes | places:{canBeBooked:true }"
+            [value]="place.id">
+            {{place.name_en}}
+          </mat-option>
+          <dahab-mat-select-extension [selectCtrl]="typesCtrl" (done)="typesCtrl.close()"></dahab-mat-select-extension>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-checkbox #longTermCtrl class="col-auto" color="primary" formControlName="longTermOnly">
+        <span class="text-muted">Long Term Only</span>
+      </mat-checkbox>
+
+      <div class="d-flex flex-column pt-2 ">
+        <mat-label class="text-muted position-absolute pl-1">Maximum Budget</mat-label>
+        <mat-slider class="mw-25" #maxPriceCtrl formControlName="maxPrice" thumbLabel [displayWith]="formatLabel"
+          tickInterval="1000" [min]="this.longTermCtrl.checked ? 500: 1" [max]="this.longTermCtrl.checked ? 10000: 200">
+        </mat-slider>
+      </div>
+      <ng-template>
+        <div class="col-auto ">
+          <dahab-select-number [initialValue]="1" [label]="'Guests'" [controlFormName]="'adultGuests'"
+            [formGroup]="this.filterFormGroup">
+          </dahab-select-number>
+        </div>
+        <div class="col-auto">
+          <dahab-select-number [initialValue]="0" [label]="'Minimum Bedrooms'" [controlFormName]="'bedrooms'"
+            [formGroup]="this.filterFormGroup">
+          </dahab-select-number>
+        </div>
+      </ng-template>
+
+
+
+
+    </form>
+  </article>
+
+</section>

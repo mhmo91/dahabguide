@@ -49,7 +49,7 @@ export class PlaceMainInfoComponent implements OnInit, OnChanges {
     const guestsFormGroup = this.formBuilder.group({
       adults: [null, Validators.required],
       children: [null, Validators.required],
-      Infants: [null, Validators.required]
+      infants: [null, Validators.required]
     })
     this.placeInfoFormGroup = this.formBuilder.group({
       type: [null, Validators.required],

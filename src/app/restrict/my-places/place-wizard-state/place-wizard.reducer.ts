@@ -33,14 +33,19 @@ export function reducer(state = initialState, action: PlaceWizardActions): IPlac
     case PlaceWizardActionTypes.AddNewPlaceInit:
       return initialState
 
+    case PlaceWizardActionTypes.UpdatePlace:
     case PlaceWizardActionTypes.SaveMainInfo:
       return { ...state, busy: true }
-
 
 
     case PlaceWizardActionTypes.SaveMainInfoSuccess:
       const newWizardStep = state.mode === WizardMode.Add ? 1 : state.currentWizardStep
       return { ...state, busy: false, currentWizardStep: newWizardStep }
+
+    case PlaceWizardActionTypes.UpdatePlaceSuccess:
+
+      const wizardStep = state.mode === WizardMode.Add ? (state.currentWizardStep + 1) : state.currentWizardStep
+      return { ...state, busy: false, currentWizardStep: wizardStep }
 
     default:
       return state

@@ -1,4 +1,4 @@
-<dahab-places-filter></dahab-places-filter>
+<dahab-places-filter class="d-none d-md-block"></dahab-places-filter>
 <section class="container-fluid mh-100">
   <div class="row">
     <article class="places-list-container col-md-12 col-lg-7 col-xl-6">
@@ -7,10 +7,17 @@
       </div>
     </article>
     <article class="d-none d-lg-block col-lg-5 col-xl-6 p-0 mat-elevation-z8">
-      <agm-map [disableDefaultUI]="true" [styles]="this.mapConfigurations.style" [clickableIcons]="false"
+      <agm-map panControl="true" zoomControl=true rotateControl=true mapTypeControl=true fullscreenControl=true
+        [disableDefaultUI]="true" [styles]="this.mapConfigurations.style" [clickableIcons]="false"
         [mapTypeId]="'roadmap'" [zoom]="15" [latitude]="this.mapConfigurations.latitude"
         [longitude]="this.mapConfigurations.longitude">
+        <agm-marker [markerClickable]="true" [iconUrl]="'./assets/here.svg'" *ngFor="let place of this.places$ | async"
+          [markerClickable]="true" [latitude]="place.location?.latitude" [longitude]="place.location?.longitude">
+          <agm-info-window>Börk</agm-info-window>
+
+        </agm-marker>
       </agm-map>
+
     </article>
   </div>
 </section>
