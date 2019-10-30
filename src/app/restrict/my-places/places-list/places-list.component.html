@@ -6,10 +6,10 @@
 
 
   <ng-template #loaded>
-    <section class="container-fluid" *ngIf="(this.myPlaces$|async).length > 0 else noPropertiesFound">
+    <section class="container-fluid" *ngIf="(this.myPlaces$|async)?.length > 0 else noPropertiesFound">
       <div class="row">
         <div class="col-md-12  col-lg-6 my-2" *ngFor="let place of this.myPlaces$ | async">
-          <dahab-place-card [place]="place"> </dahab-place-card>
+          <dahab-place-card [place]="place" (clicked)="editPlace(place)"> </dahab-place-card>
         </div>
       </div>
 

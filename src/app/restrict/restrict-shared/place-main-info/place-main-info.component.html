@@ -21,7 +21,7 @@
             [value]="type.id">
             {{type.name_en}}
           </mat-option>
-          <mat-option value="null">
+          <mat-option value="standalone">
             Stand-alone property
           </mat-option>
         </mat-select>
@@ -47,6 +47,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+
       <mat-form-field class="col">
         <mat-label>Bathrooms</mat-label>
         <mat-select formControlName="bathrooms">
@@ -66,7 +67,7 @@
 
     </article>
 
-    <mat-divider class="my-3 col-12"></mat-divider>
+    <!-- <mat-divider class="my-3 col-12"></mat-divider>
     <mat-label class="col-12 pl-0 mb-3">My place can fit up to</mat-label>
     <article formGroupName="guests" class="row flex-column flex-md-row align-items-center">
 
@@ -86,18 +87,23 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="col">
+      <mat-form-field class="col" hidden>
         <mat-label>Infants</mat-label>
-        <mat-select formControlName="Infants">
+        <mat-select formControlName="infants">
           <mat-option *ngFor="let num of [0,1,2,3,4,5,6,7,8,9,10,11] " [value]="num">
             {{num}}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
-    </article>
+    </article> -->
     <div class="my-3">
-      <button mat-raised-button type="submit" color="accent">Next <mat-icon>keyboard_arrow_right</mat-icon> </button>
+      <button *ngIf="(this.placeWizard$|async).mode === mode.Add" mat-raised-button type="submit" color="accent">
+        Next <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+      <button *ngIf="(this.placeWizard$|async).mode === mode.Update" mat-raised-button type="submit" color="accent">
+        <mat-icon>save</mat-icon> Save
+      </button>
     </div>
   </section>
 

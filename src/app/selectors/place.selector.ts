@@ -1,25 +1,21 @@
-import { createSelector, createFeatureSelector } from '@ngrx/store'
-import * as fromPlace from '../reducers/place.reducer'
-import * as fromUser from '../reducers/user.reducer'
 import { Dictionary } from '@ngrx/entity'
+import { createFeatureSelector, createSelector } from '@ngrx/store'
+import * as userSelectors from './user.selector'
 import { IPlace } from '../models/place.model'
+import * as placeReducer from '../reducers/place.reducer'
 
-const getPlacesFeature = createFeatureSelector(fromPlace.placesFeatureKey)
 
-const isLoading = createSelector(getPlacesFeature, (placesState: fromPlace.IPlacesState) => placesState.loading)
+const getPlacesFeature = createFeatureSelector(placeReducer.placesFeatureKey)
 
-const selectAllPlaces = createSelector(getPlacesFeature, fromPlace.selectAll)
+const isLoading = createSelector(getPlacesFeature, (placesState: placeReducer.IPlacesState) => placesState.loading)
+
+const selectAllPlaces = createSelector(getPlacesFeature, placeReducer.selectAll)
 
 // select place by the place id
 const getPlaceById = createSelector(
-    fromPlace.selectEntities,
-    (entities: Dictionary<IPlace>, props: { id: string }) => {
-        if (entities) {
-            return entities[props.id]
-        } else {
-            return null
-        }
-    }
+    selectAllPlaces,
+    (places: Array<IPlace>, props: { id: string }) =>
+        places.find(p => p.id === props.id)
 )
 
 // select all places by creator id
@@ -31,22 +27,15 @@ const getPlacesByCreatorId = createSelector(
 // select all places for authenticated users
 const myCreatedPlaces = createSelector(
     selectAllPlaces,
-    fromUser.selectUserId,
+    userSelectors.selectUserId,
     (places: Array<IPlace>, creatorId: string) => places.filter((place) => place.creatorId === creatorId)
 )
 
 // select current active place
-const getCurrentPlace = createSelector(getPlacesFeature, (placeState: fromPlace.IPlacesState) => {
+const getCurrentPlace = createSelector(getPlacesFeature, (placeState: placeReducer.IPlacesState) => {
     return placeState.entities[placeState.currentPlaceId]
 })
 
 
-export {
-    getPlacesFeature,
-    selectAllPlaces,
-    getPlaceById,
-    getPlacesByCreatorId,
-    myCreatedPlaces,
-    getCurrentPlace,
-    isLoading
-}
+export { getPlacesFeature, selectAllPlaces, getPlaceById, getPlacesByCreatorId, myCreatedPlaces, getCurrentPlace, isLoading }
+

@@ -1,5 +1,8 @@
-import * as fromPlaces from './place.selector'
-
+import * as placesSelector from './place.selector'
+import * as fromResources from './resources.selector'
+import * as userSelectors from './user.selector'
 export {
-    fromPlaces
+    placesSelector,
+    fromResources,
+    userSelectors
 }

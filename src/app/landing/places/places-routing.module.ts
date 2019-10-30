@@ -5,9 +5,9 @@ import { PlaceComponent } from './place/place.component'
 
 
 const routes: Routes = [{
-  path: 'places', component: PlacesListComponent
+  path: '', component: PlacesListComponent
 }, {
-  path: 'places/:id', component: PlaceComponent
+  path: '/:id', component: PlaceComponent
 }]
 
 @NgModule({

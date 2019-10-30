@@ -19,7 +19,32 @@ export class PlaceWizardEffects {
     /** An EMPTY observable only emits completion. Replace with your own observable API request */
     catchError(() => EMPTY)
   )
+  @Effect()
+  updatePlaceSuccess$ = this.actions$.pipe(
+    ofType(placesActions.PlaceActionTypes.UpdatePlaceSuccess),
+    switchMap(() => of(new placeWizardActions.UpdatePlaceSuccess())),
+    /** An EMPTY observable only emits completion. Replace with your own observable API request */
+    catchError(() => EMPTY)
+  )
 
+  @Effect()
+  updatePlace$ = this.actions$.pipe(
+    ofType(placeWizardActions.PlaceWizardActionTypes.UpdatePlace),
+    map((action) => {
+      console.log(action)
+      return new placesActions.UpdatePlace({
+        place: {
+          id: action.payload.id,
+          changes: {
+            location: action.payload.location
+          }
+        }
+      })
+    }
+    ),
+    /** An EMPTY observable only emits completion. Replace with your own observable API request */
+    catchError(() => EMPTY)
+  )
 
   constructor(private actions$: Actions<placeWizardActions.PlaceWizardActions>) { }
 

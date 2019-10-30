@@ -1,6 +1,7 @@
+import { PlaceWizardMode } from './../../my-places/place-wizard-state/place-wizard.reducer'
 import { Component, OnInit, ViewEncapsulation, Input, SimpleChanges, OnChanges } from '@angular/core'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
-import { Store } from '@ngrx/store'
+import { Store, select } from '@ngrx/store'
 import { AppState } from 'src/app/reducers'
 import { Observable } from 'rxjs'
 import { IResources } from 'src/app/models/resources.model'
@@ -9,6 +10,8 @@ import * as placeWizardActions from '../../my-places/place-wizard-state/place-wi
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { IPlace } from 'src/app/models/place.model'
 import { IPlaceWizardState, IPlaceWizard } from '../../my-places/place-wizard-state/place-wizard.reducer'
+import * as selectors from 'src/app/selectors'
+import { take } from 'rxjs/operators'
 @Component({
   selector: 'dahab-place-main-info',
   templateUrl: './place-main-info.component.html',
@@ -20,6 +23,7 @@ export class PlaceMainInfoComponent implements OnInit, OnChanges {
   placeInfoFormGroup: FormGroup
   resources$: Observable<IResources>
   placeWizard$: Observable<IPlaceWizard>
+  mode = PlaceWizardMode
   constructor(
     private formBuilder: FormBuilder, private store: Store<AppState & IPlaceWizardState>,
     private matSnackBar: MatSnackBar
@@ -27,7 +31,6 @@ export class PlaceMainInfoComponent implements OnInit, OnChanges {
     this.resources$ = this.store.select('resources')
     this.placeWizard$ = this.store.select('placeWizard')
     this.constructForm()
-
   }
 
   ngOnInit() {
@@ -36,6 +39,7 @@ export class PlaceMainInfoComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     const place = changes.place.currentValue
     if (place) {
+      this.placeInfoFormGroup.controls.inside.enable()
       this.placeInfoFormGroup.patchValue(place)
     }
   }
@@ -49,7 +53,7 @@ export class PlaceMainInfoComponent implements OnInit, OnChanges {
     const guestsFormGroup = this.formBuilder.group({
       adults: [null, Validators.required],
       children: [null, Validators.required],
-      Infants: [null, Validators.required]
+      infants: [null, Validators.required]
     })
     this.placeInfoFormGroup = this.formBuilder.group({
       type: [null, Validators.required],
@@ -57,16 +61,23 @@ export class PlaceMainInfoComponent implements OnInit, OnChanges {
       brandName: [null],
       layout: layoutFormGroup,
       guests: guestsFormGroup
-
     })
   }
 
 
   whenPlaceTypeChange(placeTypeId) { // workaround for bug https://github.com/angular/components/issues/9038
     this.placeInfoFormGroup.controls.inside.enable()
-    if (this.placeInfoFormGroup.controls.inside.value === placeTypeId) {
+    const insideValue = this.placeInfoFormGroup.controls.inside.value
+    if (insideValue === placeTypeId || insideValue === 'standalone') {
       this.placeInfoFormGroup.controls.inside.reset()
     }
+    // be smart and set default value 'standalone' in inside control
+    this.store.pipe(take(1), select(selectors.fromResources.getPlaceTypeById, { id: placeTypeId }))
+      .subscribe((placeType) => {
+        if (placeType.standAlone) {
+          this.placeInfoFormGroup.controls.inside.setValue('standalone')
+        }
+      })
   }
 
   addPlace(value) {

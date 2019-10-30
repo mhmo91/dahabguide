@@ -28,14 +28,16 @@ export interface IPlace extends ApiModel {
     month?: number,
     minMonths?: number
   }
+  longTerm?: boolean,
   instantBooking: boolean
   //
   accessibility: boolean
   location: {
-    latitude: string,
-    longitude: string
+    latitude: number,
+    longitude: number
   }
   photos: Array<string>
+  goodDeal?: boolean
 }
 
 
@@ -52,7 +54,11 @@ export class Place implements Partial<IPlace> {
     public guests = {
       adults: 2,
       children: 2,
-      infants: 2
+      infants: 1
+    },
+    public location = {
+      latitude: null,
+      longitude: null
     }
   ) {
 

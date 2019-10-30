@@ -8,18 +8,18 @@ export interface IPlaceWizardState {
 
 
 export interface IPlaceWizard {
-  mode: WizardMode,
+  mode: PlaceWizardMode,
   busy: boolean
   currentPlaceId: string
   currentWizardStep: number
 }
-enum WizardMode {
+export enum PlaceWizardMode {
   Add = 'ADD',
   Update = 'UPDATE'
 }
 
 export const initialState: IPlaceWizard = {
-  mode: WizardMode.Add,
+  mode: PlaceWizardMode.Add,
   busy: false,
   currentPlaceId: null,
   currentWizardStep: 0
@@ -33,14 +33,29 @@ export function reducer(state = initialState, action: PlaceWizardActions): IPlac
     case PlaceWizardActionTypes.AddNewPlaceInit:
       return initialState
 
+
+    case PlaceWizardActionTypes.InitPlaceUpdateWizard:
+      return { ...state, mode: PlaceWizardMode.Update }
+
+
+    case PlaceWizardActionTypes.UpdatePlaceWizard:
+      return { ...state, currentWizardStep: action.payload.currentWizardStep }
+
+    case PlaceWizardActionTypes.UpdatePlace:
+      return { ...state, busy: true }
+
     case PlaceWizardActionTypes.SaveMainInfo:
       return { ...state, busy: true }
 
 
-
     case PlaceWizardActionTypes.SaveMainInfoSuccess:
-      const newWizardStep = state.mode === WizardMode.Add ? 1 : state.currentWizardStep
+      const newWizardStep = state.mode === PlaceWizardMode.Add ? 1 : state.currentWizardStep
       return { ...state, busy: false, currentWizardStep: newWizardStep }
+
+    case PlaceWizardActionTypes.UpdatePlaceSuccess:
+
+      const wizardStep = state.mode === PlaceWizardMode.Add ? (state.currentWizardStep + 1) : state.currentWizardStep
+      return { ...state, busy: false, currentWizardStep: wizardStep }
 
     default:
       return state
@@ -48,7 +63,7 @@ export function reducer(state = initialState, action: PlaceWizardActions): IPlac
 }
 
 export const placeWizardStateMock = {
-  mode: WizardMode.Add,
+  mode: PlaceWizardMode.Add,
   busy: false,
   currentPlaceId: null,
   currentWizardStep: 0

@@ -1,10 +1,23 @@
+.responsive-hight {
+  height: calc(100vh - 56px);
+
+  @media (min-width: 768px) {
+    height: calc(100vh - 128px);
+  }
+}
+
+
 agm-map {
-  height: calc(100vh - 128px);
-  width: 50vw;
-  position: fixed;
+  @extend .responsive-hight !optional;
+  width: auto;
+  // position: fixed;
 }
 
 .places-list-container {
-  height: calc(100vh - 128px);
+  @extend .responsive-hight !optional;
   overflow-y: auto;
+}
+
+.z-i-100 {
+  z-index: 100;
 }

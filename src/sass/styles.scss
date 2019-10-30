@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'bootstrap';
 @import 'variables';
+
 @import 'material-theme';
-@import 'variables';
+@import 'material.component';
 @import 'mixins';
 
 body {
@@ -35,4 +36,13 @@ body {
   position: fixed !important;
   bottom: 1rem;
   right: 1rem;
+}
+
+.sticky-bottom {
+  position: sticky;
+  bottom: 0;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
