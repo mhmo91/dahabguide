@@ -6,6 +6,7 @@
     "start": "npm run serve:ssr",
     "build": "ng build",
     "build-prod": "ng build --prod",
+    "build-staging": "ng build --c=staging",
     "test": "ng test",
     "test:headless": "ng test --watch=false --browsers=HeadlessChrome",
     "lint": "ng lint",
