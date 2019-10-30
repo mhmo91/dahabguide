@@ -17,6 +17,7 @@ import { User } from '../models/user.model'
 import { AuthState } from '../models/auth.state'
 import { IResources } from '../models/resources.model'
 import { localStorageSync } from 'ngrx-store-localstorage'
+import { PlacesFilter } from '../models/places-filter.model'
 
 export interface AppState {
   readonly user
@@ -59,6 +60,7 @@ export const appStateMock: IAppState = {
     loading: false,
     ids: [],
     entities: {},
-    currentPlaceId: null
+    currentPlaceId: null,
+    palcesFilter: new PlacesFilter()
   }
 }

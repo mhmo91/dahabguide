@@ -1,3 +1,4 @@
+import { PlacesFilter } from './../models/places-filter.model'
 import { EntityState, EntityAdapter, createEntityAdapter, Dictionary } from '@ngrx/entity'
 import { IPlace as Place } from '../models/place.model'
 import { PlaceActions, PlaceActionTypes } from '../actions/place.actions'
@@ -8,6 +9,7 @@ export const placesFeatureKey = 'places'
 export interface IPlacesState extends EntityState<Place>, ApiModel {
   // additional entities state properties
   currentPlaceId: string
+  palcesFilter: PlacesFilter
 
 }
 
@@ -16,6 +18,7 @@ export const adapter: EntityAdapter<Place> = createEntityAdapter<Place>()
 export const initialState: IPlacesState = adapter.getInitialState({
   // additional entity state properties
   currentPlaceId: null,
+  palcesFilter: new PlacesFilter()
 
 })
 
@@ -29,6 +32,9 @@ export function reducer(
         { ...action.payload.place, loading: true },
         { ...state, currentPlaceId: action.payload.place.id }
       )
+    }
+    case PlaceActionTypes.ResetPlacesFilter: {
+      return { ...state, palcesFilter: new PlacesFilter() }
     }
 
     case PlaceActionTypes.AddPlaceSuccess: {
