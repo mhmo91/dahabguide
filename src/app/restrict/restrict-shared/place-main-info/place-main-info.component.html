@@ -21,7 +21,7 @@
             [value]="type.id">
             {{type.name_en}}
           </mat-option>
-          <mat-option value="null">
+          <mat-option value="standalone">
             Stand-alone property
           </mat-option>
         </mat-select>
@@ -47,6 +47,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+
       <mat-form-field class="col">
         <mat-label>Bathrooms</mat-label>
         <mat-select formControlName="bathrooms">
@@ -97,7 +98,12 @@
 
     </article> -->
     <div class="my-3">
-      <button mat-raised-button type="submit" color="accent">Next <mat-icon>keyboard_arrow_right</mat-icon> </button>
+      <button *ngIf="(this.placeWizard$|async).mode === mode.Add" mat-raised-button type="submit" color="accent">
+        Next <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+      <button *ngIf="(this.placeWizard$|async).mode === mode.Update" mat-raised-button type="submit" color="accent">
+        <mat-icon>save</mat-icon> Save
+      </button>
     </div>
   </section>
 

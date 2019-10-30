@@ -1,23 +1,54 @@
 <dahab-places-filter class="d-none d-md-block"></dahab-places-filter>
 <section class="container-fluid mh-100">
   <div class="row">
-    <article class="places-list-container col-md-12 col-lg-7 col-xl-6">
+
+    <article id="placesList" class="places-list-container col-md-12 col-lg-7 col-xl-6">
       <div *ngFor="let place of this.places$ | async" class="my-2">
         <dahab-place-card [place]="place"></dahab-place-card>
       </div>
     </article>
-    <article class="d-none d-lg-block col-lg-5 col-xl-6 p-0 mat-elevation-z8">
+    <article class=" flex-grow-1 p-0 mat-elevation-z8">
       <agm-map panControl="true" zoomControl=true rotateControl=true mapTypeControl=true fullscreenControl=true
         [disableDefaultUI]="true" [styles]="this.mapConfigurations.style" [clickableIcons]="false"
-        [mapTypeId]="'roadmap'" [zoom]="15" [latitude]="this.mapConfigurations.latitude"
+        [mapTypeId]="'satellite'" [zoom]="15" [latitude]="this.mapConfigurations.latitude"
         [longitude]="this.mapConfigurations.longitude">
-        <agm-marker [markerClickable]="true" [iconUrl]="'./assets/here.svg'" *ngFor="let place of this.places$ | async"
+        <agm-marker *ngFor="let place of this.places$ | async" (markerClick)="currentPlace = place.id" [label]="'4.5k'"
+          [markerClickable]="true" [iconUrl]="place.goodDeal?'assets/here.svg': 'assets/here.svg'"
           [markerClickable]="true" [latitude]="place.location?.latitude" [longitude]="place.location?.longitude">
-          <agm-info-window>Börk</agm-info-window>
-
+          <agm-info-window [isOpen]="currentPlace === place.id">
+            <dahab-place-card [place]="place"></dahab-place-card>
+          </agm-info-window>
         </agm-marker>
       </agm-map>
-
     </article>
   </div>
 </section>
+<!-- <mat-tab-group class="bg-white d-sm-block d-md-none fixed-bottom h-100" headerPosition="below">
+  <mat-tab label="First">
+    <div *ngFor="let place of this.places$ | async" class="my-2">
+      <dahab-place-card [place]="place"></dahab-place-card>
+    </div>
+  </mat-tab>
+  <mat-tab label="Second">
+    <div class="container">
+      <agm-map panControl="true" zoomControl=true rotateControl=true mapTypeControl=true fullscreenControl=true
+        [disableDefaultUI]="true" [styles]="this.mapConfigurations.style" [clickableIcons]="false"
+        [mapTypeId]="'satellite'" [zoom]="15" [latitude]="this.mapConfigurations.latitude"
+        [longitude]="this.mapConfigurations.longitude">
+        <agm-marker *ngFor="let place of this.places$ | async" (markerClick)="currentPlace = place.id" [label]="'4.5k'"
+          [markerClickable]="true" [iconUrl]="place.goodDeal?'assets/here.svg': 'assets/here.svg'"
+          [markerClickable]="true" [latitude]="place.location?.latitude" [longitude]="place.location?.longitude">
+          <agm-info-window [isOpen]="currentPlace === place.id">
+            <dahab-place-card [place]="place"></dahab-place-card>
+          </agm-info-window>
+        </agm-marker>
+      </agm-map>
+    </div>
+
+  </mat-tab>
+</mat-tab-group> -->
+
+
+<button class="d-sm-block d-md-none float-bottom z-i-100" aria-label="Add place" mat-fab color="accent">
+  <mat-icon>filter_list</mat-icon>
+</button>

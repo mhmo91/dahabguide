@@ -4,6 +4,7 @@ export interface IPlaceType {
     name_en: string
     id: string
     canBeBooked?: boolean
+    standAlone?: boolean
 }
 
 export interface IAmenity {

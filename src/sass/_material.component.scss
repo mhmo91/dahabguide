@@ -8,3 +8,10 @@ mat-form-field {
   max-height: 50vh !important;
 
 }
+
+
+mat-checkbox {
+  label {
+    margin-bottom: 0;
+  }
+}

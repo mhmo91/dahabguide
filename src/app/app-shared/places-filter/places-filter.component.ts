@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store'
 import { AppState } from 'src/app/reducers'
 import { IResources } from 'src/app/models/resources.model'
 import { FormGroup, FormBuilder } from '@angular/forms'
+import { formatCurrency } from '@angular/common'
 
 @Component({
   selector: 'dahab-places-filter',
@@ -27,7 +28,8 @@ export class PlacesFilterComponent implements OnInit {
       bedrooms: [],
       adultGuests: [],
       longTermOnly: false,
-      maxPrice: 15000
+      dates: null,
+      budget: null
     })
   }
   ngOnInit() {
@@ -43,8 +45,13 @@ export class PlacesFilterComponent implements OnInit {
     if (value >= 1000) {
       return Math.round(value / 100) + '00'
     }
+    // formatCurrency
 
     return value
+  }
+  onLongTermChange(value) {
+    this.filterFormGroup.controls.dates.reset()
+    this.filterFormGroup.controls.budget.reset()
   }
 
 }

@@ -18,16 +18,35 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-checkbox #longTermCtrl class="col-auto" color="primary" formControlName="longTermOnly">
-        <span class="text-muted">Long Term Only</span>
+      <mat-checkbox #longTermCtrl (change)="onLongTermChange($event)" class="col-auto" color="primary"
+        formControlName="longTermOnly">
+        <span class="text-muted">Long Term</span>
       </mat-checkbox>
 
-      <div class="d-flex flex-column pt-2 ">
-        <mat-label class="text-muted position-absolute pl-1">Maximum Budget</mat-label>
-        <mat-slider class="mw-25" #maxPriceCtrl formControlName="maxPrice" thumbLabel [displayWith]="formatLabel"
-          tickInterval="1000" [min]="this.longTermCtrl.checked ? 500: 1" [max]="this.longTermCtrl.checked ? 10000: 200">
+      <mat-form-field floatLabel="never" class="col">
+        <input formControlName="dates" autocomplete="off" (click)="picker.open()" matInput
+          [placeholder]="longTermCtrl.checked ? 'Check in Date': 'Check in - Check out'" [satDatepicker]="picker">
+        <sat-datepicker #picker [rangeMode]="this.longTermCtrl.checked? false: true">
+        </sat-datepicker>
+        <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
+      </mat-form-field>
+      <div class="d-flex flex-column pt-4 col-4">
+        <mat-label class="text-muted position-absolute pl-2">
+          Budget:
+          <strong class="h6"> {{this.maxPriceCtrl.value ? (this.maxPriceCtrl.value | currency) : 'Any' }} </strong>
+          {{this.longTermCtrl.checked? '/Month': '/Night'}}
+        </mat-label>
+        <mat-slider #maxPriceCtrl formControlName="budget" [displayWith]="formatLabel"
+          [min]="this.longTermCtrl.checked ? 500: 1" [max]="this.longTermCtrl.checked ? 10000: 200">
         </mat-slider>
       </div>
+
+      <button class="col-auto" mat-raised-button>
+        <mat-icon>clear</mat-icon>
+        Reset
+      </button>
+
+      <!-- extra filter elements -->
       <ng-template>
         <div class="col-auto ">
           <dahab-select-number [initialValue]="1" [label]="'Guests'" [controlFormName]="'adultGuests'"

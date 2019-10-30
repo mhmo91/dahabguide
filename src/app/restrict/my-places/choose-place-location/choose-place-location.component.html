@@ -1,0 +1,23 @@
+<article class="d-flex flex-column align-items-center">
+  <agm-map panControl="true" zoomControl=true rotateControl=true mapTypeControl=true fullscreenControl=true
+    class="mat-elevation-z8" [disableDefaultUI]="true" [clickableIcons]="false" [mapTypeId]="'satellite'" [zoom]="14"
+    [latitude]="this.mapConfigurations.latitude" [minZoom]="13" [longitude]="this.mapConfigurations.longitude"
+    (mapClick)="updateMarkerLocation($event)">
+    <agm-marker [markerDraggable]="true" [markerClickable]="true" [latitude]="this.lat" [longitude]="this.lng">
+    </agm-marker>
+  </agm-map>
+
+  <button *ngIf="(this.placeWizard$|async).mode === mode.Add" class="mt-3" (click)="this.updateLocation()"
+    mat-raised-button type="button" [disabled]="!this.lat || !this.lng" color="accent">
+    Next <mat-icon> keyboard_arrow_right</mat-icon>
+  </button>
+
+  <button type="button" *ngIf="(this.placeWizard$|async).mode === mode.Update" mat-raised-button class="mt-3"
+    (click)="this.updateLocation()" color="accent">
+    <mat-icon>save</mat-icon> Save
+  </button>
+
+</article>
+<div *ngIf="(placeWizard$|async).busy" class="loading-shade">
+  <mat-spinner></mat-spinner>
+</div>

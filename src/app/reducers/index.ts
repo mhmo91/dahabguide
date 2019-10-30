@@ -16,6 +16,7 @@ import { reducer as placesReducer, IPlacesState } from './place.reducer'
 import { User } from '../models/user.model'
 import { AuthState } from '../models/auth.state'
 import { IResources } from '../models/resources.model'
+import { localStorageSync } from 'ngrx-store-localstorage'
 
 export interface AppState {
   readonly user
@@ -36,8 +37,13 @@ export const reducers: ActionReducerMap<AppState> = {
   resources: resourcesReducer,
   places: placesReducer
 }
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return localStorageSync({ keys: ['user', 'resources', 'auth', 'places'], rehydrate: true })(reducer)
+}
 
-export const metaReducers: MetaReducer<any>[] = !environment.production ? [clearUserState] : [clearUserState]
+
+export const metaReducers: MetaReducer<any>[] =
+  !environment.production ? [clearUserState, localStorageSyncReducer] : [clearUserState, localStorageSyncReducer]
 
 
 // app state mock for testing purposes

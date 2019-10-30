@@ -37,6 +37,7 @@ export interface IPlace extends ApiModel {
     longitude: number
   }
   photos: Array<string>
+  goodDeal?: boolean
 }
 
 

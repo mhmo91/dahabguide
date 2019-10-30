@@ -37,11 +37,12 @@ import { PlaceCardComponent } from './place-card/place-card.component'
 import { NgbCarouselModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap'
 import { AgmCoreModule } from '@agm/core'
 import { PlacesPipe } from './pipes/places.pipe'
-import { MatSelectExtensionComponent } from './mat-select-extension/mat-select-extension.component';
+import { MatSelectExtensionComponent } from './mat-select-extension/mat-select-extension.component'
 import { SelectNumberComponent } from './select-number/select-number.component'
 import { PlacesFilterComponent } from './places-filter/places-filter.component'
 import { MatRippleModule } from '@angular/material/core'
 import { MatSliderModule } from '@angular/material/slider'
+import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker'
 
 @NgModule({
   declarations: [
@@ -70,12 +71,13 @@ import { MatSliderModule } from '@angular/material/slider'
     MatRippleModule,
     MatCheckboxModule,
     MatSliderModule,
+    SatNativeDateModule,
+    SatDatepickerModule
   ],
   exports: [
     ReactiveFormsModule,
     AgmCoreModule,
     RouterModule,
-
     // Material modules
     MatRippleModule,
     MatSelectModule,
@@ -110,6 +112,9 @@ import { MatSliderModule } from '@angular/material/slider'
     NgbCarouselModule,
     NgbDatepickerModule,
 
+    // other open source
+    SatNativeDateModule,
+    SatDatepickerModule,
     // components
     ToolbarLogoComponent,
     NiceImageComponent,

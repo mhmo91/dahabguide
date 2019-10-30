@@ -3,18 +3,21 @@
 
   @media (min-width: 768px) {
     height: calc(100vh - 128px);
-
   }
 }
 
 
 agm-map {
   @extend .responsive-hight !optional;
-  width: 50vw;
-  position: fixed;
+  width: auto;
+  // position: fixed;
 }
 
 .places-list-container {
   @extend .responsive-hight !optional;
   overflow-y: auto;
+}
+
+.z-i-100 {
+  z-index: 100;
 }

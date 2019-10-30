@@ -9,7 +9,7 @@
   </ngb-carousel>
 
 
-  <div matRipple (click)="openPlace()" class="flex-grow-1 d-flex cursor-pointer">
+  <div matRipple (click)="openPlace()" (keypress)="openPlace()" class="flex-grow-1 d-flex cursor-pointer">
     <mat-list class="col-6 pr-0">
       <mat-list-item class="text-muted h-auto mb-2">
         <mat-icon mat-list-icon>local_hotel</mat-icon>

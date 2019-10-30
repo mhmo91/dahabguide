@@ -1,22 +1,21 @@
-import { provideMockStore } from '@ngrx/store/testing'
+import { placeWizardStateMock } from './../place-wizard-state/place-wizard.reducer';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { PlacesListComponent } from './places-list.component'
+import { ChoosePlaceLocationComponent } from './choose-place-location.component'
+import { RestrictSharedModule } from '../../restrict-shared/restrict-shared.module'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
-import { AppSharedModule } from 'src/app/app-shared/app-shared.module'
+import { provideMockStore } from '@ngrx/store/testing'
 import { appStateMock } from 'src/app/reducers'
 import { MapsAPILoader } from '@agm/core'
-import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 
-describe('PlacesListComponent', () => {
-  let component: PlacesListComponent
-  let fixture: ComponentFixture<PlacesListComponent>
-  // tslint:disable-next-line: prefer-const
-  let initialState = appStateMock
+describe('ChoosePlaceLocationComponent', () => {
+  let component: ChoosePlaceLocationComponent
+  let fixture: ComponentFixture<ChoosePlaceLocationComponent>
+  const initialState = { ...appStateMock, placeWizard: placeWizardStateMock }
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AppSharedModule, NoopAnimationsModule],
-      declarations: [PlacesListComponent],
+      imports: [RestrictSharedModule],
+      declarations: [ChoosePlaceLocationComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [provideMockStore({ initialState }),
       {
@@ -24,14 +23,13 @@ describe('PlacesListComponent', () => {
         useValue: {
           load: jasmine.createSpy('load').and.returnValue(new Promise(() => true))
         }
-      }
-      ]
+      }]
     })
       .compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlacesListComponent)
+    fixture = TestBed.createComponent(ChoosePlaceLocationComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
