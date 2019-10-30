@@ -1,7 +1,4 @@
-import { take } from 'rxjs/operators'
-import { createFeatureSelector, createSelector } from '@ngrx/store'
 import { User, IUser } from './../models/user.model'
-
 import { UserActions, ActionTypes } from '../actions/user.actions'
 
 export const userFeatureKey = 'user'
