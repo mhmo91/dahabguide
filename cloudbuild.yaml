@@ -10,7 +10,7 @@ steps:
 #   args: ['run', 'test:headless']
 # Build
 - name: 'gcr.io/cloud-builders/npm:current'
-  args: ['run', 'build-prod']
+  args: ['run', 'build-${_ENV}']
 # Deploy
 - name: 'gcr.io/$PROJECT_ID/firebase'
   args: ['use' , '${_FIREBASE_PROJECT}', '--token', '${_FIREBASE_TOKEN}' ]

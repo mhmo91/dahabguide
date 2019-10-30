@@ -38,6 +38,3 @@ export function reducer(state: Partial<IUser> = defaultUser, action: UserActions
       return { ...state }
   }
 }
-
-export const userState = createFeatureSelector(userFeatureKey)
-export const selectUserId = createSelector(userState, (user: IUser) => user.uid)

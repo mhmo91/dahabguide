@@ -9,7 +9,11 @@ import { HostNavListComponent } from './host-nav-list/host-nav-list.component'
 
 
 @NgModule({
-  declarations: [RestrictComponent, RestrictToolbarComponent, HostNavListComponent],
+  declarations: [
+    RestrictComponent,
+    RestrictToolbarComponent,
+    HostNavListComponent
+  ],
   imports: [
     CommonModule,
     RestrictRoutingModule,

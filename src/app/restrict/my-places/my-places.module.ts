@@ -7,12 +7,12 @@ import { AddPlaceComponent } from './add-place/add-place.component'
 import { RestrictSharedModule } from '../restrict-shared/restrict-shared.module'
 import { StoreModule } from '@ngrx/store'
 import { EffectsModule } from '@ngrx/effects'
-import { PlaceMainInfoComponent } from './add-place/place-main-info/place-main-info.component'
-import { PlacesPipe } from './add-place/place-main-info/places.pipe'
-import * as fromPlaceWizard from './add-place/state/place-wizard.reducer'
-import { PlaceWizardEffects } from './add-place/state/place-wizard.effects'
+import * as fromPlaceWizard from './place-wizard-state/place-wizard.reducer'
+import { PlaceWizardEffects } from './place-wizard-state/place-wizard.effects'
+import { EditPlaceComponent } from './edit-place/edit-place.component'
+import { ChoosePlaceLocationComponent } from './choose-place-location/choose-place-location.component'
 @NgModule({
-  declarations: [PlacesListComponent, AddPlaceComponent, PlaceMainInfoComponent, PlacesPipe],
+  declarations: [PlacesListComponent, AddPlaceComponent, EditPlaceComponent, ChoosePlaceLocationComponent],
   imports: [
     CommonModule,
     MyPlacesRoutingModule,

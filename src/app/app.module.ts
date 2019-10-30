@@ -18,6 +18,8 @@ import { EffectsModule } from '@ngrx/effects'
 import { effects } from './effects'
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { AgmCoreModule } from '@agm/core'
+
 
 
 
@@ -28,6 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBuAM_JIeS6NMa4fnX3Q0SRZxmTc_n8uy8'
+    }),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

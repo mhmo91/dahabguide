@@ -5,6 +5,8 @@ import { PlacesListComponent } from './places-list.component'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { AppSharedModule } from 'src/app/app-shared/app-shared.module'
 import { appStateMock } from 'src/app/reducers'
+import { MapsAPILoader } from '@agm/core'
+import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 
 describe('PlacesListComponent', () => {
   let component: PlacesListComponent
@@ -13,10 +15,17 @@ describe('PlacesListComponent', () => {
   let initialState = appStateMock
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AppSharedModule],
+      imports: [AppSharedModule, NoopAnimationsModule],
       declarations: [PlacesListComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [provideMockStore({ initialState })]
+      providers: [provideMockStore({ initialState }),
+      {
+        provide: MapsAPILoader,
+        useValue: {
+          load: jasmine.createSpy('load').and.returnValue(new Promise(() => true))
+        }
+      }
+      ]
     })
       .compileComponents()
   }))

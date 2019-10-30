@@ -1,0 +1,20 @@
+<div class="h-100 d-flex flex-column align-items-center">
+  <mat-label class="bg-white px-1 text-muted text-small">{{this.label}}</mat-label>
+
+  <div [formGroup]="this.formGroup" class="d-flex align-items-center border rounded-lg px-2">
+
+    <button (click)="this.initialValue = this.initialValue -1" [disabled]="this.initialValue <= this.min"
+      (click)="myInput.value = (myInput.value - 1)" mat-icon-button>
+      <mat-icon>remove</mat-icon>
+    </button>
+    <span class="custom-width text-center  mx-2">{{this.initialValue === 0 ? 'Any' :this.initialValue}}</span>
+
+    <mat-form-field hidden>
+      <input type=number [min]="this.min" readonly matInput #myInput [formControlName]="this.controlFormName"
+        [(ngModel)]="this.initialValue">
+    </mat-form-field>
+    <button (click)="this.initialValue = this.initialValue+1" mat-icon-button>
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

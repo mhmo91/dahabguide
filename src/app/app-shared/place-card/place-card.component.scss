@@ -12,44 +12,44 @@ mat-list-item {
 
 }
 
-mat-card {
-  //   min-height: 10rem;
-}
+// mat-card {
+//   //   min-height: 10rem;
+// }
 
 // Extra small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
 .ngb-carousel-height {
-  height: 10rem;
+  height: 60vw;
   overflow: hidden;
 }
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 375px) {
-  .ngb-carousel-height {
-    height: 12rem;
-    overflow: hidden;
-  }
-}
+// @media (min-width: 375px) {
+//   .ngb-carousel-height {
+//     height: 12rem;
+//     overflow: hidden;
+//   }
+// }
 
-@media (min-width: 425px) {
-  .ngb-carousel-height {
-    height: 14rem;
-    overflow: hidden;
-  }
-}
+// @media (min-width: 425px) {
+//   .ngb-carousel-height {
+//     height: 14rem;
+//     overflow: hidden;
+//   }
+// }
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-  .ngb-carousel-height {
-    height: 14rem;
-    overflow: hidden;
-  }
-}
+// @media (min-width: 576px) {
+//   .ngb-carousel-height {
+//     height: 14rem;
+//     overflow: hidden;
+//   }
+// }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .ngb-carousel-height {
-    height: 14rem;
+    height: 28vw;
     overflow: hidden;
   }
 }
@@ -57,7 +57,7 @@ mat-card {
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .ngb-carousel-height {
-    height: 10rem;
+    height: 14vw;
     overflow: hidden;
   }
 }
@@ -65,7 +65,7 @@ mat-card {
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .ngb-carousel-height {
-    height: 11rem;
+    height: 13vw;
     overflow: hidden;
   }
 }

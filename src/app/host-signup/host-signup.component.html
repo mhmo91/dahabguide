@@ -1,13 +1,13 @@
 <mat-progress-bar *ngIf="this.wizard.loading else hostWizard" mode="indeterminate"></mat-progress-bar>
 <ng-template #hostWizard>
   <section class="container-fullscreen d-flex  justify-content-between align-items-start">
-    <div class="d-flex flex-column flex-grow-1 align-items-center mw-custom">
+    <div class=" d-flex flex-column flex-grow-1 align-items-center mw-custom h-100">
 
       <mat-progress-bar mode="determinate" [value]="this.wizard?.progress"></mat-progress-bar>
 
       <dahab-toolbar-logo class="mt-5 mb-3" [size]="'4rem'"></dahab-toolbar-logo>
       <h4 class="text-muted mb-5">Sign up as a Host </h4>
-      <mat-vertical-stepper color="accent" [selectedIndex]="this.wizard.currentStep" linear #stepper>
+      <mat-vertical-stepper class="px-5" color="accent" [selectedIndex]="this.wizard.currentStep" linear #stepper>
         <mat-step [completed]="this.wizard.currentStep >0" editable=false>
           <ng-template matStepLabel>Create an account</ng-template>
           <div class="pt-4 d-flex flex-column">
@@ -34,13 +34,15 @@
           <div class="pt-4 container-fluid text-center">
             <img width="80px" class="img-fluid" src="assets/celebration.svg" alt="">
             <h4 class="my-3">You are now ready to List your place</h4>
-            <button class="my-3" mat-raised-button color="accent" [routerLink]="['/restrict']">Add your first
-              place</button>
+            <button class="my-3" mat-raised-button color="accent" [routerLink]="['/restrict']">My Account</button>
           </div>
         </mat-step>
       </mat-vertical-stepper>
     </div>
-    <img class="d-none d-md-block h-100 img-fluid" src="assets/desert-camel.jpg" alt="">
+    <div class="col-md-5 col-lg-6 col-xl-7 p-0 d-none d-md-block h-100  h-100">
+      <img height="100%" src="assets/desert-camel.jpg" alt="">
+
+    </div>
 
   </section>
 </ng-template>

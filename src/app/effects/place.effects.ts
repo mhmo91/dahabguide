@@ -5,6 +5,7 @@ import * as placesActions from '../actions/place.actions'
 import { AngularFirestore } from '@angular/fire/firestore'
 import { map, switchMap, catchError } from 'rxjs/operators'
 import { from, of, EMPTY } from 'rxjs'
+import { Update } from '@ngrx/entity'
 
 @Injectable()
 export class PlaceEffects {
@@ -26,6 +27,18 @@ export class PlaceEffects {
     switchMap((payload: any) => from(this.afs.doc(`/places/${payload.place.id}`).set(payload.place, { merge: true }))),
     map(() => new placesActions.AddPlaceSuccess({ place: this.selectedPlace })),
     catchError(error => of(new placesActions.AddPlaceFailure({ place: { ...this.selectedPlace, error } })))
+  )
+
+  @Effect()
+  updatePlace = this.actions$.pipe(
+    ofType(placesActions.PlaceActionTypes.UpdatePlace),
+    switchMap((payload: any) => {
+      console.log(payload)
+      const place = payload.payload.place
+      return from(this.afs.doc(`/places/${place.id}`).update(place.changes))
+    }),
+    map(() => new placesActions.UpdatePlaceSuccess()),
+    catchError(error => of(new placesActions.UpdatePlaceFailure({ place: { ...this.selectedPlace, error } })))
   )
 
   @Effect()
