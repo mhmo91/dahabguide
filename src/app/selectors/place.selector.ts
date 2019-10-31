@@ -10,6 +10,10 @@ const getPlacesFeature = createFeatureSelector(placeReducer.placesFeatureKey)
 const isLoading = createSelector(getPlacesFeature, (placesState: placeReducer.IPlacesState) => placesState.loading)
 
 const selectAllPlaces = createSelector(getPlacesFeature, placeReducer.selectAll)
+const selectPlacesFilter = createSelector(getPlacesFeature,
+    (
+        (PlacesFeature: placeReducer.IPlacesState) => PlacesFeature.palcesFilter
+    ))
 
 // select place by the place id
 const getPlaceById = createSelector(
@@ -37,5 +41,9 @@ const getCurrentPlace = createSelector(getPlacesFeature, (placeState: placeReduc
 })
 
 
-export { getPlacesFeature, selectAllPlaces, getPlaceById, getPlacesByCreatorId, myCreatedPlaces, getCurrentPlace, isLoading }
+export {
+    getPlacesFeature, selectAllPlaces, getPlaceById,
+    getPlacesByCreatorId, myCreatedPlaces,
+    getCurrentPlace, isLoading, selectPlacesFilter
+}
 

@@ -51,6 +51,12 @@ export class UserEffects {
     map(() => new authActions.AuthenticationSuccess())
   )
 
+  @Effect()
+  getUserFail = this.actions$.pipe(
+    ofType(userActions.ActionTypes.GET_USER_FAIL),
+    map(() => new authActions.AuthenticationFail())
+  )
+
 
   @Effect()
   logout = this.actions$.pipe(

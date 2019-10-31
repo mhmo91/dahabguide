@@ -9,7 +9,7 @@ export enum PlaceActionTypes {
   AddPlace = '[Place] Add Place',
   AddPlaceSuccess = '[Place] Add Place Success',
   AddPlaceFailure = '[Place] Add Place Failure',
-
+  ResetPlacesFilter = '[Place] reset Places filter',
   UpsertPlace = '[Place] Upsert Place',
   AddPlaces = '[Place] Add Places',
   UpsertPlaces = '[Place] Upsert Places',
@@ -24,6 +24,9 @@ export enum PlaceActionTypes {
 
 export class InitLoadPlaces implements Action {
   readonly type = PlaceActionTypes.InitLoadPlaces
+}
+export class ResetPlacesFilter implements Action {
+  readonly type = PlaceActionTypes.ResetPlacesFilter
 }
 export class LoadPlaces implements Action {
   readonly type = PlaceActionTypes.LoadPlaces
@@ -115,3 +118,4 @@ export type PlaceActions =
   | DeletePlace
   | DeletePlaces
   | ClearPlaces
+  | ResetPlacesFilter

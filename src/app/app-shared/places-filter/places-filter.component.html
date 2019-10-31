@@ -24,7 +24,7 @@
       </mat-checkbox>
 
       <mat-form-field floatLabel="never" class="col">
-        <input formControlName="dates" autocomplete="off" (click)="picker.open()" matInput
+        <input formControlName="date" autocomplete="off" (click)="picker.open()" matInput
           [placeholder]="longTermCtrl.checked ? 'Check in Date': 'Check in - Check out'" [satDatepicker]="picker">
         <sat-datepicker #picker [rangeMode]="this.longTermCtrl.checked? false: true">
         </sat-datepicker>
@@ -41,7 +41,7 @@
         </mat-slider>
       </div>
 
-      <button class="col-auto" mat-raised-button>
+      <button type="button" (click)="resetFilter()" class="col-auto" mat-raised-button>
         <mat-icon>clear</mat-icon>
         Reset
       </button>
