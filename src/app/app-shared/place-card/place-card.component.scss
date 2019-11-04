@@ -69,3 +69,17 @@ mat-list-item {
     overflow: hidden;
   }
 }
+
+
+ngb-carousel {
+  &:hover {
+    .carousel-control-next {
+      background-image: linear-gradient(to right, white, #424242);
+    }
+
+    .carousel-control-prev {
+      background-image: linear-gradient(to left, white, #424242);
+
+    }
+  }
+}

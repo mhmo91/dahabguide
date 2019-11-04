@@ -6,13 +6,12 @@ import { PlacesListComponent } from './places-list/places-list.component'
 import { PlaceComponent } from './place/place.component'
 import { LandingSharedModule } from '../landing-shared/landing-shared.module'
 
-
 @NgModule({
   declarations: [PlacesListComponent, PlaceComponent],
   imports: [
     CommonModule,
     PlacesRoutingModule,
-    LandingSharedModule
+    LandingSharedModule,
   ]
 })
 export class PlacesModule { }

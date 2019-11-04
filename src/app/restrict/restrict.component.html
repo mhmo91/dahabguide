@@ -4,8 +4,11 @@
 
   <mat-sidenav-container class="restrict-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
 
+    <!-- ng style is required here only as a hot fix for this bug 
+      https://github.com/Ks89/angular-modal-gallery/issues/137 -->
     <mat-sidenav class="pr-2" #snav opened="{{mobileQuery.matches ? false : true}}"
-      [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      [mode]="mobileQuery.matches ? 'over' : 'side'" [ngStyle]="{'z-index': mobileQuery.matches? '4':'0'}"
+      [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
 
       <dahab-host-nav-list></dahab-host-nav-list>
     </mat-sidenav>

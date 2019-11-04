@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { NgModule } from '@angular/core'
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core'
 import { RestrictRoutingModule } from './restrict-routing.module'
 import { RestrictSharedModule } from './restrict-shared/restrict-shared.module'
 import { RestrictToolbarComponent } from './restrict-toolbar/restrict-toolbar.component'
@@ -18,6 +18,7 @@ import { HostNavListComponent } from './host-nav-list/host-nav-list.component'
     CommonModule,
     RestrictRoutingModule,
     RestrictSharedModule
-  ]
+  ],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class RestrictModule { }
