@@ -1,0 +1,26 @@
+<div class="container">
+  <section [ngClass]="{'bg-orange': this.isHovered}" (hovered)="this.isHovered = $event" dahabDropZone
+    (filesDropped)="this.onDrop($event)"
+    class="row border border-warning rounded p-4 d-flex flex-wrap align-items-center justify-content-center">
+    <div class="col-12 d-flex flex-column justify-content-center align-items-center">
+      <span class="text-muted">Drop Images here</span>
+      <strong>OR</strong>
+      <button (click)="filesInput.click()" class="m-2" mat-raised-button color="accent">
+        <mat-icon>add</mat-icon> Select Images
+      </button>
+      <input hidden #filesInput type="file" multiple (change)="this.onDrop($event.target.files)">
+    </div>
+    <div class="col-12 d-flex flex-wrap justify-content-start">
+      <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let photo of this.attachedPhotos; let i = index">
+        <dahab-upload-me (guesWhat)="uploadEnd($event , i)" [saveToPath]="'places/'+this.place.id" [file]="photo">
+        </dahab-upload-me>
+      </div>
+    </div>
+
+  </section>
+
+  <ks-modal-gallery [id]="3" [modalImages]="this.placePhotos" [plainGalleryConfig]="plainGalleryGrid">
+  </ks-modal-gallery>
+
+
+</div>

@@ -39,7 +39,7 @@ export const reducers: ActionReducerMap<AppState> = {
   places: placesReducer
 }
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
-  return localStorageSync({ keys: ['user', 'resources', 'auth', 'places'], rehydrate: true })(reducer)
+  return localStorageSync({ keys: ['user', 'resources', 'auth', 'places', 'placeWizard'], rehydrate: true })(reducer)
 }
 
 

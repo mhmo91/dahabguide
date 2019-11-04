@@ -1,12 +1,15 @@
 <mat-card class="d-flex flex-column flex-md-row p-0" role="place short info">
 
-  <ngb-carousel class="col-sm-12 col-md-6 col-lg-5 ngb-carousel-height p-0" #carousel interval="4000000"
-    pauseOnHover=true>
-    <ng-template ngbSlide *ngFor="let img of images; index as i">
+  <ngb-carousel *ngIf="this.photos;else noPhotosFound" class="col-sm-12 col-md-6 col-lg-5 ngb-carousel-height p-0"
+    #carousel interval="4000000" pauseOnHover=true>
+    <ng-template ngbSlide *ngFor="let img of photos; index as i">
       <img class="img-fluid w-100" [src]="img" alt="Place image {{i + 1}} description">
 
     </ng-template>
   </ngb-carousel>
+  <ng-template #noPhotosFound>
+    <img src="assets/photo-not-available.jpeg" class="img-fluid" alt="no photos available">
+  </ng-template>
 
 
   <div matRipple (click)="openPlace()" (keypress)="openPlace()" class="flex-grow-1 d-flex cursor-pointer">

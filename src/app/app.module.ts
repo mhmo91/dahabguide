@@ -19,6 +19,7 @@ import { effects } from './effects'
 import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AgmCoreModule } from '@agm/core'
+import { GalleryModule } from '@ks89/angular-modal-gallery'
 
 
 
@@ -54,6 +55,7 @@ import { AgmCoreModule } from '@agm/core'
       maxAge: 10, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
+    GalleryModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
