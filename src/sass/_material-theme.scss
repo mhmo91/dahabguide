@@ -1,5 +1,6 @@
 @import '~@angular/material/theming';
 @import 'saturn-datepicker-theme';
+@import 'variables';
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -16,3 +17,13 @@ $dahab-app-theme: mat-light-theme($dahab-app-primary, $dahab-app-accent, $dahab-
 // Include the default theme styles.
 @include angular-material-theme($dahab-app-theme);
 @include sat-datepicker-theme($dahab-app-theme);
+
+// extend theme 
+.mat-stepper-horizontal,
+.mat-stepper-vertical {
+  background-color: rgba($app-background, 0.5)
+}
+
+.mat-card {
+  background: rgba(white, 0.3)
+}

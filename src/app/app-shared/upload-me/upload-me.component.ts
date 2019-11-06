@@ -49,7 +49,6 @@ export class UploadMeComponent implements OnInit {
 
     // Reference to storage bucket
     const ref = this.storage.ref(path)
-
     // The main task
     this.task = this.storage.upload(path, this.file)
 

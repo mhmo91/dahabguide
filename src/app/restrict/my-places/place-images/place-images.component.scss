@@ -9,3 +9,15 @@ file-drop.drop-invalid {
 .bg-orange {
   background-color: #fbe9e76b;
 }
+
+.img-object-fit {
+  object-fit: contain;
+  height: 20vh;
+  cursor: pointer;
+}
+
+.custom-position {
+
+  position: absolute;
+  bottom: 1rem;
+}

@@ -1,60 +1,44 @@
-<mat-card class="d-flex flex-column flex-md-row p-0" role="place short info">
+<mat-card (keypress)="openPlace()" (mouseover)="hover=true" (focus)="hover=true" tabindex="0" (blur)="hover=false"
+  (mouseleave)="hover=false" [ngClass]="{'shadow': hover, 'shadow-none':!hover}"
+  class="d-flex flex-column flex-md-row p-0  rounded" role="place short info">
 
-  <ngb-carousel *ngIf="this.photos;else noPhotosFound" class="col-sm-12 col-md-6 col-lg-5 ngb-carousel-height p-0"
-    #carousel interval="4000000" pauseOnHover=true>
+  <ngb-carousel (keypress)="openPlace()" (focus)="hover=true" class="col-sm-12 col-md-6 col-lg-5  p-0" #carousel
+    interval="4000000" pauseOnHover=true>
     <ng-template ngbSlide *ngFor="let img of photos; index as i">
-      <img class="img-fluid w-100" [src]="img" alt="Place image {{i + 1}} description">
-
+      <img [src]="img" alt="Place image {{i + 1}} description" (click)="openPlace(i)">
     </ng-template>
   </ngb-carousel>
-  <ng-template #noPhotosFound>
-    <img src="assets/photo-not-available.jpeg" class="img-fluid" alt="no photos available">
-  </ng-template>
 
 
-  <div matRipple (click)="openPlace()" (keypress)="openPlace()" class="flex-grow-1 d-flex cursor-pointer">
-    <mat-list class="col-6 pr-0">
+  <div tabindex="0" (focus)="hover=true" (blur)="hover=false" matRipple (click)="openPlace()" (keypress)="openPlace()"
+    class="flex-grow-1 d-flex flex-column cursor-pointer pl-3 pt-2">
+    <h6>{{this.placeTypeName}}</h6>
+    <p class="text-muted h-auto mb-2">
+      {{place.layout.bedrooms}} {{(place.layout.bedrooms> 1)? 'Bedrooms':'Bedroom'}} .
+      {{place.layout.beds}} {{(place.layout.beds> 1)? 'Beds':'Bed'}} .
+      {{place.layout.bathrooms}} {{(place.layout.bathrooms> 1)? 'Bathrooms':'Bathroom'}}
+      {{place.layout.privateGarden? ' . Private Garden':null}}
+
+
+    </p>
+    <!-- <mat-list class="col-6 pr-0">
       <mat-list-item class="text-muted h-auto mb-2">
         <mat-icon mat-list-icon>local_hotel</mat-icon>
         <h4 mat-line>
-          {{place.layout.bedrooms}} {{(place.layout.bedrooms> 1)? 'Bedrooms':'Bedroom'}}
         </h4>
       </mat-list-item>
 
       <mat-list-item class="text-muted h-auto mb-2">
         <mat-icon mat-list-icon>single_bed</mat-icon>
         <h4 mat-line>
-          {{place.layout.beds}} {{(place.layout.beds> 1)? 'Beds':'Bed'}}
         </h4>
       </mat-list-item>
       <mat-list-item class="text-muted h-auto mb-2">
         <mat-icon mat-list-icon>bathtub</mat-icon>
         <h4 mat-line>
-          {{place.layout.bathrooms}} {{(place.layout.bathrooms> 1)? 'Bathrooms':'Bathroom'}}
         </h4>
       </mat-list-item>
-    </mat-list>
+    </mat-list> -->
 
-    <mat-list class="col-6 pl-0">
-      <mat-list-item class="text-muted h-auto mb-2">
-        <mat-icon mat-list-icon>local_hotel</mat-icon>
-        <h4 mat-line>
-          {{place.layout.bedrooms}} {{(place.layout.bedrooms> 1)? 'Bedrooms':'Bedroom'}}
-        </h4>
-      </mat-list-item>
-
-      <mat-list-item class="text-muted h-auto mb-2">
-        <mat-icon mat-list-icon>single_bed</mat-icon>
-        <h4 mat-line>
-          {{place.layout.beds}} {{(place.layout.beds> 1)? 'Beds':'Bed'}}
-        </h4>
-      </mat-list-item>
-      <mat-list-item class="text-muted h-auto mb-2">
-        <mat-icon mat-list-icon>bathtub</mat-icon>
-        <h4 mat-line>
-          {{place.layout.bathrooms}} {{(place.layout.bathrooms> 1)? 'Bathrooms':'Bathroom'}}
-        </h4>
-      </mat-list-item>
-    </mat-list>
   </div>
 </mat-card>

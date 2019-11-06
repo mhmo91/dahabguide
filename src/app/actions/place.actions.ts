@@ -20,6 +20,7 @@ export enum PlaceActionTypes {
   DeletePlace = '[Place] Delete Place',
   DeletePlaces = '[Place] Delete Places',
   ClearPlaces = '[Place] Clear Places',
+  DeletePlaceImage = '[Place][User action] delete place image'
 }
 
 export class InitLoadPlaces implements Action {
@@ -102,6 +103,11 @@ export class ClearPlaces implements Action {
   readonly type = PlaceActionTypes.ClearPlaces
 }
 
+export class DeletePlaceImage implements Action {
+  readonly type = PlaceActionTypes.DeletePlaceImage
+  constructor(public url: string) {
+  }
+}
 export type PlaceActions =
   InitLoadPlaces
   | LoadPlaces
@@ -119,3 +125,4 @@ export type PlaceActions =
   | DeletePlaces
   | ClearPlaces
   | ResetPlacesFilter
+  | DeletePlaceImage

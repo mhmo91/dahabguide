@@ -12,74 +12,18 @@ mat-list-item {
 
 }
 
-// mat-card {
-//   //   min-height: 10rem;
-// }
 
-// Extra small devices (portrait phones, less than 576px)
-// No media query for `xs` since this is the default in Bootstrap
-.ngb-carousel-height {
-  height: 60vw;
-  overflow: hidden;
-}
-
-// Small devices (landscape phones, 576px and up)
-// @media (min-width: 375px) {
-//   .ngb-carousel-height {
-//     height: 12rem;
-//     overflow: hidden;
-//   }
-// }
-
-// @media (min-width: 425px) {
-//   .ngb-carousel-height {
-//     height: 14rem;
-//     overflow: hidden;
-//   }
-// }
-
-// Small devices (landscape phones, 576px and up)
-// @media (min-width: 576px) {
-//   .ngb-carousel-height {
-//     height: 14rem;
-//     overflow: hidden;
-//   }
-// }
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .ngb-carousel-height {
-    height: 28vw;
-    overflow: hidden;
-  }
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .ngb-carousel-height {
-    height: 14vw;
-    overflow: hidden;
-  }
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .ngb-carousel-height {
-    height: 13vw;
-    overflow: hidden;
-  }
-}
 
 
 ngb-carousel {
-  &:hover {
-    .carousel-control-next {
-      background-image: linear-gradient(to right, white, #424242);
-    }
+  height: 10rem;
+  width: 10rem;
 
-    .carousel-control-prev {
-      background-image: linear-gradient(to left, white, #424242);
-
-    }
+  img {
+    object-fit: cover;
+    height: -webkit-fill-available;
+    width: 100%;
+    cursor: pointer;
   }
+
 }

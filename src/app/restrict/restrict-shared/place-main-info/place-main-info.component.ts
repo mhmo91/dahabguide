@@ -49,6 +49,7 @@ export class PlaceMainInfoComponent implements OnInit, OnChanges {
       beds: [null, Validators.required],
       bedrooms: [null, Validators.required],
       bathrooms: [null, Validators.required],
+      privateGarden: [false],
     })
     const guestsFormGroup = this.formBuilder.group({
       adults: [null, Validators.required],
@@ -72,7 +73,7 @@ export class PlaceMainInfoComponent implements OnInit, OnChanges {
       this.placeInfoFormGroup.controls.inside.reset()
     }
     // be smart and set default value 'standalone' in inside control
-    this.store.pipe(take(1), select(selectors.fromResources.getPlaceTypeById, { id: placeTypeId }))
+    this.store.pipe(take(1), select(selectors.resourcesSelector.getPlaceTypeById, { id: placeTypeId }))
       .subscribe((placeType) => {
         if (placeType.standAlone) {
           this.placeInfoFormGroup.controls.inside.setValue('standalone')
