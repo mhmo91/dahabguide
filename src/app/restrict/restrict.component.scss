@@ -23,11 +23,15 @@
 
 
   mat-sidenav {
-    background: #F5F5F5 !important;
+    background: rgba($app-background, 0.8);
     border: none;
   }
 
   .zIndex0 {
     z-index: 0 !important;
+  }
+
+  mat-sidenav-container {
+    background: $app-background;
   }
 }

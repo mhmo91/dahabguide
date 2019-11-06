@@ -47,15 +47,6 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-
-      <mat-form-field class="col">
-        <mat-label>Bathrooms</mat-label>
-        <mat-select formControlName="bathrooms">
-          <mat-option *ngFor="let num of [0,1,2,3,4,5,6,7,8,9,10,11] " [value]="num">
-            {{num}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
       <mat-form-field class="col">
         <mat-label>Beds</mat-label>
         <mat-select formControlName="beds">
@@ -64,6 +55,17 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field class="col">
+        <mat-label>Bathrooms</mat-label>
+        <mat-select formControlName="bathrooms">
+          <mat-option *ngFor="let num of [0,1,2,3,4,5,6,7,8,9,10,11] " [value]="num">
+            {{num}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-checkbox formControlName="privateGarden">Has Private Garden</mat-checkbox>
+
 
     </article>
 

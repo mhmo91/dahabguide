@@ -52,7 +52,48 @@ export const appStateMock: IAppState = {
   user: new User(null),
   auth: new AuthState(false),
   resources: {
-    placesTypes: [],
+    placesTypes: [
+      {
+        id: '3U1IvDfOM3OtIRaEsu0O',
+        name_en: 'Camp',
+        standAlone: true
+      },
+      {
+        canBeBooked: true,
+        id: 'FLuha0om6ZkDQWHfVDDQ',
+        name_en: 'Apartment',
+        standAlone: true
+      },
+      {
+        canBeBooked: true,
+        id: 'Fkn3iO61mCZp2PvLYTen',
+        name_en: 'Chalet',
+        standAlone: true
+      },
+      {
+        id: 'MpOSS5Pc2XDyFpuWJ3SU',
+        name_en: 'Hostel',
+        standAlone: true
+      },
+      {
+        canBeBooked: true,
+        id: 'eLgABbmtQ9OUymonqsHJ',
+        name_en: 'Private room',
+        standAlone: false
+      },
+      {
+        canBeBooked: true,
+        id: 'hhHXZdzsAzcwVQx4wRtC',
+        name_en: 'Shared room',
+        standAlone: false
+      },
+      {
+        canBeBooked: true,
+        id: 'mklsKNzDL63UoBsK6l5U',
+        name_en: 'Studio',
+        standAlone: true
+      }
+    ],
     amenities: [],
     facilities: []
   },

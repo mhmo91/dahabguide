@@ -6,6 +6,7 @@ import { PlaceImagesComponent } from './place-images.component'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { provideMockStore } from '@ngrx/store/testing'
 import { Place, IPlace } from 'src/app/models/place.model'
+import { MinionsService } from 'src/app/app-shared/services/minions.service'
 
 describe('PlaceImagesComponent', () => {
   let component: PlaceImagesComponent
@@ -17,7 +18,7 @@ describe('PlaceImagesComponent', () => {
     TestBed.configureTestingModule({
       declarations: [PlaceImagesComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [provideMockStore({ initialState })]
+      providers: [provideMockStore({ initialState }), MinionsService]
 
     })
       .compileComponents()

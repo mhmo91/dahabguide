@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store'
 import { AppState } from 'src/app/reducers'
 import { IPlaceWizard } from '../place-wizard-state/place-wizard.reducer'
 import * as placeActions from 'src/app/actions/place.actions'
-import { PlainGalleryConfig, PlainGalleryStrategy, GridLayout, Image } from '@ks89/angular-modal-gallery'
+import { PlainGalleryConfig, PlainGalleryStrategy, GridLayout, Image, AdvancedLayout } from '@ks89/angular-modal-gallery'
 @Component({
   selector: 'dahab-place-images',
   templateUrl: './place-images.component.html',
@@ -13,12 +13,13 @@ import { PlainGalleryConfig, PlainGalleryStrategy, GridLayout, Image } from '@ks
 })
 export class PlaceImagesComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() place: Partial<IPlace>
+  hoveringOn: number
   placePhotos: Image[]
   attachedPhotos: Array<File>
   isHovered: boolean
   plainGalleryGrid: PlainGalleryConfig = {
-    strategy: PlainGalleryStrategy.GRID,
-    layout: new GridLayout({ width: '15vw', height: 'auto' }, { length: 4, wrap: true })
+    strategy: PlainGalleryStrategy.CUSTOM,
+    layout: new AdvancedLayout(-1, true)
   }
 
   constructor(private store: Store<AppState & IPlaceWizard>, private minion: MinionsService) {
@@ -32,7 +33,6 @@ export class PlaceImagesComponent implements OnInit, AfterViewInit, OnChanges {
 
   updateImagesArray(imagesUrl) {
     this.placePhotos = this.minion.createImagesArray(imagesUrl)
-    console.log(this.placePhotos)
   }
   ngOnInit() {
     this.updateImagesArray(this.place.photos)
@@ -54,6 +54,9 @@ export class PlaceImagesComponent implements OnInit, AfterViewInit, OnChanges {
     })
   }
 
+  openImagesModal(index) {
+    this.plainGalleryGrid = Object.assign({}, this.plainGalleryGrid, { layout: new AdvancedLayout(index, true) })
+  }
 
   ngAfterViewInit(): void {
 
@@ -79,6 +82,21 @@ export class PlaceImagesComponent implements OnInit, AfterViewInit, OnChanges {
         }
       }
     }))
+  }
+
+
+  removeImageFromPlace(index, imgUrl) {
+    const placePhotos = Array.isArray(this.place.photos) ? JSON.parse(JSON.stringify(this.place.photos)) : []
+    placePhotos.splice(index, 1)
+    this.store.dispatch(new placeActions.UpdatePlace({
+      place: {
+        id: this.place.id,
+        changes: {
+          photos: placePhotos
+        }
+      }
+    }))
+    this.store.dispatch(new placeActions.DeletePlaceImage(imgUrl))
   }
 
 }

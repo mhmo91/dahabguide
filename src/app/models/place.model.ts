@@ -9,7 +9,8 @@ export interface IPlace extends ApiModel {
   layout: {
     beds: number,
     bedrooms: number,
-    bathrooms: number
+    bathrooms: number,
+    privateGarden: boolean
   }
   guests: {
     adults: number,
@@ -49,7 +50,8 @@ export class Place implements Partial<IPlace> {
     public layout = {
       beds: 1,
       bedrooms: 1,
-      bathrooms: 1
+      bathrooms: 1,
+      privateGarden: false
     },
     public guests = {
       adults: 2,

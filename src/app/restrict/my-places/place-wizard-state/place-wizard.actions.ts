@@ -4,12 +4,12 @@ import { IPlaceWizard } from './place-wizard.reducer'
 
 export enum PlaceWizardActionTypes {
   AddNewPlaceInit = '[User action] add new place',
-  InitPlaceUpdateWizard = '[User action] update place',
+  InitPlaceUpdateWizard = '[PlaceWizard][User action] update place',
   SaveMainInfo = '[PlaceWizard] Save place main info',
   SaveMainInfoSuccess = '[PlaceWizard] saveMainInfo success',
   UpdatePlaceSuccess = '[PlaceWizard] updated the location successfully',
   UpdatePlace = '[PlaceWizard] Update place',
-  UpdatePlaceWizard = '[PlaceWizard] update state'
+  UpdatePlaceWizard = '[PlaceWizard] update state',
 
 }
 
