@@ -5,7 +5,7 @@
   <ngb-carousel (keypress)="openPlace()" (focus)="hover=true" class="col-sm-12 col-md-6 col-lg-5  p-0" #carousel
     interval="4000000" pauseOnHover=true>
     <ng-template ngbSlide *ngFor="let img of photos; index as i">
-      <img [src]="img" alt="Place image {{i + 1}} description" (click)="openPlace(i)">
+      <img [src]="img" alt="Place image {{i + 1}} description" (click)="openPlace()">
     </ng-template>
   </ngb-carousel>
 

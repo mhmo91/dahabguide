@@ -17,6 +17,7 @@ export class PlaceCardComponent implements OnInit, OnChanges {
   photos: Array<string>
   placeTypeName: string
   PlaceParentName: string
+  hover: boolean // descripe the current hover state
   constructor(private store: Store<AppState>) {
   }
 
