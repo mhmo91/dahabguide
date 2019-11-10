@@ -12,9 +12,14 @@ export interface IPlace extends ApiModel {
     bathrooms: number,
     privateGarden: boolean
   }
-  guests: {
+  location: {
+    latitude: number,
+    longitude: number
+  }
+  photos: Array<any>
+  guests?: {
     adults: number,
-    children: number, // less than 12 years old
+    children?: number, // less than 12 years old
     Infants?: number // less than 2 years old
   }
 
@@ -29,15 +34,18 @@ export interface IPlace extends ApiModel {
     month?: number,
     minMonths?: number
   }
-  longTerm?: boolean,
-  instantBooking: boolean
   //
-  accessibility: boolean
-  location: {
-    latitude: number,
-    longitude: number
+  address?: {
+    disrtict?: string
+    streetAddress?: string
+    city?: string
+    governorate?: string
+    country?: string
   }
-  photos: Array<any>
+  longTerm?: boolean
+  instantBooking: boolean
+  accessibility: boolean
+  //
   goodDeal?: boolean
 }
 

@@ -80,7 +80,9 @@ import { GalleryModule } from '@ks89/angular-modal-gallery'
     SatNativeDateModule,
     SatDatepickerModule,
     MatGridListModule,
-    GalleryModule
+    GalleryModule,
+    MatTooltipModule,
+
   ],
   exports: [
     ReactiveFormsModule,
