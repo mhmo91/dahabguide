@@ -5,11 +5,23 @@ import { Store } from '@ngrx/store'
 import { AppState } from 'src/app/reducers'
 import { IPlaceWizard } from '../place-wizard-state/place-wizard.reducer'
 import * as placeActions from 'src/app/actions/place.actions'
-import { PlainGalleryConfig, PlainGalleryStrategy, GridLayout, Image, AdvancedLayout } from '@ks89/angular-modal-gallery'
+import { PlainGalleryConfig, PlainGalleryStrategy, Description, DescriptionStrategy, Image, AdvancedLayout } from '@ks89/angular-modal-gallery'
+import { trigger, transition, query, stagger, animate, style } from '@angular/animations'
 @Component({
   selector: 'dahab-place-images',
   templateUrl: './place-images.component.html',
   styleUrls: ['./place-images.component.scss'],
+  animations: [
+    trigger('myInsertRemoveTrigger', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('0.3s', style({ opacity: 1 })),
+      ]),
+      transition(':leave', [
+        animate('0.3s', style({ opacity: 0 }))
+      ])
+    ]),
+  ]
 })
 export class PlaceImagesComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() place: Partial<IPlace>
@@ -21,6 +33,7 @@ export class PlaceImagesComponent implements OnInit, AfterViewInit, OnChanges {
     strategy: PlainGalleryStrategy.CUSTOM,
     layout: new AdvancedLayout(-1, true)
   }
+
 
   constructor(private store: Store<AppState & IPlaceWizard>, private minion: MinionsService) {
     this.attachedPhotos = []
@@ -85,7 +98,7 @@ export class PlaceImagesComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
 
-  removeImageFromPlace(index, imgUrl) {
+  deleteMe(index, imgUrl) {
     const placePhotos = Array.isArray(this.place.photos) ? JSON.parse(JSON.stringify(this.place.photos)) : []
     placePhotos.splice(index, 1)
     this.store.dispatch(new placeActions.UpdatePlace({
@@ -97,6 +110,19 @@ export class PlaceImagesComponent implements OnInit, AfterViewInit, OnChanges {
       }
     }))
     this.store.dispatch(new placeActions.DeletePlaceImage(imgUrl))
+  }
+
+  makeMeMainImage(imgUrl) {
+    const placePhotos: Array<string> = this.place.photos.filter(i => i !== imgUrl)
+    placePhotos.unshift(imgUrl)
+    this.store.dispatch(new placeActions.UpdatePlace({
+      place: {
+        id: this.place.id,
+        changes: {
+          photos: placePhotos
+        }
+      }
+    }))
   }
 
 }

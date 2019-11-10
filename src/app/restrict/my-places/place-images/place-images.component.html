@@ -1,15 +1,21 @@
 <div class="container">
   <section class="row my-3">
-    <div (mouseover)="hoveringOn=i" (focus)="hoveringOn=i" tabindex="0" (mouseleave)="hoveringOn=null"
-      class="col-lg-4 col-xl-3 col-sm-6 d-flex justify-content-center mb-2"
+    <div @myInsertRemoveTrigger (mouseover)="hoveringOn=i" (focus)="hoveringOn=i" tabindex="0"
+      (mouseleave)="hoveringOn=null" class="col-lg-4 col-xl-3 col-sm-6 d-flex justify-content-center mb-2"
       *ngFor="let imgUrl of this.place.photos;let i = index">
+      <img [ngClass]="{'border border-primary': i===0}" (focus)="hoveringOn=i" class="img-object-fit" [src]="imgUrl"
+        (click)="openImagesModal(i)" alt="place image">
+      <div class="img-actions">
+        <button class="mx-1" matTooltip="Delete Image" aria-label="remove image i" mat-mini-fab tabindex="0"
+          [hidden]="hoveringOn !== i" (click)="deleteMe(i, imgUrl)" color="accent" mat-raised-button>
+          <mat-icon>clear</mat-icon>
+        </button>
+        <button class="mx-1" matTooltip="Set as Main Image" aria-label="remove image i" mat-mini-fab tabindex="0"
+          [hidden]="hoveringOn !== i || i ===0" (click)="makeMeMainImage(imgUrl)" color="accent" mat-raised-button>
+          <mat-icon>star</mat-icon>
+        </button>
+      </div>
 
-
-      <img (focus)="hoveringOn=i" class="img-object-fit" [src]="imgUrl" (click)="openImagesModal(i)" alt="place image">
-      <button tabindex="0" [hidden]="hoveringOn !== i" (click)="removeImageFromPlace(i, imgUrl)" class="custom-position"
-        color="accent" mat-raised-button>
-        <mat-icon>delete</mat-icon> Delete
-      </button>
     </div>
 
   </section>

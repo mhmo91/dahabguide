@@ -13,6 +13,14 @@ body {
   -webkit-touch-callout: none;
   // pwa end
   background-color: $app-background !important;
+
+  // :focus:not(button) {
+  //   outline: #009688 auto 4px;
+  // }
+
+  .mat-button-base:focus {
+    outline: none;
+  }
 }
 
 .cursor-pointer {

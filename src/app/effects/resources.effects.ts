@@ -25,7 +25,7 @@ export class ResourcesEffects {
       ]
       return combineLatest(sources)
     }),
-    map((res) => {
+    map((res: any) => {
       return new resourcesActions.LoadResourcesSuccess({
         placesTypes: res[0],
         amenities: res[1],

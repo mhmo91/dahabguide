@@ -16,8 +16,15 @@ file-drop.drop-invalid {
   cursor: pointer;
 }
 
-.custom-position {
-
+.img-actions {
+  display: flex;
   position: absolute;
   bottom: 1rem;
+}
+
+ks-modal-gallery {
+  figcaption {
+    display: none !important;
+  }
+
 }
