@@ -1,3 +1,5 @@
+@import "src/sass/variables";
+
 mat-list-item {
   font-size: 12px !important;
 
@@ -10,6 +12,11 @@ mat-list-item {
   }
 
 
+}
+
+.price {
+  font-size: 1rem;
+  color: $text-grey-800;
 }
 
 .small-text {

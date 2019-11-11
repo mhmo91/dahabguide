@@ -1,0 +1,52 @@
+<form (ngSubmit)="save(pricingFormGroup)" [formGroup]="pricingFormGroup">
+
+  <div formGroupName="price" class="row align-items-center py-2">
+    <mat-checkbox class="col-auto py-4" #shortTermCtrl formControlName="shortTerm">Short Term Rental</mat-checkbox>
+    <mat-form-field *ngIf="shortTermCtrl.checked" class="col-auto">
+      <input matInput placeholder="" formControlName="perNight">
+      <span matSuffix>$&nbsp;/Night</span>
+    </mat-form-field>
+    <mat-form-field *ngIf="shortTermCtrl.checked" class="col-auto">
+      <input matInput placeholder="Minimum Nights?" formControlName="minNights">
+      <span matSuffix>$&nbsp;Nights</span>
+      <mat-hint align="start">optional</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div formGroupName="price" class="row align-items-center py-2">
+    <mat-checkbox class="col-auto py-4" #longTermCtrl formControlName="longTerm">Long Term Rental</mat-checkbox>
+    <mat-form-field *ngIf="longTermCtrl.checked" class="col-auto">
+      <input matInput placeholder="" formControlName="perMonth">
+      <span matSuffix>$&nbsp;/Month</span>
+    </mat-form-field>
+    <mat-form-field *ngIf="longTermCtrl.checked" class="col-auto">
+      <input matInput placeholder="Minimum Months?" formControlName="minMonths">
+      <span matSuffix>$&nbsp;Months</span>
+      <mat-hint align="start">optional</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div class="row align-items-center py-2">
+    <mat-checkbox class="col-auto py-4" formControlName="instantBooking">Instant Booking</mat-checkbox>
+    <mat-icon matTooltip="Guests can book this place without waiting your confirmation for availability"
+      color="primary">info</mat-icon>
+
+  </div>
+
+  <div class="row align-items-center my-3">
+    <button [disabled]="this.pricingFormGroup.invalid" *ngIf="(this.placeWizard$|async).mode === mode.Add"
+      mat-raised-button type="submit" color="accent">
+      Next <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+    <button [disabled]="this.pricingFormGroup.invalid" *ngIf="(this.placeWizard$|async).mode === mode.Update"
+      mat-raised-button type="submit" color="accent">
+      <mat-icon>save</mat-icon> Save
+    </button>
+  </div>
+
+  <div *ngIf="(placeWizard$|async).busy" class="loading-shade">
+    <mat-spinner></mat-spinner>
+  </div>
+
+
+</form>

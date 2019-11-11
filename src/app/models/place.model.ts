@@ -27,14 +27,7 @@ export interface IPlace extends ApiModel {
   amenities: Array<string>
   facilities: Array<string>
   description: string
-  //
-  price: {
-    night: number,
-    minNights?: number,
-    month?: number,
-    minMonths?: number
-  }
-  //
+
   address?: {
     disrtict?: string
     streetAddress?: string
@@ -42,9 +35,16 @@ export interface IPlace extends ApiModel {
     governorate?: string
     country?: string
   }
-  longTerm?: boolean
+  // pricing
+  price: {
+    longTerm?: boolean
+    shortTerm?: boolean
+    perNight: number,
+    minNights?: number,
+    perMonth?: number,
+    minMonths?: number
+  }
   instantBooking: boolean
-  accessibility: boolean
   //
   goodDeal?: boolean
 }

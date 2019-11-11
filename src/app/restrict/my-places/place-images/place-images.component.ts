@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store'
 import { AppState } from 'src/app/reducers'
 import { IPlaceWizard } from '../place-wizard-state/place-wizard.reducer'
 import * as placeActions from 'src/app/actions/place.actions'
-import { PlainGalleryConfig, PlainGalleryStrategy, Description, DescriptionStrategy, Image, AdvancedLayout } from '@ks89/angular-modal-gallery'
+import { PlainGalleryConfig, PlainGalleryStrategy, Image, AdvancedLayout } from '@ks89/angular-modal-gallery'
 import { trigger, transition, query, stagger, animate, style } from '@angular/animations'
 @Component({
   selector: 'dahab-place-images',

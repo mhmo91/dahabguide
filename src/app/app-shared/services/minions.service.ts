@@ -1,14 +1,5 @@
 import { Injectable } from '@angular/core'
-import {
-  AccessibilityConfig,
-  AdvancedLayout,
-  GalleryService,
-  GridLayout,
-  Image,
-  LineLayout,
-  PlainGalleryConfig,
-  PlainGalleryStrategy
-} from '@ks89/angular-modal-gallery'
+import { Image } from '@ks89/angular-modal-gallery'
 
 @Injectable({
   providedIn: 'root'

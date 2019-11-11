@@ -64,7 +64,6 @@
     <article class=" d-flex flex-wrap align-items-around">
       <div formGroupName="layout" class="col m-3">
         <mat-checkbox formControlName="privateGarden">Private Garden</mat-checkbox>
-
       </div>
       <div class="col m-3" *ngFor="let amenity of (this.resources$|async).amenities; let i = index">
         <mat-checkbox [checked]="this.place?.amenities?.includes(amenity.id)" (change)="amenityCheckChange($event)"
@@ -103,16 +102,16 @@
       </mat-form-field>
 
     </article> -->
-    <div class="my-3">
-      <button *ngIf="(this.placeWizard$|async).mode === mode.Add" mat-raised-button type="submit" color="accent">
-        Next <mat-icon>keyboard_arrow_right</mat-icon>
-      </button>
-      <button *ngIf="(this.placeWizard$|async).mode === mode.Update" mat-raised-button type="submit" color="accent">
-        <mat-icon>save</mat-icon> Save
-      </button>
-    </div>
   </section>
 
+  <div class="my-3">
+    <button *ngIf="(this.placeWizard$|async).mode === mode.Add" mat-raised-button type="submit" color="accent">
+      Next <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+    <button *ngIf="(this.placeWizard$|async).mode === mode.Update" mat-raised-button type="submit" color="accent">
+      <mat-icon>save</mat-icon> Save
+    </button>
+  </div>
   <div *ngIf="(placeWizard$|async).busy" class="loading-shade">
     <mat-spinner></mat-spinner>
   </div>
