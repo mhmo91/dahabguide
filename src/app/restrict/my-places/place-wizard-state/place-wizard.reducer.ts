@@ -35,7 +35,7 @@ export function reducer(state = initialState, action: PlaceWizardActions): IPlac
 
 
     case PlaceWizardActionTypes.InitPlaceUpdateWizard:
-      return { ...state, mode: PlaceWizardMode.Update, currentWizardStep: 0 }
+      return { ...state, mode: PlaceWizardMode.Update, currentWizardStep: 0, busy: false }
 
 
     case PlaceWizardActionTypes.UpdatePlaceWizard:

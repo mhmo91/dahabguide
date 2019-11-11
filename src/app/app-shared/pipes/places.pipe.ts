@@ -13,8 +13,6 @@ export class PlacesPipe implements PipeTransform {
         response = response.filter((place) => place[v[0]] === v[1])
       })
     }
-
-
     return response
   }
 

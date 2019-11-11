@@ -36,7 +36,7 @@ export class PlaceWizardEffects {
         place: {
           id: action.payload.id,
           changes: {
-            location: action.payload.location
+            ...action.payload
           }
         }
       })
