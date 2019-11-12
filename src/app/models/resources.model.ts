@@ -10,6 +10,7 @@ export interface IPlaceType {
 export interface IAmenity {
     name_en: string
     id: string
+    icon: string
 }
 
 export interface IFacility {

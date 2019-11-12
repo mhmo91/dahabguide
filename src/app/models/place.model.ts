@@ -9,11 +9,17 @@ export interface IPlace extends ApiModel {
   layout: {
     beds: number,
     bedrooms: number,
-    bathrooms: number
+    bathrooms: number,
+    privateGarden: boolean
   }
-  guests: {
+  location: {
+    latitude: number,
+    longitude: number
+  }
+  photos: Array<any>
+  guests?: {
     adults: number,
-    children: number, // less than 12 years old
+    children?: number, // less than 12 years old
     Infants?: number // less than 2 years old
   }
 
@@ -21,22 +27,25 @@ export interface IPlace extends ApiModel {
   amenities: Array<string>
   facilities: Array<string>
   description: string
-  //
+
+  address?: {
+    disrtict?: string
+    streetAddress?: string
+    city?: string
+    governorate?: string
+    country?: string
+  }
+  // pricing
   price: {
-    night: number,
+    longTerm?: boolean
+    shortTerm?: boolean
+    perNight: number,
     minNights?: number,
-    month?: number,
+    perMonth?: number,
     minMonths?: number
   }
-  longTerm?: boolean,
   instantBooking: boolean
   //
-  accessibility: boolean
-  location: {
-    latitude: number,
-    longitude: number
-  }
-  photos: Array<string>
   goodDeal?: boolean
 }
 
@@ -49,7 +58,8 @@ export class Place implements Partial<IPlace> {
     public layout = {
       beds: 1,
       bedrooms: 1,
-      bathrooms: 1
+      bathrooms: 1,
+      privateGarden: false
     },
     public guests = {
       adults: 2,

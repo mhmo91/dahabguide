@@ -1,3 +1,5 @@
+@import "src/sass/variables";
+
 mat-list-item {
   font-size: 12px !important;
 
@@ -12,60 +14,29 @@ mat-list-item {
 
 }
 
-// mat-card {
-//   //   min-height: 10rem;
-// }
-
-// Extra small devices (portrait phones, less than 576px)
-// No media query for `xs` since this is the default in Bootstrap
-.ngb-carousel-height {
-  height: 60vw;
-  overflow: hidden;
+.price {
+  font-size: 1rem;
+  color: $text-grey-800;
 }
 
-// Small devices (landscape phones, 576px and up)
-// @media (min-width: 375px) {
-//   .ngb-carousel-height {
-//     height: 12rem;
-//     overflow: hidden;
-//   }
-// }
-
-// @media (min-width: 425px) {
-//   .ngb-carousel-height {
-//     height: 14rem;
-//     overflow: hidden;
-//   }
-// }
-
-// Small devices (landscape phones, 576px and up)
-// @media (min-width: 576px) {
-//   .ngb-carousel-height {
-//     height: 14rem;
-//     overflow: hidden;
-//   }
-// }
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .ngb-carousel-height {
-    height: 28vw;
-    overflow: hidden;
-  }
+.small-text {
+  font-size: 0.8rem;
 }
 
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .ngb-carousel-height {
-    height: 14vw;
-    overflow: hidden;
-  }
+.small-icon {
+  font-size: 1.2rem;
 }
 
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .ngb-carousel-height {
-    height: 13vw;
-    overflow: hidden;
+
+ngb-carousel {
+  height: 10rem;
+  width: 10rem;
+
+  img {
+    object-fit: cover;
+    height: -webkit-fill-available;
+    width: 100%;
+    cursor: pointer;
   }
+
 }

@@ -1,0 +1,32 @@
+<mat-card>
+
+  <img mat-card-image [src]="this.fileURL" alt="photo to upload">
+  <div *ngIf="snapshot | async as snap">
+
+    <mat-card-content>
+      <span *ngIf="snap.bytesTransferred === snap.totalBytes; else progress" class="text-success">
+        finishing up...
+      </span>
+      <ng-template #progress>
+        <div class="w-100" *ngIf="percentage | async as pct">
+          <span class="text-success">Uploading...</span> <br>
+          <mat-progress-bar color="accent" [value]="pct"></mat-progress-bar> <br>
+          <span class="text-muted" *ngIf="this.uploadProcessActive(snap)">{{ pct | number }}%</span>
+        </div>
+      </ng-template>
+    </mat-card-content>
+
+    <mat-card-actions *ngIf="this.uploadProcessActive(snap)" class="d-flex justify-content-around m-0 p-0">
+      <button type="button" *ngIf="isUploading(snap)" (click)="task.pause()" mat-icon-button>
+        <mat-icon>pause_circle_filled</mat-icon>
+      </button>
+      <button type="button" *ngIf="isOnPause(snap)" (click)="task.resume()" mat-icon-button>
+        <mat-icon>play_circle_filled</mat-icon>
+      </button>
+      <button type="button" mat-icon-button (click)="cancelUpload(task)">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-actions>
+  </div>
+
+</mat-card>

@@ -6,16 +6,29 @@ import { AngularFirestore } from '@angular/fire/firestore'
 import { map, switchMap, catchError } from 'rxjs/operators'
 import { from, of, EMPTY } from 'rxjs'
 import { Update } from '@ngrx/entity'
+import { AngularFireStorage } from '@angular/fire/storage'
 
 @Injectable()
 export class PlaceEffects {
 
   selectedPlace: IPlace
 
-  constructor(private actions$: Actions, private afs: AngularFirestore) { }
+  constructor(private actions$: Actions, private afs: AngularFirestore, private storage: AngularFireStorage) { }
 
 
   @Effect()
+  deletePlaceImage$ = this.actions$.pipe(
+    ofType(placesActions.PlaceActionTypes.DeletePlaceImage),
+    switchMap((action: any) => {
+      return this.storage.storage.refFromURL(action.url).delete()
+    }),
+    map((v) => {
+      return new placesActions.UpdatePlaceSuccess()
+    }),
+    /** An EMPTY observable only emits completion. Replace with your own observable API request */
+    catchError(() => EMPTY)
+  )
+
 
   @Effect()
   addPlace = this.actions$.pipe(
@@ -51,4 +64,6 @@ export class PlaceEffects {
     }),
     catchError(error => of(new placesActions.AddPlaceFailure({ place: { ...this.selectedPlace, error } })))
   )
+
+
 }

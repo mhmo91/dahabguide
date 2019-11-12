@@ -43,6 +43,10 @@ import { PlacesFilterComponent } from './places-filter/places-filter.component'
 import { MatRippleModule } from '@angular/material/core'
 import { MatSliderModule } from '@angular/material/slider'
 import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker'
+import { MatGridListModule } from '@angular/material/grid-list'
+import { UploadMeComponent } from './upload-me/upload-me.component'
+import { DropzoneDirective } from './directives/drop-zone.directive'
+import { GalleryModule } from '@ks89/angular-modal-gallery'
 
 @NgModule({
   declarations: [
@@ -50,7 +54,9 @@ import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker'
     NotPipe, PlacesPipe, PlaceCardComponent,
     MatSelectExtensionComponent,
     SelectNumberComponent,
-    PlacesFilterComponent
+    PlacesFilterComponent,
+    DropzoneDirective,
+    UploadMeComponent
   ],
   imports: [
     CommonModule,
@@ -72,7 +78,11 @@ import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker'
     MatCheckboxModule,
     MatSliderModule,
     SatNativeDateModule,
-    SatDatepickerModule
+    SatDatepickerModule,
+    MatGridListModule,
+    GalleryModule,
+    MatTooltipModule,
+
   ],
   exports: [
     ReactiveFormsModule,
@@ -108,6 +118,7 @@ import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker'
     MatChipsModule,
     MatStepperModule,
     MatSliderModule,
+    MatGridListModule,
     // bootstrap module
     NgbCarouselModule,
     NgbDatepickerModule,
@@ -115,6 +126,7 @@ import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker'
     // other open source
     SatNativeDateModule,
     SatDatepickerModule,
+    GalleryModule,
     // components
     ToolbarLogoComponent,
     NiceImageComponent,
@@ -122,9 +134,12 @@ import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker'
     MatSelectExtensionComponent,
     SelectNumberComponent,
     PlacesFilterComponent,
+    UploadMeComponent,
     // pipes
     NotPipe,
-    PlacesPipe
+    PlacesPipe,
+    // Directives
+    DropzoneDirective
   ]
 })
 export class AppSharedModule { }

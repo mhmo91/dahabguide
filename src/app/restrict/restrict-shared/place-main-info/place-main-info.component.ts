@@ -1,6 +1,6 @@
 import { PlaceWizardMode } from './../../my-places/place-wizard-state/place-wizard.reducer'
 import { Component, OnInit, ViewEncapsulation, Input, SimpleChanges, OnChanges } from '@angular/core'
-import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms'
 import { Store, select } from '@ngrx/store'
 import { AppState } from 'src/app/reducers'
 import { Observable } from 'rxjs'
@@ -11,7 +11,8 @@ import { MatSnackBar } from '@angular/material/snack-bar'
 import { IPlace } from 'src/app/models/place.model'
 import { IPlaceWizardState, IPlaceWizard } from '../../my-places/place-wizard-state/place-wizard.reducer'
 import * as selectors from 'src/app/selectors'
-import { take } from 'rxjs/operators'
+import { take, map } from 'rxjs/operators'
+import { MatCheckboxChange } from '@angular/material/checkbox'
 @Component({
   selector: 'dahab-place-main-info',
   templateUrl: './place-main-info.component.html',
@@ -31,9 +32,26 @@ export class PlaceMainInfoComponent implements OnInit, OnChanges {
     this.resources$ = this.store.select('resources')
     this.placeWizard$ = this.store.select('placeWizard')
     this.constructForm()
+
   }
 
   ngOnInit() {
+
+  }
+
+  get isChecked() {
+    return true
+  }
+
+  amenityCheckChange(e: MatCheckboxChange) {
+    const amenitiesValue: Array<string> = JSON.parse(JSON.stringify(this.placeInfoFormGroup.controls.amenities.value))
+    if (e.checked) {
+      amenitiesValue.push(e.source.value)
+      this.placeInfoFormGroup.controls.amenities.setValue(amenitiesValue)
+    } else {
+      amenitiesValue.splice(amenitiesValue.indexOf(e.source.value), 1)
+      this.placeInfoFormGroup.controls.amenities.setValue(amenitiesValue)
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -49,6 +67,7 @@ export class PlaceMainInfoComponent implements OnInit, OnChanges {
       beds: [null, Validators.required],
       bedrooms: [null, Validators.required],
       bathrooms: [null, Validators.required],
+      privateGarden: [false],
     })
     const guestsFormGroup = this.formBuilder.group({
       adults: [null, Validators.required],
@@ -60,7 +79,8 @@ export class PlaceMainInfoComponent implements OnInit, OnChanges {
       inside: [{ value: null, disabled: true }, Validators.required],
       brandName: [null],
       layout: layoutFormGroup,
-      guests: guestsFormGroup
+      guests: guestsFormGroup,
+      amenities: [[]]
     })
   }
 
@@ -72,7 +92,7 @@ export class PlaceMainInfoComponent implements OnInit, OnChanges {
       this.placeInfoFormGroup.controls.inside.reset()
     }
     // be smart and set default value 'standalone' in inside control
-    this.store.pipe(take(1), select(selectors.fromResources.getPlaceTypeById, { id: placeTypeId }))
+    this.store.pipe(take(1), select(selectors.resourcesSelector.getPlaceTypeById, { id: placeTypeId }))
       .subscribe((placeType) => {
         if (placeType.standAlone) {
           this.placeInfoFormGroup.controls.inside.setValue('standalone')

@@ -1,0 +1,30 @@
+file-drop.drop-valid {
+  background-color: green;
+}
+
+file-drop.drop-invalid {
+  background-color: red;
+}
+
+.bg-orange {
+  background-color: #fbe9e76b;
+}
+
+.img-object-fit {
+  object-fit: contain;
+  height: 20vh;
+  cursor: pointer;
+}
+
+.img-actions {
+  display: flex;
+  position: absolute;
+  bottom: 1rem;
+}
+
+ks-modal-gallery {
+  figcaption {
+    display: none !important;
+  }
+
+}

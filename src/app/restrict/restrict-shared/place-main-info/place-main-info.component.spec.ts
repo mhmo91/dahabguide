@@ -6,8 +6,8 @@ import { PlaceMainInfoComponent } from './place-main-info.component'
 import { appStateMock } from 'src/app/reducers'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { RestrictSharedModule } from 'src/app/restrict/restrict-shared/restrict-shared.module'
-import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { MapsAPILoader } from '@agm/core'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 describe('PlaceMainInfoComponent', () => {
   let component: PlaceMainInfoComponent
@@ -17,7 +17,7 @@ describe('PlaceMainInfoComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [RestrictSharedModule, NoopAnimationsModule],
+      imports: [RestrictSharedModule, BrowserAnimationsModule],
       declarations: [],
       providers: [
         provideMockStore({ initialState }),

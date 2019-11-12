@@ -36,7 +36,7 @@ export class PlaceWizardEffects {
         place: {
           id: action.payload.id,
           changes: {
-            location: action.payload.location
+            ...action.payload
           }
         }
       })
@@ -45,6 +45,8 @@ export class PlaceWizardEffects {
     /** An EMPTY observable only emits completion. Replace with your own observable API request */
     catchError(() => EMPTY)
   )
+
+
 
   constructor(private actions$: Actions<placeWizardActions.PlaceWizardActions>) { }
 

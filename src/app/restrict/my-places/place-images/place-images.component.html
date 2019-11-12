@@ -1,0 +1,45 @@
+<div class="container">
+  <section class="row my-3">
+    <div @myInsertRemoveTrigger (mouseover)="hoveringOn=i" (focus)="hoveringOn=i" tabindex="0"
+      (mouseleave)="hoveringOn=null" class="col-lg-4 col-xl-3 col-sm-6 d-flex justify-content-center mb-2"
+      *ngFor="let imgUrl of this.place.photos;let i = index">
+      <img [ngClass]="{'border border-primary': i===0}" (focus)="hoveringOn=i" class="img-object-fit" [src]="imgUrl"
+        (click)="openImagesModal(i)" alt="place image">
+      <div class="img-actions">
+        <button class="mx-1" matTooltip="Delete Image" aria-label="remove image i" mat-mini-fab tabindex="0"
+          [hidden]="hoveringOn !== i" (click)="deleteMe(i, imgUrl)" color="accent" mat-raised-button>
+          <mat-icon>clear</mat-icon>
+        </button>
+        <button class="mx-1" matTooltip="Set as Main Image" aria-label="remove image i" mat-mini-fab tabindex="0"
+          [hidden]="hoveringOn !== i || i ===0" (click)="makeMeMainImage(imgUrl)" color="accent" mat-raised-button>
+          <mat-icon>star</mat-icon>
+        </button>
+      </div>
+
+    </div>
+
+  </section>
+  <section [ngClass]="{'bg-orange': this.isHovered}" (hovered)="this.isHovered = $event" dahabDropZone
+    (filesDropped)="this.onDrop($event)"
+    class="row border border-warning rounded p-4 d-flex flex-wrap align-items-center justify-content-center">
+    <div class="col-12 d-flex flex-column justify-content-center align-items-center">
+      <span class="text-muted">Drop Images here</span>
+      <strong>OR</strong>
+      <button (click)="filesInput.click()" class="m-2" mat-raised-button color="accent">
+        <mat-icon>add</mat-icon> Select Images
+      </button>
+      <input hidden #filesInput type="file" multiple (change)="this.onDrop($event.target.files)">
+    </div>
+    <div class="col-12 d-flex flex-wrap justify-content-start">
+      <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let photo of this.attachedPhotos; let i = index">
+        <dahab-upload-me (guesWhat)="uploadEnd($event , i)" [saveToPath]="'places/'+this.place.id" [file]="photo">
+        </dahab-upload-me>
+      </div>
+    </div>
+  </section>
+  <section class="my-3">
+    <ks-modal-gallery class="mt-3" [id]="3" [modalImages]="this.placePhotos" [plainGalleryConfig]="plainGalleryGrid">
+    </ks-modal-gallery>
+  </section>
+
+</div>

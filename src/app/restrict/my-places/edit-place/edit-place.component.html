@@ -1,6 +1,6 @@
 <section class="container-fluid my-3">
-  <mat-vertical-stepper [selectedIndex]="(this.placeWizard$|async)?.currentWizardStep " class="mat-elevation-z2" linear
-    (selectionChange)="this.updatePlaceWizard($event)" #addPlaceStepper>
+  <mat-vertical-stepper [selectedIndex]="(this.placeWizard$|async)?.currentWizardStep " class="mat-elevation-z2"
+    (selectionChange)="this.updatePlaceWizard($event)" #editPlaceStepper>
     <mat-step [stepControl]="placeMainInfoComp?.placeInfoFormGroup">
       <ng-template matStepLabel>Basic Information</ng-template>
       <dahab-place-main-info #placeMainInfoComp [place]="this.place"></dahab-place-main-info>
@@ -8,13 +8,15 @@
     <mat-step>
       <ng-template matStepLabel>Location</ng-template>
       <dahab-choose-place-location [place]="this.place"></dahab-choose-place-location>
-
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Photos</ng-template>
+      <dahab-place-images [place]="this.place"></dahab-place-images>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Pricing and Booking details</ng-template>
+      <dahab-place-pricing-form [place]="this.place"></dahab-place-pricing-form>
+
     </mat-step>
   </mat-vertical-stepper>
 </section>

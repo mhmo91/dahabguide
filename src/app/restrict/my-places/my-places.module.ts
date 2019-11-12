@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core'
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { CommonModule } from '@angular/common'
 
 import { MyPlacesRoutingModule } from './my-places-routing.module'
@@ -11,14 +11,21 @@ import * as fromPlaceWizard from './place-wizard-state/place-wizard.reducer'
 import { PlaceWizardEffects } from './place-wizard-state/place-wizard.effects'
 import { EditPlaceComponent } from './edit-place/edit-place.component'
 import { ChoosePlaceLocationComponent } from './choose-place-location/choose-place-location.component'
+import { PlaceImagesComponent } from './place-images/place-images.component'
+import { PlacePricingFormComponent } from './place-pricing-form/place-pricing-form.component'
+
 @NgModule({
-  declarations: [PlacesListComponent, AddPlaceComponent, EditPlaceComponent, ChoosePlaceLocationComponent],
+  declarations: [
+    PlacesListComponent, AddPlaceComponent, EditPlaceComponent,
+    ChoosePlaceLocationComponent, PlaceImagesComponent, PlacePricingFormComponent
+  ],
   imports: [
     CommonModule,
     MyPlacesRoutingModule,
     RestrictSharedModule,
     StoreModule.forFeature(fromPlaceWizard.placeWizardFeatureKey, fromPlaceWizard.reducer),
     EffectsModule.forFeature([PlaceWizardEffects])
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class MyPlacesModule { }
