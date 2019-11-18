@@ -1,8 +1,8 @@
 <mat-nav-list class="h-100 d-flex flex-column">
-  <a class="nav-btn my-2" aria-labelledby="my-places" mat-button color="primary" [routerLink]="['my-places']"
-    routerLinkActive="router-link-active">
-    <mat-icon class="mr-3">house</mat-icon>
-    <span id="my-places">My places</span>
+  <a *ngFor="let link of this.links" class="nav-btn my-2" [attr.aria-labelledby]="link.id" mat-button color="primary"
+    [routerLink]="link.routerLink" routerLinkActive="router-link-active">
+    <mat-icon class="mr-3">{{link.icon}}</mat-icon>
+    <span id="{{link.id}}">{{link.label}}</span>
   </a>
   <div class="flex-grow-1"></div>
   <a class="nav-btn my-2" aria-labelledby="my-places" mat-stroked-button color="primary" [routerLink]="['/landing']"

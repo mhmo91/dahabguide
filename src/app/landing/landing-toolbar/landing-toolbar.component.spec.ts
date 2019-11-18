@@ -6,7 +6,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 
 import { LandingToolbarComponent } from './landing-toolbar.component'
 import { provideMockStore } from '@ngrx/store/testing'
-import { appStateMock } from 'src/app/reducers'
+import { appStateMock } from 'src/testing/states/app-state-mock'
 
 describe('LandingToolbarComponent', () => {
   let component: LandingToolbarComponent

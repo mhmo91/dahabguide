@@ -1,29 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { AppSharedModule } from '../app-shared.module'
-import { PlacesFilterComponent } from './places-filter.component'
+import { BookingsListComponent } from './bookings-list.component'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
-import { appStateMock } from 'src/testing/states/app-state-mock'
 import { provideMockStore } from '@ngrx/store/testing'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { appStateMock } from 'src/testing/states/app-state-mock'
+import { RestrictSharedModule } from '../../restrict-shared/restrict-shared.module'
 
-describe('PlacesFilterComponent', () => {
-  let component: PlacesFilterComponent
-  let fixture: ComponentFixture<PlacesFilterComponent>
+describe('BookingsListComponent', () => {
+  let component: BookingsListComponent
+  let fixture: ComponentFixture<BookingsListComponent>
   const initialState = appStateMock
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AppSharedModule, BrowserAnimationsModule],
-      declarations: [],
+      imports: [RestrictSharedModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      declarations: [BookingsListComponent],
       providers: [provideMockStore({ initialState })]
     })
       .compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlacesFilterComponent)
+    fixture = TestBed.createComponent(BookingsListComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })

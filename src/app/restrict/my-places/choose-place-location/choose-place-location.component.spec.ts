@@ -5,7 +5,7 @@ import { ChoosePlaceLocationComponent } from './choose-place-location.component'
 import { RestrictSharedModule } from '../../restrict-shared/restrict-shared.module'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { provideMockStore } from '@ngrx/store/testing'
-import { appStateMock } from 'src/app/reducers'
+import { appStateMock } from 'src/testing/states/app-state-mock'
 import { MapsAPILoader } from '@agm/core'
 
 describe('ChoosePlaceLocationComponent', () => {

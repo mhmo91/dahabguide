@@ -1,0 +1,24 @@
+<form class="d-flex flex-column p-5" [formGroup]="this.addBookingForm">
+
+  <mat-radio-group formControlName="rentalType" class="d-flex flex-column my-2" aria-label="Select rental type">
+    <mat-radio-button class="my-2" [value]="this.rentalTypes.shortTerm">Short Term</mat-radio-button>
+    <mat-radio-button class="my-2" [value]="this.rentalTypes.longTerm">Long Term</mat-radio-button>
+  </mat-radio-group>
+
+  <mat-form-field class="my-2">
+    <input formControlName="fromDate" matInput [matDatepicker]="fromDatePicker" placeholder="Check-in Date"
+      (click)="fromDatePicker.open()" autocomplete="off" required>
+    <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #fromDatePicker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="my-2">
+    <input formControlName="toDate" matInput [matDatepicker]="toDatePicker" placeholder="Checkout Date"
+      (click)="toDatePicker.open()" autocomplete="off" [min]="addBookingForm.controls['fromDate'].value"
+      [required]="addBookingForm.controls['rentalType'].value === rentalTypes.shortTerm">
+    <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #toDatePicker></mat-datepicker>
+  </mat-form-field>
+
+
+
+</form>
