@@ -4,7 +4,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 import { HostSignupComponent } from './host-signup.component'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { provideMockStore } from '@ngrx/store/testing'
-import { appStateMock } from '../reducers'
+import { appStateMock } from 'src/testing/states/app-state-mock'
 import { RouterTestingModule } from '@angular/router/testing'
 
 describe('HostSignupComponent', () => {

@@ -23,6 +23,10 @@ body {
   }
 }
 
+:focus {
+  outline: #e64a19 auto 1px;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }

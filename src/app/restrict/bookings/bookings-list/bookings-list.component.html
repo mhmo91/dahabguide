@@ -1,0 +1,34 @@
+<div class="container-fluid my-4 h-100">
+
+  <div *ngIf="(this.isLoading$|async) else loaded" class="loading-shade">
+    <mat-spinner></mat-spinner>
+  </div>
+
+
+  <ng-template #loaded>
+    <section class="container-fluid" *ngIf="(this.bookings$|async)?.length > 0 else noPropertiesFound">
+      <div class="row">
+        <div class="col-md-12  col-lg-6 my-2" *ngFor="let place of this.bookings$| async">
+        </div>
+      </div>
+
+      <button aria-label="Add place" (click)="this.addNewBookingModal()" class="float-bottom" mat-fab color="accent">
+        <mat-icon>add</mat-icon>
+      </button>
+    </section>
+
+    <ng-template #noPropertiesFound>
+
+      <div class="d-flex flex-column align-items-center justify-content-center h-100">
+        <dahab-nice-image class="my-3" size="6rem" icon="nemo"></dahab-nice-image>
+        <p class="my-3">You don't have any bookings yet</p>
+        <button (click)="this.addNewBookingModal()" class="my-3" aria-labelledby="addBtn" mat-raised-button
+          color="accent">
+          <mat-icon class="mr-3">add</mat-icon>
+          <span id="addBtn">Add Booking</span>
+        </button>
+      </div>
+    </ng-template>
+  </ng-template>
+
+</div>

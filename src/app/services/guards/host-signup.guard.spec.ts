@@ -1,4 +1,4 @@
-import { appStateMock } from './../../reducers/index'
+import { appStateMock } from 'src/testing/states/app-state-mock'
 import { provideMockStore, MockStore, MockState } from '@ngrx/store/testing'
 import { TestBed, async, inject } from '@angular/core/testing'
 

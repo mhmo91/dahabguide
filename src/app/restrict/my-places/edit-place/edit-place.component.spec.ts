@@ -3,7 +3,7 @@ import { placeWizardStateMock } from './../place-wizard-state/place-wizard.reduc
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { EditPlaceComponent } from './edit-place.component'
-import { appStateMock } from 'src/app/reducers'
+import { appStateMock } from 'src/testing/states/app-state-mock'
 import { FirebaseTestingModule } from 'src/testing/firebase-testing/firebase-testing.module'
 import { provideMockStore } from '@ngrx/store/testing'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'

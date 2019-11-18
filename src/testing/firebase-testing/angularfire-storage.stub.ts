@@ -1,4 +1,4 @@
-import { AngularFireUploadTask } from '@angular/fire/storage'
+import { AngularFireUploadTask, AngularFireStorageReference } from '@angular/fire/storage'
 import { of, EMPTY } from 'rxjs'
 import { UploadTaskSnapshot } from '@angular/fire/storage/interfaces'
 
@@ -14,3 +14,10 @@ angularFireStorageSpy.upload =
             }
         }
     }
+angularFireStorageSpy.ref = (): Partial<AngularFireStorageReference> => {
+    return {
+        getDownloadURL: () => {
+            return of(EMPTY)
+        }
+    }
+}

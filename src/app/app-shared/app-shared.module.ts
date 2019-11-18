@@ -46,7 +46,8 @@ import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker'
 import { MatGridListModule } from '@angular/material/grid-list'
 import { UploadMeComponent } from './upload-me/upload-me.component'
 import { DropzoneDirective } from './directives/drop-zone.directive'
-import { GalleryModule } from '@ks89/angular-modal-gallery'
+import { GalleryModule } from '@ks89/angular-modal-gallery';
+import { AddNewBookingComponent } from './add-new-booking/add-new-booking.component'
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { GalleryModule } from '@ks89/angular-modal-gallery'
     SelectNumberComponent,
     PlacesFilterComponent,
     DropzoneDirective,
-    UploadMeComponent
+    UploadMeComponent,
+    AddNewBookingComponent
   ],
   imports: [
     CommonModule,
@@ -80,6 +82,8 @@ import { GalleryModule } from '@ks89/angular-modal-gallery'
     SatNativeDateModule,
     SatDatepickerModule,
     MatGridListModule,
+    MatDatepickerModule,
+    MatRadioModule,
     GalleryModule,
     MatTooltipModule,
 
@@ -135,11 +139,13 @@ import { GalleryModule } from '@ks89/angular-modal-gallery'
     SelectNumberComponent,
     PlacesFilterComponent,
     UploadMeComponent,
+    AddNewBookingComponent,
     // pipes
     NotPipe,
     PlacesPipe,
     // Directives
     DropzoneDirective
-  ]
+  ],
+  entryComponents: [AddNewBookingComponent]
 })
 export class AppSharedModule { }

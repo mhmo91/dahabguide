@@ -11,6 +11,7 @@ import { environment } from '../../environments/environment'
 import { reducer as userReducer } from './user.reducer'
 import { reducer as authReducer } from './auth.reducer'
 import { reducer as resourcesReducer } from './resources.reducer'
+import { reducer as bookingsReducer, IBookingsState } from './booking.reducer'
 import { reducer as placesReducer, IPlacesState } from './place.reducer'
 // tslint:disable-next-line: semicolon
 import { User } from '../models/user.model'
@@ -24,19 +25,23 @@ export interface AppState {
   readonly auth
   readonly resources?
   readonly places?
+  readonly bookings?
 }
 export interface IAppState {
   readonly user: Partial<IUser>
   readonly auth: AuthState
   readonly resources?: IResources
   readonly places?: IPlacesState
+  readonly bookings: IBookingsState
+
 }
 
 export const reducers: ActionReducerMap<AppState> = {
   user: userReducer,
   auth: authReducer,
   resources: resourcesReducer,
-  places: placesReducer
+  places: placesReducer,
+  bookings: bookingsReducer
 }
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: ['user', 'resources', 'auth', 'places', 'placeWizard'], rehydrate: true })(reducer)
@@ -46,62 +51,3 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
 export const metaReducers: MetaReducer<any>[] =
   !environment.production ? [clearUserState, localStorageSyncReducer] : [clearUserState, localStorageSyncReducer]
 
-
-// app state mock for testing purposes
-export const appStateMock: IAppState = {
-  user: new User(null),
-  auth: new AuthState(false),
-  resources: {
-    placesTypes: [
-      {
-        id: '3U1IvDfOM3OtIRaEsu0O',
-        name_en: 'Camp',
-        standAlone: true
-      },
-      {
-        canBeBooked: true,
-        id: 'FLuha0om6ZkDQWHfVDDQ',
-        name_en: 'Apartment',
-        standAlone: true
-      },
-      {
-        canBeBooked: true,
-        id: 'Fkn3iO61mCZp2PvLYTen',
-        name_en: 'Chalet',
-        standAlone: true
-      },
-      {
-        id: 'MpOSS5Pc2XDyFpuWJ3SU',
-        name_en: 'Hostel',
-        standAlone: true
-      },
-      {
-        canBeBooked: true,
-        id: 'eLgABbmtQ9OUymonqsHJ',
-        name_en: 'Private room',
-        standAlone: false
-      },
-      {
-        canBeBooked: true,
-        id: 'hhHXZdzsAzcwVQx4wRtC',
-        name_en: 'Shared room',
-        standAlone: false
-      },
-      {
-        canBeBooked: true,
-        id: 'mklsKNzDL63UoBsK6l5U',
-        name_en: 'Studio',
-        standAlone: true
-      }
-    ],
-    amenities: [],
-    facilities: []
-  },
-  places: {
-    loading: false,
-    ids: [],
-    entities: {},
-    currentPlaceId: null,
-    palcesFilter: new PlacesFilter()
-  }
-}

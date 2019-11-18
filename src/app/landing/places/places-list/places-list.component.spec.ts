@@ -4,7 +4,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 import { PlacesListComponent } from './places-list.component'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { AppSharedModule } from 'src/app/app-shared/app-shared.module'
-import { appStateMock } from 'src/app/reducers'
+import { appStateMock } from 'src/testing/states/app-state-mock'
 import { MapsAPILoader } from '@agm/core'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 

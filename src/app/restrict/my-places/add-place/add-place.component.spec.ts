@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { AddPlaceComponent } from './add-place.component'
 import { provideMockStore } from '@ngrx/store/testing'
-import { appStateMock } from 'src/app/reducers'
+import { appStateMock } from 'src/testing/states/app-state-mock'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { RestrictSharedModule } from '../../restrict-shared/restrict-shared.module'
 import { FirebaseTestingModule } from 'src/testing/firebase-testing/firebase-testing.module'

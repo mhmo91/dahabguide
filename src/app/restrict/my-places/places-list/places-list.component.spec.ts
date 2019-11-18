@@ -1,5 +1,5 @@
 import { RestrictSharedModule } from 'src/app/restrict/restrict-shared/restrict-shared.module'
-import { appStateMock } from 'src/app/reducers'
+import { appStateMock } from 'src/testing/states/app-state-mock'
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { PlacesListComponent } from './places-list.component'
