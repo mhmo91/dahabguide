@@ -1,4 +1,4 @@
-import { AddNewBookingComponent } from './../../../app-shared/add-new-booking/add-new-booking.component';
+import { AddNewBookingComponent } from './../../../app-shared/add-new-booking/add-new-booking.component'
 import { Component, OnInit } from '@angular/core'
 import { Observable } from 'rxjs'
 import { IBooking } from 'src/app/models/booking.model'
