@@ -16,6 +16,7 @@ export enum ActionTypes {
 export class GetUser implements Action {
   readonly type = ActionTypes.GET_USER
 }
+
 export class GetUserSuccess implements Action {
   readonly type = ActionTypes.GET_USER_SUCCESS
   constructor(public payload: IUser) { }

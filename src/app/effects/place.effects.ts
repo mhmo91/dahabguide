@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core'
 import { Actions, Effect, ofType } from '@ngrx/effects'
 import * as placesActions from '../actions/place.actions'
 import { AngularFirestore } from '@angular/fire/firestore'
-import { map, switchMap, catchError } from 'rxjs/operators'
-import { from, of, EMPTY } from 'rxjs'
-import { Update } from '@ngrx/entity'
+import { map, switchMap, catchError, zip } from 'rxjs/operators'
+import { from, of, EMPTY, combineLatest, merge, forkJoin } from 'rxjs'
 import { AngularFireStorage } from '@angular/fire/storage'
+import { IUser } from '../models/user.model'
 
 @Injectable()
 export class PlaceEffects {
@@ -46,7 +46,6 @@ export class PlaceEffects {
   updatePlace = this.actions$.pipe(
     ofType(placesActions.PlaceActionTypes.UpdatePlace),
     switchMap((payload: any) => {
-      console.log(payload)
       const place = payload.payload.place
       return from(this.afs.doc(`/places/${place.id}`).update(place.changes))
     }),
@@ -59,10 +58,28 @@ export class PlaceEffects {
     ofType(placesActions.PlaceActionTypes.InitLoadPlaces),
     switchMap((payload: any) => this.afs.collection<IPlace>(`places`).valueChanges()),
     map((res) => {
-      console.log(res)
       return new placesActions.LoadPlaces({ places: res })
     }),
     catchError(error => of(new placesActions.AddPlaceFailure({ place: { ...this.selectedPlace, error } })))
+  )
+
+
+  @Effect()
+  GetPlaceDetails = this.actions$.pipe(
+    ofType<placesActions.GetPlaceDetails>(placesActions.PlaceActionTypes.GetPlaceDetails),
+    switchMap((payload) => {
+      const place = payload.place
+      const resources = [
+        this.afs.doc<IUser>(`users/${place.creatorId}`).valueChanges(),
+        of(place)
+      ]
+      return combineLatest(resources)
+    }),
+    map((res: any) => {
+      console.log(res)
+      return new placesActions.UpdateCurrentPlace({ host: res[0], ...res[1] })
+    }),
+    catchError(error => EMPTY)
   )
 
 
