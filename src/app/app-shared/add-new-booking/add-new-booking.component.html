@@ -1,4 +1,4 @@
-<form class="d-flex flex-column p-5" [formGroup]="this.addBookingForm">
+<form class="d-flex flex-column" [formGroup]="this.addBookingForm">
 
   <mat-radio-group formControlName="rentalType" class="d-flex flex-column my-2" aria-label="Select rental type">
     <mat-radio-button class="my-2" [value]="this.rentalTypes.shortTerm">Short Term</mat-radio-button>
@@ -19,6 +19,7 @@
     <mat-datepicker #toDatePicker></mat-datepicker>
   </mat-form-field>
 
+  <button mat-raised-button color="accent">Reserve</button>
 
 
 </form>

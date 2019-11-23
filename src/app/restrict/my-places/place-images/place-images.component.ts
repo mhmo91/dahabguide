@@ -61,7 +61,6 @@ export class PlaceImagesComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   onDrop(files: FileList) {
-    console.log(files)
     Array.from(files).forEach((f) => {
       this.attachedPhotos.push(f)
     })

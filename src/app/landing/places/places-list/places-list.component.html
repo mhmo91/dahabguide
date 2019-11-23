@@ -4,7 +4,7 @@
 
     <article id="placesList" class="places-list-container col-md-12 col-lg-7 col-xl-6">
       <div *ngFor="let place of this.places$ | async" class="my-2">
-        <dahab-place-card [place]="place"></dahab-place-card>
+        <dahab-place-card (clicked)="openPlace(place)" [place]="place"></dahab-place-card>
       </div>
     </article>
     <article class=" flex-grow-1 p-0 mat-elevation-z8">

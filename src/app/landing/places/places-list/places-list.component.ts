@@ -5,6 +5,7 @@ import { Observable } from 'rxjs'
 import { IPlace } from 'src/app/models/place.model'
 import { placesSelector } from 'src/app/selectors'
 import { MapStyle } from 'src/app/constants/map.config'
+import { Router, ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'dahab-places-list',
@@ -13,7 +14,7 @@ import { MapStyle } from 'src/app/constants/map.config'
 })
 export class PlacesListComponent implements OnInit {
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private router: Router, private activatedRoute: ActivatedRoute) {
     this.mapConfigurations = {
       latitude: 28.5001444,
       longitude: 34.5201866,
@@ -30,4 +31,8 @@ export class PlacesListComponent implements OnInit {
     this.isLoading$ = this.store.select(placesSelector.isLoading)
   }
 
+  openPlace(place) {
+    console.log(place)
+    this.router.navigate([place.id], { relativeTo: this.activatedRoute })
+  }
 }

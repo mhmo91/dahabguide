@@ -58,7 +58,7 @@ import { AddNewBookingComponent } from './add-new-booking/add-new-booking.compon
     PlacesFilterComponent,
     DropzoneDirective,
     UploadMeComponent,
-    AddNewBookingComponent
+    AddNewBookingComponent,
   ],
   imports: [
     CommonModule,

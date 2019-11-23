@@ -37,7 +37,7 @@ const myCreatedPlaces = createSelector(
 
 // select current active place
 const getCurrentPlace = createSelector(getPlacesFeature, (placeState: placeReducer.IPlacesState) => {
-    return placeState.entities[placeState.currentPlaceId]
+    return placeState.currentPlace
 })
 
 
