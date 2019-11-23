@@ -11,8 +11,8 @@
 </mat-grid-list>
 
 <ng-template #mobileCarousel>
-  <ngb-carousel (keypress)="openImagesModal(this.activeImg)" (focus)="hover=true" class="col-12 p-0" #carousel
-    interval="4000000" pauseOnHover=true>
+  <ngb-carousel (keypress)="openImagesModal(this.activeImg)" class="col-12 p-0" #carousel interval="4000000"
+    pauseOnHover=true>
     <ng-template ngbSlide *ngFor="let img of place?.photos; index as i">
       <img class="place-img" [src]="img" alt="Place image {{i + 1}} description" (click)="openImagesModal(i)">
     </ng-template>
