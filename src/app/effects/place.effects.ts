@@ -7,7 +7,8 @@ import { map, switchMap, catchError, zip } from 'rxjs/operators'
 import { from, of, EMPTY, combineLatest, merge, forkJoin } from 'rxjs'
 import { AngularFireStorage } from '@angular/fire/storage'
 import { IUser } from '../models/user.model'
-
+import { IBooking } from '../models/booking.model'
+import * as moment from 'moment'
 @Injectable()
 export class PlaceEffects {
 
@@ -71,13 +72,16 @@ export class PlaceEffects {
       const place = payload.place
       const resources = [
         this.afs.doc<IUser>(`users/${place.creatorId}`).valueChanges(),
-        of(place)
+        of(place),
+        this.afs.collection<any>(`bookings`, ref => {
+          return ref.where('placeId', '==', place.id)
+        }).valueChanges(),
       ]
       return combineLatest(resources)
     }),
     map((res: any) => {
       console.log(res)
-      return new placesActions.UpdateCurrentPlace({ host: res[0], ...res[1] })
+      return new placesActions.UpdateCurrentPlace({ host: res[0], ...res[1], bookings: res[2] })
     }),
     catchError(error => EMPTY)
   )

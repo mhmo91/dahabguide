@@ -17,13 +17,3 @@ $dahab-app-theme: mat-light-theme($dahab-app-primary, $dahab-app-accent, $dahab-
 // Include the default theme styles.
 @include angular-material-theme($dahab-app-theme);
 @include sat-datepicker-theme($dahab-app-theme);
-
-// extend theme 
-.mat-stepper-horizontal,
-.mat-stepper-vertical {
-  background-color: rgba($app-background, 0.5)
-}
-
-.mat-card {
-  background: rgba(white, 0.3)
-}

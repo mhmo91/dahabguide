@@ -2,11 +2,12 @@ import { AngularFirestore } from '@angular/fire/firestore'
 import { Injectable } from '@angular/core'
 import { Actions, Effect, ofType } from '@ngrx/effects'
 import * as bookingsActions from '../actions/booking.actions'
-import { withLatestFrom, filter, exhaustMap, map } from 'rxjs/operators'
+import { withLatestFrom, filter, exhaustMap, map, switchMap, catchError } from 'rxjs/operators'
 import { AppState } from '../reducers'
 import { Store } from '@ngrx/store'
 import { bookingSelector } from '../selectors'
 import { IBooking } from '../models/booking.model'
+import { from, of } from 'rxjs'
 
 @Injectable()
 export class BookingEffects {
@@ -33,5 +34,31 @@ export class BookingEffects {
       })
     ))
   )
+
+  currentBooking: IBooking
+  @Effect()
+  addPlace = this.actions$.pipe(
+    ofType<bookingsActions.AddBooking>(bookingsActions.BookingActionTypes.AddBooking),
+    map((action) => {
+      this.currentBooking = action.payload.booking
+      return action.payload.booking
+    }),
+    switchMap((booking) => from(this.afs.doc(`/bookings/${booking.id}`).set(booking, { merge: true }))),
+    map((res) => {
+      return new bookingsActions.AddBookingSuccess({ booking: { ...this.currentBooking, error: null } })
+    }),
+    catchError(error => of(new bookingsActions.AddBookingFailure({ booking: { ...this.currentBooking, error } })))
+  )
+
+  // @Effect()
+  // updatePlace = this.actions$.pipe(
+  //   ofType(bookingsActions.BookingActionTypes.UpdatePlace),
+  //   switchMap((payload: any) => {
+  //     const place = payload.payload.place
+  //     return from(this.afs.doc(`/places/${place.id}`).update(place.changes))
+  //   }),
+  //   map(() => new bookingsActions.UpdatePlaceSuccess()),
+  //   catchError(error => of(new bookingsActions.UpdatePlaceFailure({ place: { ...this.selectedPlace, error } })))
+  // )
 
 }

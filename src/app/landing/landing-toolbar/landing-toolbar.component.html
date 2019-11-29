@@ -13,7 +13,7 @@
     <span id="sign_up_as_host">Become a host</span>
   </a>
   <section *ngIf="(this.auth$ | async).authenticated; else login">
-    <a *ngIf="this.IsHost" class="mr-2" aria-labelledby="my_account" mat-flat-button color="accent"
+    <a *ngIf="this.IsHost" class="mr-2" aria-labelledby="my_account" mat-stroked-button color="accent"
       [routerLink]="['/restrict']" routerLinkActive="router-link-active">
       <span id="my_account">My Account</span>
     </a>

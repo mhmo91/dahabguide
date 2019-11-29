@@ -9,7 +9,7 @@ export interface IBookingsState extends EntityState<IBooking> {
   bookingsFilter?
   loading?
   subscribed?
-  currentBookingId?
+  currentBooking?: Partial<IBooking>
 }
 export const adapter: EntityAdapter<IBooking> = createEntityAdapter<IBooking>()
 
@@ -23,28 +23,28 @@ export function reducer(
   action: BookingActions
 ): IBookingsState {
   switch (action.type) {
+    case BookingActionTypes.InitAddBooking: {
+      return { ...state, currentBooking: {} }
+    }
+
     case BookingActionTypes.AddBooking: {
-      return adapter.addOne(action.payload.booking, state)
+      return { ...state, currentBooking: { ...action.payload.booking, saving: true } }
+    }
+
+
+    case BookingActionTypes.AddBookingSuccess: {
+      return adapter.addOne(action.payload.booking, {
+        ...state, currentBooking: { ...state.currentBooking, saving: false, error: action.payload.booking.error }
+      })
     }
 
     case BookingActionTypes.UpsertBooking: {
       return adapter.upsertOne(action.payload.booking, state)
     }
 
-    case BookingActionTypes.AddBookings: {
-      return adapter.addMany(action.payload.bookings, state)
-    }
-
-    case BookingActionTypes.UpsertBookings: {
-      return adapter.upsertMany(action.payload.bookings, state)
-    }
 
     case BookingActionTypes.UpdateBooking: {
       return adapter.updateOne(action.payload.booking, state)
-    }
-
-    case BookingActionTypes.UpdateBookings: {
-      return adapter.updateMany(action.payload.bookings, state)
     }
 
     case BookingActionTypes.DeleteBooking: {
@@ -57,6 +57,7 @@ export function reducer(
 
     case BookingActionTypes.LoadBookingsInit:
       return { ...state, loading: state.subscribed ? false : true }
+
     case BookingActionTypes.LoadBookings: {
       return adapter.addAll(action.payload.bookings,
         {

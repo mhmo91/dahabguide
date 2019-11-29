@@ -37,7 +37,7 @@ const myCreatedBookings = createSelector(
 
 // select current active booking
 const getCurrentBooking = createSelector(getBookingsFeature, (bookingState: bookingReducer.IBookingsState) => {
-    return bookingState.entities[bookingState.currentBookingId]
+    return bookingState.currentBooking
 })
 
 

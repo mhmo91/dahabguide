@@ -1,90 +1,85 @@
-<mat-grid-list *ngIf="this.currentView !== 'xs';else mobileCarousel" [gutterSize]="'0px'"
-  [cols]="this.currentView === 'lg' ? 4 : 3 " rows="2" rowHeight="35vh">
-  <mat-grid-tile (mouseleave)="this.activeImg = null" (blur)="this.activeImg = null" (focus)="this.activeImg = i"
-    (mouseover)="this.activeImg = i" [rowspan]="i === 0? 2:1" [colspan]="i === 0? 2:1"
-    *ngFor="let photo of place?.photos | slice: 0:(this.currentView === 'lg' ? 5 : 3 ); let i = index">
-    <img class="place-img" (click)="openImagesModal(i)" alt="place image {{i}}"
-      [style.opacity]="(this.activeImg !==i && this.activeImg != null)? 0.6:1 " [src]="photo">
-  </mat-grid-tile>
-  <button (click)="openImagesModal(0)" class="more-photos"
-    *ngIf="place?.photos?.length > (this.currentView === 'lg' ? 5 : 3 )" mat-raised-button>More Images</button>
-</mat-grid-list>
-
-<ng-template #mobileCarousel>
-  <ngb-carousel (keypress)="openImagesModal(this.activeImg)" class="col-12 p-0" #carousel interval="4000000"
-    pauseOnHover=true>
-    <ng-template ngbSlide *ngFor="let img of place?.photos; index as i">
-      <img class="place-img" [src]="img" alt="Place image {{i + 1}} description" (click)="openImagesModal(i)">
-    </ng-template>
-  </ngb-carousel>
-</ng-template>
-
-
-<ks-modal-gallery class="mt-3" [id]="3" [modalImages]="this.placePhotos" [plainGalleryConfig]="plainGalleryGrid">
-</ks-modal-gallery>
-
-
-<div class="container-fluid mt-3 mb-large">
-  <div class="row justify-content-around">
-    <div class="col-auto d-flex flex-column">
-
-
-      <div class="flex-grow-1 d-flex flex-column pl-3">
-        <h4 class="my-3">{{this.placeTypeName}}</h4>
-        <p class="small-text h-auto my-3">
-          {{place?.layout.bedrooms}} {{(place?.layout.bedrooms> 1)? 'Bedrooms':'Bedroom'}} .
-          <!-- {{place?.layout.beds}} {{(place?.layout.beds> 1)? 'Beds':'Bed'}} . -->
-          {{place?.layout.bathrooms}} {{(place?.layout.bathrooms> 1)? 'Bathrooms':'Bathroom'}}
-          {{place?.layout.privateGarden? '. Private Garden':null}}
-        </p>
-
-        <p *ngFor="let amen of this.placeAmenities" class="d-flex align-items-center my-1">
-          <mat-icon class="text-muted m-2 small-icon">
-            {{amen.icon}}</mat-icon>
-          {{amen.name_en}}
-        </p>
-        <div class="flex-grow-1">
+<section class="w-100">
+  <div class="bg-white mat-elevation-z1 fixed-top d-flex flex-wrap align-items-center justify-content-center py-2">
+    <div class="col-auto  bg-whit d-flex pl-0">
+      <img class="mr-2 host-img" src="{{this.currentPlace?.host?.photoURL}}" alt="host profile picture">
+      <div>
+        <h6 class="m-0">{{this.currentPlace?.host?.displayName}}</h6>
+        <div class="d-flex align-items-center">
+          <mat-icon style="color: orange;">star</mat-icon> 4.6 <span class="text-muted ml-2">(13 reviews)</span>
         </div>
-
       </div>
     </div>
 
-    <mat-card class="col-auto ">
-      <mat-card-content class="px-5">
-        <div *ngIf="this.place?.price" class="d-flex justify-content-between pb-2">
-          <div>
-            <p class="price" *ngIf="this.place?.price?.longTerm">
-              {{place?.price.perMonth  | number   }} <span class="text-muted small-text">$/Month</span>
-            </p>
-            <p class="price" *ngIf="this.place?.price?.shortTerm">
-              {{place?.price.perNight  | number }} <span class="text-muted small-text">$/Night</span>
-            </p>
+    <div class="col-auto">
+      <mat-button-toggle class="mr-2" #showContact value="true" mat-button>
+        <mat-icon>call</mat-icon>
+        <span class="pl-2 d-none d-md-inline">Contact Info</span>
+      </mat-button-toggle>
+      <button (click)="openBookModal()" mat-raised-button color="accent">
+        Book
+      </button>
+    </div>
+    <div *ngIf="this.showContact.checked" class="col-12 d-flex flex-wrap justify-content-center">
+      <a href="mailo:{{this.currentPlace?.host?.email}}" class="m-0 p-2">
+        <img class="social-icon mr-2 small-icon" src="assets/gmail.svg" alt="email logo">
+        {{this.currentPlace?.host?.email}}
+      </a>
+      <a href="tel:+2{{this.currentPlace?.host?.mobile}}" class="m-0 p-2">
+        <img class="social-icon mr-2 small-icon" src="assets/whatsapp.svg" alt="whatsapp logo">
+        (+2){{this.currentPlace?.host?.mobile}}
+      </a>
+    </div>
+  </div>
+  <dahab-place-images [photosUrl]="this.place?.photos"></dahab-place-images>
+
+  <div class="container mt-3 mb-5">
+    <div class="row justify-content-around">
+      <div class="col-auto d-flex flex-column">
+
+
+        <div class="flex-grow-1 d-flex flex-column pl-3">
+          <h4 class="my-3">{{this.placeTypeName}}</h4>
+          <p class="small-text h-auto my-3">
+            {{place?.layout.bedrooms}} {{(place?.layout.bedrooms> 1)? 'Bedrooms':'Bedroom'}} .
+            <!-- {{place?.layout.beds}} {{(place?.layout.beds> 1)? 'Beds':'Bed'}} . -->
+            {{place?.layout.bathrooms}} {{(place?.layout.bathrooms> 1)? 'Bathrooms':'Bathroom'}}
+            {{place?.layout.privateGarden? '. Private Garden':null}}
+          </p>
+
+          <p *ngFor="let amen of this.placeAmenities" class="d-flex align-items-center my-1">
+            <mat-icon class="text-muted m-2 small-icon">
+              {{amen.icon}}</mat-icon>
+            {{amen.name_en}}
+          </p>
+          <div class="flex-grow-1">
           </div>
-          <p></p>
+
         </div>
-        <dahab-add-new-booking></dahab-add-new-booking>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
-<div class="bg-white mat-elevation-z4 fixed-bottom d-flex flex-wrap align-items-center justify-content-center py-2">
-  <div class="col-auto  bg-whit d-flex pl-0">
-    <img class="mr-2 host-img" src="{{this.currentPlace?.host?.photoURL}}" alt="host profile picture">
-    <div>
-      <h6 class="m-0">{{this.currentPlace?.host?.displayName}}</h6>
-      <div class="d-flex align-items-center">
-        <mat-icon style="color: orange;">star</mat-icon> 4.6 <span class="text-muted ml-2">(13 reviews)</span>
       </div>
+      <div class="col-auto">
+        <dahab-place-availability-calendar [place]="this.currentPlace"></dahab-place-availability-calendar>
+
+      </div>
+      <!-- <mat-card class="col-auto ">
+        <mat-card-content class="px-5">
+          <div *ngIf="this.place?.price" class="d-flex justify-content-between pb-2">
+            <div>
+              <p class="price" *ngIf="this.place?.price?.longTerm">
+                {{place?.price.perMonth  | number   }} <span class="text-muted small-text">$/Month</span>
+              </p>
+              <p class="price" *ngIf="this.place?.price?.shortTerm">
+                {{place?.price.perNight  | number }} <span class="text-muted small-text">$/Night</span>
+              </p>
+            </div>
+            <p></p>
+          </div>
+          <dahab-add-new-booking></dahab-add-new-booking>
+        </mat-card-content>
+      </mat-card> -->
     </div>
   </div>
-  <div class="col-auto">
-    <p class="d-flex align-items-center my-1">
-      <img class="social-icon mr-2 small-icon" src="assets/gmail.svg" alt="email logo">
-      {{this.currentPlace?.host?.email}}
-    </p>
-    <p class="d-flex align-items-center my-1">
-      <img class="social-icon mr-2 small-icon" src="assets/whatsapp.svg" alt="whatsapp logo">
-      {{this.currentPlace?.host?.mobile}}
-    </p>
-  </div>
-</div>
+
+
+
+
+</section>

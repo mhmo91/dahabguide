@@ -1,0 +1,12 @@
+mat-calendar {
+  &.availability-calendar {
+    @media (min-width: 20rem) {
+      min-width: 18rem;
+    }
+
+    .mat-calendar-body-cell-content {
+      color: #00796b;
+    }
+
+  }
+}
