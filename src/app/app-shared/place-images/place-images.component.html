@@ -18,6 +18,7 @@
       </ng-template>
     </ngb-carousel>
   </ng-template>
-  <ks-modal-gallery class="mt-3" [id]="3" [modalImages]="this.placePhotos" [plainGalleryConfig]="plainGalleryGrid">
+  <ks-modal-gallery *ngIf="this.placePhotos" class="mt-3" [id]="3" [modalImages]="this.placePhotos"
+    [plainGalleryConfig]="plainGalleryGrid">
   </ks-modal-gallery>
 </section>

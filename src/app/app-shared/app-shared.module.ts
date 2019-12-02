@@ -1,3 +1,4 @@
+import { BookingMinionService } from './services/booking-minion.service';
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
@@ -163,6 +164,6 @@ import { SnackbarService } from './services/snackbar.service'
     DropzoneDirective
   ],
   entryComponents: [AddNewBookingComponent],
-  providers: [SnackbarService]
+  providers: [SnackbarService, BookingMinionService]
 })
 export class AppSharedModule { }

@@ -38,8 +38,19 @@
 
 
         <div class="flex-grow-1 d-flex flex-column pl-3">
-          <h4 class="my-3">{{this.placeTypeName}}</h4>
-          <p class="small-text h-auto my-3">
+          <h4 class="my-3 pl-3">
+            {{this.placeTypeName}}
+          </h4>
+
+          <div class="d-flex flex-column pl-3">
+            <p class="price" *ngIf="this.place?.price?.longTerm">
+              {{place?.price.perMonth  | number   }} <span class="text-muted small-text">$/Month</span>
+            </p>
+            <p class="price" *ngIf="this.place?.price?.shortTerm">
+              {{place?.price.perNight  | number }} <span class="text-muted small-text">$/Night</span>
+            </p>
+          </div>
+          <p class="small-text h-auto my-1 pl-3">
             {{place?.layout.bedrooms}} {{(place?.layout.bedrooms> 1)? 'Bedrooms':'Bedroom'}} .
             <!-- {{place?.layout.beds}} {{(place?.layout.beds> 1)? 'Beds':'Bed'}} . -->
             {{place?.layout.bathrooms}} {{(place?.layout.bathrooms> 1)? 'Bathrooms':'Bathroom'}}
@@ -57,25 +68,10 @@
         </div>
       </div>
       <div class="col-auto">
+
         <dahab-place-availability-calendar [place]="this.currentPlace"></dahab-place-availability-calendar>
 
       </div>
-      <!-- <mat-card class="col-auto ">
-        <mat-card-content class="px-5">
-          <div *ngIf="this.place?.price" class="d-flex justify-content-between pb-2">
-            <div>
-              <p class="price" *ngIf="this.place?.price?.longTerm">
-                {{place?.price.perMonth  | number   }} <span class="text-muted small-text">$/Month</span>
-              </p>
-              <p class="price" *ngIf="this.place?.price?.shortTerm">
-                {{place?.price.perNight  | number }} <span class="text-muted small-text">$/Night</span>
-              </p>
-            </div>
-            <p></p>
-          </div>
-          <dahab-add-new-booking></dahab-add-new-booking>
-        </mat-card-content>
-      </mat-card> -->
     </div>
   </div>
 

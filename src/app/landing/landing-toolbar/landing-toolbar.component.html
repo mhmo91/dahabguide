@@ -15,7 +15,7 @@
   <section *ngIf="(this.auth$ | async).authenticated; else login">
     <a *ngIf="this.IsHost" class="mr-2" aria-labelledby="my_account" mat-stroked-button color="accent"
       [routerLink]="['/restrict']" routerLinkActive="router-link-active">
-      <span id="my_account">My Account</span>
+      <span id="my_account">Host Console</span>
     </a>
     <a class="profile-img cursor-pointer" [mat-menu-trigger-for]="userMenu">
       <img [src]="this.user.photoURL" width="30" height="30" alt="user photo" class="rounded-circle mat-elevation-z8">

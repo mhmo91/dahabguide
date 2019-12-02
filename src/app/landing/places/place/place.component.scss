@@ -1,3 +1,5 @@
+@import "src/sass/variables";
+
 mat-grid-tile {
   background-color: #263238 !important;
 }
@@ -9,6 +11,11 @@ mat-grid-tile {
   flex-shrink: 0;
   object-fit: cover;
 
+}
+
+.price {
+  font-size: 1rem;
+  color: $text-grey-800;
 }
 
 

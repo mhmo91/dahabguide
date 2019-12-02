@@ -4,11 +4,15 @@ import { IPlace as Place, IPlace } from '../models/place.model'
 import { PlaceActions, PlaceActionTypes } from '../actions/place.actions'
 import { createFeatureSelector, createSelector } from '@ngrx/store'
 import { ApiModel } from '../models/api.model'
+import { IBooking } from '../models/booking.model'
 export const placesFeatureKey = 'places'
 
+export interface ICurrentPlace extends IPlace {
+  bookings: Array<IBooking>
+}
 export interface IPlacesState extends EntityState<Place>, ApiModel {
   // additional entities state properties
-  currentPlace: IPlace & any
+  currentPlace: ICurrentPlace
   palcesFilter: PlacesFilter
 
 }

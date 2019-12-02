@@ -11,7 +11,7 @@ export class SnackbarService {
   error(message, action?, duration = 5000) {
     this.matSnackBar.open(message, action ? action : null, {
       duration: action ? null : duration,
-      verticalPosition: 'top',
+      verticalPosition: 'bottom',
       panelClass: ['text-white', 'bg-danger'],
       politeness: 'assertive'
     })
@@ -19,7 +19,7 @@ export class SnackbarService {
   success(message, action?, duration = 5000) {
     this.matSnackBar.open(message, action ? action : null, {
       duration: action ? null : duration,
-      verticalPosition: 'top',
+      verticalPosition: 'bottom',
       panelClass: ['text-white', 'bg-success'],
       politeness: 'assertive'
     })
@@ -28,7 +28,7 @@ export class SnackbarService {
   warning(message, action?, duration = 5000) {
     this.matSnackBar.open(message, action ? action : null, {
       duration: action ? null : duration,
-      verticalPosition: 'top',
+      verticalPosition: 'bottom',
       panelClass: ['text-white', 'bg-orange'],
       politeness: 'assertive'
     })
@@ -36,7 +36,7 @@ export class SnackbarService {
   inform(message, action?, duration = 5000) {
     this.matSnackBar.open(message, action ? action : null, {
       duration: action ? null : duration,
-      verticalPosition: 'top',
+      verticalPosition: 'bottom',
       panelClass: ['text-white', 'bg-navy-blue'],
       politeness: 'assertive'
     })

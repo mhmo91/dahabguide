@@ -16,7 +16,7 @@ export class PlaceImagesComponent implements OnInit, OnChanges {
   placePhotos
   currentView: string
   activeImg
-  @Input() photosUrl: Array<string>
+  @Input() photosUrl: Array<string> = []
   constructor(private minion: MinionsService, private breakpointObserver: BreakpointObserver) {
   }
 

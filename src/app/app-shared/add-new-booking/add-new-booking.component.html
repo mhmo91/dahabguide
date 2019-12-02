@@ -6,37 +6,42 @@
   </mat-radio-group>
 
   <mat-form-field class="my-2">
-    <input formControlName="fromDate" [min]="this.today" matInput [matDatepicker]="fromDatePicker"
-      placeholder="Check-in Date" (click)="fromDatePicker.open()" autocomplete="off" required>
+    <input formControlName="fromDate" [matDatepickerFilter]="this.bookingMinion.dateFilter" [min]="this.today" matInput
+      [matDatepicker]="fromDatePicker" placeholder="Check-in Date" (click)="fromDatePicker.open()" autocomplete="off"
+      (dateChange)="addBookingForm.controls['toDate'].reset() ;toDatePicker.open()" [min]="this.minDate" required>
     <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
     <mat-datepicker #fromDatePicker></mat-datepicker>
   </mat-form-field>
   <mat-form-field [hidden]="addBookingForm.controls['rentalType'].value === rentalTypes.longTerm" class="my-2">
-    <input formControlName="toDate" matInput [matDatepicker]="toDatePicker" placeholder="Checkout Date"
-      (click)="toDatePicker.open()" autocomplete="off" [min]="addBookingForm.controls['fromDate'].value"
-      [required]="addBookingForm.controls['rentalType'].value === rentalTypes.shortTerm">
-    <mat-datepicker-toggle matSuffix [for]="toDatePicker"></mat-datepicker-toggle>
-    <mat-datepicker #toDatePicker></mat-datepicker>
+    <input formControlName="toDate" matInput [matDatepickerFilter]="this.bookingMinion.dateFilter"
+      [matDatepicker]="toDatePicker" placeholder="Checkout Date" (click)="toDatePicker.open()" autocomplete="off"
+      [min]="addBookingForm.controls['fromDate'].value" [max]="this.maxDate"
+      [required]="addBookingForm.controls['rentalType'].value === rentalTypes.shortTerm"
+      [readonly]="!addBookingForm.controls['fromDate'].value">
+    <mat-datepicker-toggle [disabled]="!addBookingForm.controls['fromDate'].value" matSuffix [for]="toDatePicker">
+    </mat-datepicker-toggle>
+    <mat-datepicker [disabled]="addBookingForm.controls['rentalType'].value === rentalTypes.longTerm"
+      [startAt]="addBookingForm.controls['fromDate'].value" #toDatePicker></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field class="my-2" [hidden]="addBookingForm.controls['rentalType'].value === rentalTypes.shortTerm">
     <mat-label>How long is your stay?</mat-label>
     <mat-select formControlName="stayPeriod"
       [required]="addBookingForm.controls['rentalType'].value === rentalTypes.longTerm">
-      <mat-option value="1:3">
+      <mat-option value="{{stayPeriods.upTo3Month}}">
         1 to 3 months
       </mat-option>
-      <mat-option value="3:6">
+      <mat-option value="{{stayPeriods.upTo6Month}}">
         3 to 6 months
       </mat-option>
-      <mat-option value="6:12">
+      <mat-option value="{{stayPeriods.upTo12Month}}">
         6 to 12 months
       </mat-option>
 
-      <mat-option value=">12">
+      <mat-option value="{{stayPeriods.moreThan1Year}}">
         More than a year
       </mat-option>
-      <mat-option value="na">
+      <mat-option value="{{stayPeriods.unknown}}">
         I'm not sure
       </mat-option>
     </mat-select>

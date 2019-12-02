@@ -1,3 +1,4 @@
+import { BookingMinionService } from './../services/booking-minion.service';
 import { placesSelector } from 'src/app/selectors'
 import { PlacesFilter } from './../../models/places-filter.model'
 import { Observable } from 'rxjs'
@@ -20,7 +21,9 @@ export class PlacesFilterComponent implements OnInit {
   filterFormGroup: FormGroup
 
 
-  constructor(private store: Store<AppState>, private afb: FormBuilder) {
+  constructor(
+    private store: Store<AppState>, private afb: FormBuilder, public bookingMinion: BookingMinionService
+  ) {
     this.constructForm()
     this.resources$ = store.select('resources')
     store.select(placesSelector.selectPlacesFilter).subscribe((res) => {
