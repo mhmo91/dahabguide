@@ -1,0 +1,24 @@
+<section id="Photos section">
+  <mat-grid-list *ngIf="this.currentView !== 'xs';else mobileCarousel" [gutterSize]="'0px'"
+    [cols]="this.currentView === 'lg' ? 4 : 3 " rows="2" rowHeight="35vh">
+    <mat-grid-tile (mouseleave)="this.activeImg = null" (blur)="this.activeImg = null" (focus)="this.activeImg = i"
+      (mouseover)="this.activeImg = i" [rowspan]="i === 0? 2:1" [colspan]="i === 0? 2:1"
+      *ngFor="let photo of photosUrl | slice: 0:(this.currentView === 'lg' ? 5 : 3 ); let i = index">
+      <img class="place-img" (click)="openImagesModal(i)" alt="place image {{i}}"
+        [style.opacity]="(this.activeImg !==i && this.activeImg != null)? 0.6:1 " [src]="photo">
+    </mat-grid-tile>
+    <button (click)="openImagesModal(0)" class="more-photos"
+      *ngIf="photosUrl?.length > (this.currentView === 'lg' ? 5 : 3 )" mat-raised-button>More Images</button>
+  </mat-grid-list>
+  <ng-template #mobileCarousel>
+    <ngb-carousel (keypress)="openImagesModal(this.activeImg)" class="col-12 p-0" #carousel interval="4000000"
+      pauseOnHover=true>
+      <ng-template ngbSlide *ngFor="let img of photosUrl; index as i">
+        <img class="place-img" [src]="img" alt="Place image {{i + 1}} description" (click)="openImagesModal(i)">
+      </ng-template>
+    </ngb-carousel>
+  </ng-template>
+  <ks-modal-gallery *ngIf="this.placePhotos" class="mt-3" [id]="3" [modalImages]="this.placePhotos"
+    [plainGalleryConfig]="plainGalleryGrid">
+  </ks-modal-gallery>
+</section>

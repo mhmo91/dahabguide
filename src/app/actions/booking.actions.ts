@@ -5,12 +5,12 @@ import { IBooking } from '../models/booking.model'
 export enum BookingActionTypes {
   LoadBookingsInit = '[Booking] inititate Load Bookings',
   LoadBookings = '[Booking] Load Bookings',
+  InitAddBooking = '[Booking] Initiate Add Booking',
   AddBooking = '[Booking] Add Booking',
+  AddBookingSuccess = '[Booking] Add Booking succeeded',
+  AddBookingFailure = '[Booking] Add Booking failed',
   UpsertBooking = '[Booking] Upsert Booking',
-  AddBookings = '[Booking] Add Bookings',
-  UpsertBookings = '[Booking] Upsert Bookings',
   UpdateBooking = '[Booking] Update Booking',
-  UpdateBookings = '[Booking] Update Bookings',
   DeleteBooking = '[Booking] Delete Booking',
   DeleteBookings = '[Booking] Delete Bookings',
   ClearBookings = '[Booking] Clear Bookings'
@@ -25,11 +25,27 @@ export class LoadBookings implements Action {
   constructor(public payload: { bookings: IBooking[], subscribed?: boolean }) { }
 }
 
+export class InitAddBooking implements Action {
+  readonly type = BookingActionTypes.InitAddBooking
+}
 export class AddBooking implements Action {
   readonly type = BookingActionTypes.AddBooking
 
   constructor(public payload: { booking: IBooking }) { }
 }
+
+export class AddBookingSuccess implements Action {
+
+  readonly type = BookingActionTypes.AddBookingSuccess
+
+  constructor(public payload: { booking: IBooking }) { }
+}
+export class AddBookingFailure implements Action {
+  readonly type = BookingActionTypes.AddBookingFailure
+
+  constructor(public payload: { booking: IBooking }) { }
+}
+
 
 export class UpsertBooking implements Action {
   readonly type = BookingActionTypes.UpsertBooking
@@ -37,17 +53,7 @@ export class UpsertBooking implements Action {
   constructor(public payload: { booking: IBooking }) { }
 }
 
-export class AddBookings implements Action {
-  readonly type = BookingActionTypes.AddBookings
 
-  constructor(public payload: { bookings: IBooking[] }) { }
-}
-
-export class UpsertBookings implements Action {
-  readonly type = BookingActionTypes.UpsertBookings
-
-  constructor(public payload: { bookings: IBooking[] }) { }
-}
 
 export class UpdateBooking implements Action {
   readonly type = BookingActionTypes.UpdateBooking
@@ -55,11 +61,7 @@ export class UpdateBooking implements Action {
   constructor(public payload: { booking: Update<IBooking> }) { }
 }
 
-export class UpdateBookings implements Action {
-  readonly type = BookingActionTypes.UpdateBookings
 
-  constructor(public payload: { bookings: Update<IBooking>[] }) { }
-}
 
 export class DeleteBooking implements Action {
   readonly type = BookingActionTypes.DeleteBooking
@@ -79,13 +81,13 @@ export class ClearBookings implements Action {
 
 export type BookingActions =
   LoadBookings
+  | InitAddBooking
+  | AddBookingSuccess
+  | AddBookingFailure
   | LoadBookingsInit
   | AddBooking
   | UpsertBooking
-  | AddBookings
-  | UpsertBookings
   | UpdateBooking
-  | UpdateBookings
   | DeleteBooking
   | DeleteBookings
   | ClearBookings

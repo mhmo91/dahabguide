@@ -8,6 +8,7 @@ import { provideMockStore } from '@ngrx/store/testing'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { AppSharedModule } from '../app-shared.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef } from '@angular/material/bottom-sheet'
 
 describe('AddNewBookingComponent', () => {
   let component: AddNewBookingComponent
@@ -20,7 +21,11 @@ describe('AddNewBookingComponent', () => {
       imports: [FirebaseTestingModule, RouterTestingModule, AppSharedModule, BrowserAnimationsModule],
       declarations: [],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [provideMockStore({ initialState })]
+      providers: [
+        provideMockStore({ initialState }),
+        { provide: MAT_BOTTOM_SHEET_DATA, useValue: {} },
+        { provide: MatBottomSheetRef, useValue: {} }
+      ]
 
     })
       .compileComponents()

@@ -19,12 +19,13 @@
 
     <mat-checkbox #longTermCtrl (change)="onLongTermChange($event)" class="col-auto" color="primary"
       formControlName="longTermOnly">
-      <span class="text-muted">Long Term</span>
+      <span class="text-muted">Long Term Only</span>
     </mat-checkbox>
 
     <mat-form-field floatLabel="never" class="col-auto">
-      <input formControlName="date" autocomplete="off" (click)="picker.open()" matInput
-        [placeholder]="longTermCtrl.checked ? 'Check in Date': 'Check in - Check out'" [satDatepicker]="picker">
+      <input [matDatepickerFilter]="this.bookingMinion.dateFilter" formControlName="date" autocomplete="off"
+        (click)="picker.open()" matInput [placeholder]="longTermCtrl.checked ? 'Check in Date': 'Check in - Check out'"
+        [satDatepicker]="picker">
       <sat-datepicker #picker [rangeMode]="this.longTermCtrl.checked? false: true">
       </sat-datepicker>
       <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
