@@ -5,6 +5,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { appStateMock } from 'src/testing/states/app-state-mock'
 import { provideMockStore } from '@ngrx/store/testing'
 import { RouterTestingModule } from '@angular/router/testing'
+import { AppSharedModule } from 'src/app/app-shared/app-shared.module'
 
 describe('PlaceComponent', () => {
   let component: PlaceComponent
@@ -13,7 +14,7 @@ describe('PlaceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, AppSharedModule],
       declarations: [PlaceComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [provideMockStore({ initialState })]

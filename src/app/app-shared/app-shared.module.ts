@@ -1,4 +1,4 @@
-import { BookingMinionService } from './services/booking-minion.service';
+import { BookingMinionService } from './services/booking-minion.service'
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
@@ -52,7 +52,7 @@ import { DropzoneDirective } from './directives/drop-zone.directive'
 import { GalleryModule } from '@ks89/angular-modal-gallery'
 import { AddNewBookingComponent } from './add-new-booking/add-new-booking.component'
 import { PlaceAvailabilityCalendarComponent } from './place-availability-calendar/place-availability-calendar.component'
-import { MomentModule } from 'ngx-moment';
+import { MomentModule } from 'ngx-moment'
 import { PlaceImagesComponent } from './place-images/place-images.component'
 import { SnackbarService } from './services/snackbar.service'
 

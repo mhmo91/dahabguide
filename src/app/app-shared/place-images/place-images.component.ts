@@ -1,7 +1,7 @@
-import { Component, OnInit, SimpleChanges, OnChanges, Input } from '@angular/core';
-import { MinionsService } from '../services/minions.service';
-import { PlainGalleryConfig, PlainGalleryStrategy, AdvancedLayout } from '@ks89/angular-modal-gallery';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component, OnInit, SimpleChanges, OnChanges, Input } from '@angular/core'
+import { MinionsService } from '../services/minions.service'
+import { PlainGalleryConfig, PlainGalleryStrategy, AdvancedLayout } from '@ks89/angular-modal-gallery'
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
 
 @Component({
   selector: 'dahab-place-images',

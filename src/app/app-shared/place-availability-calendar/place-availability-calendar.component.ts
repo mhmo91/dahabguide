@@ -1,4 +1,4 @@
-import { BookingMinionService } from './../services/booking-minion.service';
+import { BookingMinionService } from './../services/booking-minion.service'
 import { Component, OnInit, Input, ViewEncapsulation, OnChanges, SimpleChanges } from '@angular/core'
 import { IPlace } from 'src/app/models/place.model'
 import * as moment from 'moment'

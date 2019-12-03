@@ -1,4 +1,4 @@
-import { BookingMinionService } from './../services/booking-minion.service';
+import { BookingMinionService } from './../services/booking-minion.service'
 import { placesSelector } from 'src/app/selectors'
 import { PlacesFilter } from './../../models/places-filter.model'
 import { Observable } from 'rxjs'
