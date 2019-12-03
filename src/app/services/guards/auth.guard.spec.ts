@@ -5,7 +5,7 @@ import { AuthGuard } from './auth.guard'
 import { AngularFireAuth } from '@angular/fire/auth'
 import { provideMockStore, MockStore } from '@ngrx/store/testing'
 import { Store } from '@ngrx/store'
-import { appStateMock } from 'src/app/reducers'
+import { appStateMock } from 'src/testing/states/app-state-mock'
 import { RouterTestingModule } from '@angular/router/testing'
 
 describe('AuthGuard', () => {

@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 import { AppSharedModule } from '../app-shared.module'
 import { PlacesFilterComponent } from './places-filter.component'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
-import { appStateMock } from 'src/app/reducers'
+import { appStateMock } from 'src/testing/states/app-state-mock'
 import { provideMockStore } from '@ngrx/store/testing'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 

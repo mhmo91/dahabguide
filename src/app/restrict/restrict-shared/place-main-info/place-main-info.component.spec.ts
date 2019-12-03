@@ -3,7 +3,7 @@ import { provideMockStore } from '@ngrx/store/testing'
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { PlaceMainInfoComponent } from './place-main-info.component'
-import { appStateMock } from 'src/app/reducers'
+import { appStateMock } from 'src/testing/states/app-state-mock'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { RestrictSharedModule } from 'src/app/restrict/restrict-shared/restrict-shared.module'
 import { MapsAPILoader } from '@agm/core'

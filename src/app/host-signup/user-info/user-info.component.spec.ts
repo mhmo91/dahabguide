@@ -1,4 +1,4 @@
-import { appStateMock } from 'src/app/reducers'
+import { appStateMock } from 'src/testing/states/app-state-mock'
 import { hostWizardStateMock } from './../reducers/index'
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 

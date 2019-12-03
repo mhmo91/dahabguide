@@ -4,7 +4,7 @@
 
     <article id="placesList" class="places-list-container col-md-12 col-lg-7 col-xl-6">
       <div *ngFor="let place of this.places$ | async" class="my-2">
-        <dahab-place-card [place]="place"></dahab-place-card>
+        <dahab-place-card (clicked)="openPlace(place)" [place]="place"></dahab-place-card>
       </div>
     </article>
     <article class=" flex-grow-1 p-0 mat-elevation-z8">
@@ -12,9 +12,9 @@
         [disableDefaultUI]="true" [styles]="this.mapConfigurations.style" [clickableIcons]="false"
         [mapTypeId]="'satellite'" [zoom]="15" [latitude]="this.mapConfigurations.latitude"
         [longitude]="this.mapConfigurations.longitude">
-        <agm-marker *ngFor="let place of this.places$ | async" (markerClick)="currentPlace = place.id" [label]="'4.5k'"
-          [markerClickable]="true" [iconUrl]="place.goodDeal?'assets/here.svg': 'assets/here.svg'"
-          [markerClickable]="true" [latitude]="place.location?.latitude" [longitude]="place.location?.longitude">
+        <agm-marker *ngFor="let place of this.places$ | async" (markerClick)="currentPlace = place.id"
+          [markerClickable]="true" [iconUrl]="place.goodDeal?'assets/here.svg': null" [markerClickable]="true"
+          [latitude]="place.location?.latitude" [longitude]="place.location?.longitude">
           <agm-info-window [isOpen]="currentPlace === place.id">
             <dahab-place-card [place]="place"></dahab-place-card>
           </agm-info-window>

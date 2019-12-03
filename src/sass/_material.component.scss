@@ -15,3 +15,23 @@ mat-checkbox {
     margin-bottom: 0;
   }
 }
+
+.mat-stepper-horizontal,
+.mat-stepper-vertical {
+  background-color: rgba(white, 0.4)
+}
+
+.mat-card {
+  background: rgba(white, 0.4)
+}
+
+
+// mat snackbar 
+.mat-simple-snackbar-action {
+  color: white !important;
+}
+
+.mat-simple-snackbar {
+  white-space: pre-line;
+  font-size: 16px;
+}

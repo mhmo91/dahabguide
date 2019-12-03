@@ -1,1 +1,81 @@
-<p>place works!</p>
+<section class="w-100">
+  <div class="bg-white mat-elevation-z1 fixed-top d-flex flex-wrap align-items-center justify-content-center py-2">
+    <div class="col-auto  bg-whit d-flex pl-0">
+      <img class="mr-2 host-img" src="{{this.currentPlace?.host?.photoURL}}" alt="host profile picture">
+      <div>
+        <h6 class="m-0">{{this.currentPlace?.host?.displayName}}</h6>
+        <div class="d-flex align-items-center">
+          <mat-icon style="color: orange;">star</mat-icon> 4.6 <span class="text-muted ml-2">(13 reviews)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-auto">
+      <mat-button-toggle class="mr-2" #showContact value="true" mat-button>
+        <mat-icon>call</mat-icon>
+        <span class="pl-2 d-none d-md-inline">Contact Info</span>
+      </mat-button-toggle>
+      <button (click)="openBookModal()" mat-raised-button color="accent">
+        Book
+      </button>
+    </div>
+    <div *ngIf="this.showContact.checked" class="col-12 d-flex flex-wrap justify-content-center">
+      <a href="mailo:{{this.currentPlace?.host?.email}}" class="m-0 p-2">
+        <img class="social-icon mr-2 small-icon" src="assets/gmail.svg" alt="email logo">
+        {{this.currentPlace?.host?.email}}
+      </a>
+      <a href="tel:+2{{this.currentPlace?.host?.mobile}}" class="m-0 p-2">
+        <img class="social-icon mr-2 small-icon" src="assets/whatsapp.svg" alt="whatsapp logo">
+        (+2){{this.currentPlace?.host?.mobile}}
+      </a>
+    </div>
+  </div>
+  <dahab-place-images [photosUrl]="this.place?.photos"></dahab-place-images>
+
+  <div class="container mt-3 mb-5">
+    <div class="row justify-content-around">
+      <div class="col-auto d-flex flex-column">
+
+
+        <div class="flex-grow-1 d-flex flex-column pl-3">
+          <h4 class="my-3 pl-3">
+            {{this.placeTypeName}}
+          </h4>
+
+          <div class="d-flex flex-column pl-3">
+            <p class="price" *ngIf="this.place?.price?.longTerm">
+              {{place?.price.perMonth  | number   }} <span class="text-muted small-text">$/Month</span>
+            </p>
+            <p class="price" *ngIf="this.place?.price?.shortTerm">
+              {{place?.price.perNight  | number }} <span class="text-muted small-text">$/Night</span>
+            </p>
+          </div>
+          <p class="small-text h-auto my-1 pl-3">
+            {{place?.layout.bedrooms}} {{(place?.layout.bedrooms> 1)? 'Bedrooms':'Bedroom'}} .
+            <!-- {{place?.layout.beds}} {{(place?.layout.beds> 1)? 'Beds':'Bed'}} . -->
+            {{place?.layout.bathrooms}} {{(place?.layout.bathrooms> 1)? 'Bathrooms':'Bathroom'}}
+            {{place?.layout.privateGarden? '. Private Garden':null}}
+          </p>
+
+          <p *ngFor="let amen of this.placeAmenities" class="d-flex align-items-center my-1">
+            <mat-icon class="text-muted m-2 small-icon">
+              {{amen.icon}}</mat-icon>
+            {{amen.name_en}}
+          </p>
+          <div class="flex-grow-1">
+          </div>
+
+        </div>
+      </div>
+      <div class="col-auto">
+
+        <dahab-place-availability-calendar [place]="this.currentPlace"></dahab-place-availability-calendar>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+</section>

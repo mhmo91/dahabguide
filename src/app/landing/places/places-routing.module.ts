@@ -7,7 +7,7 @@ import { PlaceComponent } from './place/place.component'
 const routes: Routes = [{
   path: '', component: PlacesListComponent
 }, {
-  path: '/:id', component: PlaceComponent
+  path: ':id', component: PlaceComponent
 }]
 
 @NgModule({

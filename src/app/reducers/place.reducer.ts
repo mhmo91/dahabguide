@@ -1,14 +1,18 @@
 import { PlacesFilter } from './../models/places-filter.model'
 import { EntityState, EntityAdapter, createEntityAdapter, Dictionary } from '@ngrx/entity'
-import { IPlace as Place } from '../models/place.model'
+import { IPlace as Place, IPlace } from '../models/place.model'
 import { PlaceActions, PlaceActionTypes } from '../actions/place.actions'
 import { createFeatureSelector, createSelector } from '@ngrx/store'
 import { ApiModel } from '../models/api.model'
+import { IBooking } from '../models/booking.model'
 export const placesFeatureKey = 'places'
 
+export interface ICurrentPlace extends IPlace {
+  bookings: Array<IBooking>
+}
 export interface IPlacesState extends EntityState<Place>, ApiModel {
   // additional entities state properties
-  currentPlaceId: string
+  currentPlace: ICurrentPlace
   palcesFilter: PlacesFilter
 
 }
@@ -17,7 +21,7 @@ export const adapter: EntityAdapter<Place> = createEntityAdapter<Place>()
 
 export const initialState: IPlacesState = adapter.getInitialState({
   // additional entity state properties
-  currentPlaceId: null,
+  currentPlace: null,
   palcesFilter: new PlacesFilter()
 
 })
@@ -32,6 +36,9 @@ export function reducer(
         { ...action.payload.place, loading: true },
         { ...state, currentPlaceId: action.payload.place.id }
       )
+    }
+    case PlaceActionTypes.UpdateCurrentPlace: {
+      return { ...state, currentPlace: action.currentPlace }
     }
     case PlaceActionTypes.ResetPlacesFilter: {
       return { ...state, palcesFilter: new PlacesFilter() }

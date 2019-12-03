@@ -1,0 +1,31 @@
+@import "src/sass/variables";
+
+mat-grid-tile {
+  background-color: #263238 !important;
+}
+
+.host-img {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+
+}
+
+.price {
+  font-size: 1rem;
+  color: $text-grey-800;
+}
+
+
+
+.mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  line-height: 24px !important;
+  padding: 4px !important;
+}
+
+.social-icon {
+  height: 1rem;
+  width: 1rem;
+}

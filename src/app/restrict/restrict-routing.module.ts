@@ -5,11 +5,18 @@ import { Routes, RouterModule } from '@angular/router'
 
 const routes: Routes = [
   {
-    path: '', component: RestrictComponent, children: [{
-      path: 'my-places', loadChildren: () => import('./my-places/my-places.module').then(m => m.MyPlacesModule)
-    }, {
-      path: '**', redirectTo: 'my-places'
-    }]
+    path: '', component: RestrictComponent,
+    children: [
+      {
+        path: 'my-places', loadChildren: () => import('./my-places/my-places.module').then(m => m.MyPlacesModule)
+      },
+      {
+        path: 'bookings', loadChildren: () => import('./bookings/bookings.module').then(m => m.BookingsModule)
+      },
+      {
+        path: '**', redirectTo: 'my-places'
+      }
+    ]
   }
 ]
 

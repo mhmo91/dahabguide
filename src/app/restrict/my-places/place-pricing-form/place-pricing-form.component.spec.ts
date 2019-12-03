@@ -28,6 +28,7 @@ describe('PlacePricingFormComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PlacePricingFormComponent)
     component = fixture.componentInstance
+    component.place = initialState.places.entities['2kukU9egdhRNc8VcRfZm'] as Partial<any>
     fixture.detectChanges()
   })
 

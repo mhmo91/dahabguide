@@ -7,10 +7,11 @@ import { IPlaceWizard } from '../place-wizard-state/place-wizard.reducer'
 import * as placeActions from 'src/app/actions/place.actions'
 import { PlainGalleryConfig, PlainGalleryStrategy, Image, AdvancedLayout } from '@ks89/angular-modal-gallery'
 import { trigger, transition, query, stagger, animate, style } from '@angular/animations'
+
 @Component({
-  selector: 'dahab-place-images',
-  templateUrl: './place-images.component.html',
-  styleUrls: ['./place-images.component.scss'],
+  selector: 'dahab-edit-place-images',
+  templateUrl: './edit-place-images.component.html',
+  styleUrls: ['./edit-place-images.component.scss'],
   animations: [
     trigger('myInsertRemoveTrigger', [
       transition(':enter', [
@@ -23,7 +24,7 @@ import { trigger, transition, query, stagger, animate, style } from '@angular/an
     ]),
   ]
 })
-export class PlaceImagesComponent implements OnInit, AfterViewInit, OnChanges {
+export class EditPlaceImagesComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() place: Partial<IPlace>
   hoveringOn: number
   placePhotos: Image[]
@@ -61,7 +62,6 @@ export class PlaceImagesComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   onDrop(files: FileList) {
-    console.log(files)
     Array.from(files).forEach((f) => {
       this.attachedPhotos.push(f)
     })

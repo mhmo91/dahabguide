@@ -1,0 +1,23 @@
+.place-img {
+  object-fit: cover;
+  height: -webkit-fill-available;
+  width: 100%;
+  cursor: pointer;
+  opacity: 1;
+  transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, -webkit-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, opacity 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
+
+  &:hover {
+    transform: scale(1.05) !important;
+    transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, -webkit-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
+  }
+}
+
+.more-photos {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+}
+
+ngb-carousel {
+  height: 50vh;
+}

@@ -1,3 +1,4 @@
+import { BookingMinionService } from './services/booking-minion.service'
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
@@ -44,9 +45,16 @@ import { MatRippleModule } from '@angular/material/core'
 import { MatSliderModule } from '@angular/material/slider'
 import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker'
 import { MatGridListModule } from '@angular/material/grid-list'
+import { MatButtonToggleModule } from '@angular/material/button-toggle'
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet'
 import { UploadMeComponent } from './upload-me/upload-me.component'
 import { DropzoneDirective } from './directives/drop-zone.directive'
 import { GalleryModule } from '@ks89/angular-modal-gallery'
+import { AddNewBookingComponent } from './add-new-booking/add-new-booking.component'
+import { PlaceAvailabilityCalendarComponent } from './place-availability-calendar/place-availability-calendar.component'
+import { MomentModule } from 'ngx-moment'
+import { PlaceImagesComponent } from './place-images/place-images.component'
+import { SnackbarService } from './services/snackbar.service'
 
 @NgModule({
   declarations: [
@@ -56,13 +64,17 @@ import { GalleryModule } from '@ks89/angular-modal-gallery'
     SelectNumberComponent,
     PlacesFilterComponent,
     DropzoneDirective,
-    UploadMeComponent
+    UploadMeComponent,
+    AddNewBookingComponent,
+    PlaceAvailabilityCalendarComponent,
+    PlaceImagesComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     MatIconModule,
     MatSelectModule,
+    MatBottomSheetModule,
     HttpClientModule,
     MatCardModule,
     NgbCarouselModule,
@@ -72,6 +84,7 @@ import { GalleryModule } from '@ks89/angular-modal-gallery'
     MatButtonModule,
     MatProgressBarModule,
     MatFormFieldModule,
+    MatButtonToggleModule,
     MatInputModule,
     MatProgressSpinnerModule,
     MatRippleModule,
@@ -80,9 +93,11 @@ import { GalleryModule } from '@ks89/angular-modal-gallery'
     SatNativeDateModule,
     SatDatepickerModule,
     MatGridListModule,
+    MatDatepickerModule,
+    MatRadioModule,
     GalleryModule,
     MatTooltipModule,
-
+    MomentModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -91,6 +106,7 @@ import { GalleryModule } from '@ks89/angular-modal-gallery'
     // Material modules
     MatRippleModule,
     MatSelectModule,
+    MatButtonToggleModule,
     MatInputModule,
     MatProgressSpinnerModule,
     MatButtonModule,
@@ -119,6 +135,7 @@ import { GalleryModule } from '@ks89/angular-modal-gallery'
     MatStepperModule,
     MatSliderModule,
     MatGridListModule,
+    MatBottomSheetModule,
     // bootstrap module
     NgbCarouselModule,
     NgbDatepickerModule,
@@ -127,6 +144,7 @@ import { GalleryModule } from '@ks89/angular-modal-gallery'
     SatNativeDateModule,
     SatDatepickerModule,
     GalleryModule,
+    MomentModule,
     // components
     ToolbarLogoComponent,
     NiceImageComponent,
@@ -135,11 +153,17 @@ import { GalleryModule } from '@ks89/angular-modal-gallery'
     SelectNumberComponent,
     PlacesFilterComponent,
     UploadMeComponent,
+    AddNewBookingComponent,
+    PlaceAvailabilityCalendarComponent,
+    PlaceImagesComponent,
+
     // pipes
     NotPipe,
     PlacesPipe,
     // Directives
     DropzoneDirective
-  ]
+  ],
+  entryComponents: [AddNewBookingComponent],
+  providers: [SnackbarService, BookingMinionService]
 })
 export class AppSharedModule { }

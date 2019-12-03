@@ -11,9 +11,9 @@
 
 
   <div tabindex="0" (focus)="hover=true" (blur)="hover=false" matRipple (click)="openPlace()" (keypress)="openPlace()"
-    class="flex-grow-1 d-flex flex-column cursor-pointer pl-3 pt-2">
-    <h6>{{this.placeTypeName}}</h6>
-    <p class="text-muted small-text h-auto mb-2">
+    class="flex-grow-1 d-flex flex-column cursor-pointer pl-3">
+    <h6 class="m-0 pt-2">{{this.placeTypeName}}</h6>
+    <p class="text-muted small-text h-auto my-1">
       {{place.layout.bedrooms}} {{(place.layout.bedrooms> 1)? 'Bedrooms':'Bedroom'}} .
       <!-- {{place.layout.beds}} {{(place.layout.beds> 1)? 'Beds':'Bed'}} . -->
       {{place.layout.bathrooms}} {{(place.layout.bathrooms> 1)? 'Bathrooms':'Bathroom'}}
@@ -21,7 +21,7 @@
 
     </p>
 
-    <p class="h-auto mb-2">
+    <p class="my-0">
       <mat-icon class="text-muted m-2 small-icon" [matTooltip]="amen.name_en" *ngFor="let amen of this.placeAmenities">
         {{amen.icon}}</mat-icon>
     </p>

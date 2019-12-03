@@ -2,7 +2,7 @@ import { TestBed, async } from '@angular/core/testing'
 import { RouterTestingModule } from '@angular/router/testing'
 import { AppComponent } from './app.component'
 import { provideMockStore } from '@ngrx/store/testing'
-import { appStateMock } from './reducers'
+import { appStateMock } from 'src/testing/states/app-state-mock'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { AppSharedModule } from './app-shared/app-shared.module'
 

@@ -4,6 +4,8 @@ import { IPlace } from '../models/place.model'
 
 export enum PlaceActionTypes {
   LoadPlaces = '[Place] Load Places',
+  GetPlaceDetails = '[Place] Get Place details',
+  UpdateCurrentPlace = '[Place] Update Current Place',
   InitLoadPlaces = '[Place] Load Places init',
   LoadPlacesSuccess = '[Place] Load Places Success',
   AddPlace = '[Place] Add Place',
@@ -28,6 +30,18 @@ export class InitLoadPlaces implements Action {
 }
 export class ResetPlacesFilter implements Action {
   readonly type = PlaceActionTypes.ResetPlacesFilter
+}
+
+export class GetPlaceDetails implements Action {
+  readonly type = PlaceActionTypes.GetPlaceDetails
+  constructor(public place: Partial<IPlace>) {
+  }
+}
+
+export class UpdateCurrentPlace implements Action {
+  readonly type = PlaceActionTypes.UpdateCurrentPlace
+  constructor(public currentPlace: any) {
+  }
 }
 export class LoadPlaces implements Action {
   readonly type = PlaceActionTypes.LoadPlaces
@@ -111,6 +125,8 @@ export class DeletePlaceImage implements Action {
 export type PlaceActions =
   InitLoadPlaces
   | LoadPlaces
+  | GetPlaceDetails
+  | UpdateCurrentPlace
   | AddPlace
   | AddPlaceSuccess
   | AddPlaceFailure
