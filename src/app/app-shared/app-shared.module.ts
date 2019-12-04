@@ -55,6 +55,7 @@ import { PlaceAvailabilityCalendarComponent } from './place-availability-calenda
 import { MomentModule } from 'ngx-moment'
 import { PlaceImagesComponent } from './place-images/place-images.component'
 import { SnackbarService } from './services/snackbar.service'
+import { PlaceLocationComponent } from './place-location/place-location.component'
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { SnackbarService } from './services/snackbar.service'
     AddNewBookingComponent,
     PlaceAvailabilityCalendarComponent,
     PlaceImagesComponent,
+    PlaceLocationComponent,
   ],
   imports: [
     CommonModule,
@@ -97,7 +99,8 @@ import { SnackbarService } from './services/snackbar.service'
     MatRadioModule,
     GalleryModule,
     MatTooltipModule,
-    MomentModule
+    MomentModule,
+    AgmCoreModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -156,7 +159,7 @@ import { SnackbarService } from './services/snackbar.service'
     AddNewBookingComponent,
     PlaceAvailabilityCalendarComponent,
     PlaceImagesComponent,
-
+    PlaceLocationComponent,
     // pipes
     NotPipe,
     PlacesPipe,

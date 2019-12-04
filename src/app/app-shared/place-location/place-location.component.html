@@ -1,0 +1,8 @@
+<article class="d-flex flex-column align-items-center bg-transperant mat-elevation-z2 h-100">
+  <agm-map panControl="true" zoomControl=true rotateControl=true mapTypeControl=true fullscreenControl=true class=""
+    [disableDefaultUI]="true" [clickableIcons]="false" [mapTypeId]="'satellite'" [zoom]="14"
+    [latitude]="this.placeLocation?.latitude" [minZoom]="13" [longitude]="this.placeLocation?.longitude">
+    <agm-marker [latitude]="this.placeLocation?.latitude" [longitude]="this.placeLocation?.longitude">
+    </agm-marker>
+  </agm-map>
+</article>

@@ -34,15 +34,16 @@
 
   <div class="container mt-3 mb-5">
     <div class="row justify-content-around">
-      <div class="col-auto d-flex flex-column">
+
+      <div class="col-xs-12 col-md-8 col-lg d-flex flex-column">
 
 
-        <div class="flex-grow-1 d-flex flex-column pl-3">
-          <h4 class="my-3 pl-3">
+        <div class="flex-grow-1 d-flex flex-column">
+          <h4 class="my-3 pl-2">
             {{this.placeTypeName}}
           </h4>
 
-          <div class="d-flex flex-column pl-3">
+          <div class="d-flex flex-column pl-2">
             <p class="price" *ngIf="this.place?.price?.longTerm">
               {{place?.price.perMonth  | number   }} <span class="text-muted small-text">$/Month</span>
             </p>
@@ -50,7 +51,7 @@
               {{place?.price.perNight  | number }} <span class="text-muted small-text">$/Night</span>
             </p>
           </div>
-          <p class="small-text h-auto my-1 pl-3">
+          <p class="small-text h-auto my-1 pl-2">
             {{place?.layout.bedrooms}} {{(place?.layout.bedrooms> 1)? 'Bedrooms':'Bedroom'}} .
             <!-- {{place?.layout.beds}} {{(place?.layout.beds> 1)? 'Beds':'Bed'}} . -->
             {{place?.layout.bathrooms}} {{(place?.layout.bathrooms> 1)? 'Bathrooms':'Bathroom'}}
@@ -67,11 +68,21 @@
 
         </div>
       </div>
-      <div class="col-auto">
+      <div class="col-xs-12 col-md-8 col-lg my-3">
+        <dahab-place-location class="d-none d-md-block h-100" [placeLocation]="this.place?.location">
+        </dahab-place-location>
+        <a class="d-block d-md-none" target="_blank"
+          href="http://maps.google.com/?q={{this.place?.location.latitude}},{{this.place?.location.longitude}}"
+          mat-raised-button>
+          <mat-icon>room</mat-icon> Show Location
+        </a>
+      </div>
+      <div class="col-xs-12 col-md-8 col-lg">
 
         <dahab-place-availability-calendar [place]="this.currentPlace"></dahab-place-availability-calendar>
 
       </div>
+
     </div>
   </div>
 
