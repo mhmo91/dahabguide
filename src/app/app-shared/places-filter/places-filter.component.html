@@ -23,12 +23,13 @@
     </mat-checkbox>
 
     <mat-form-field floatLabel="never" class="col-auto">
-      <input [matDatepickerFilter]="this.bookingMinion.dateFilter" formControlName="date" autocomplete="off"
-        (click)="picker.open()" matInput [placeholder]="longTermCtrl.checked ? 'Check in Date': 'Check in - Check out'"
-        [satDatepicker]="picker">
-      <sat-datepicker #picker [rangeMode]="this.longTermCtrl.checked? false: true">
+      <input formControlName="date" autocomplete="off" (click)="placesFilterDatePicker.open()" matInput
+        [placeholder]="longTermCtrl.checked ? 'Check in Date': 'Check in - Check out'"
+        [satDatepicker]="placesFilterDatePicker" [min]="this.bookingMinion.calendarConfig.today"
+        [max]="this.bookingMinion.calendarConfig.oneYearFromNow">
+      <sat-datepicker #placesFilterDatePicker [rangeMode]="this.longTermCtrl.checked? false: true">
       </sat-datepicker>
-      <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
+      <sat-datepicker-toggle matSuffix [for]="placesFilterDatePicker"></sat-datepicker-toggle>
     </mat-form-field>
     <div class="d-flex flex-column pt-4 col-md-3 col-xl-2">
       <mat-label class="text-muted position-absolute pl-2">

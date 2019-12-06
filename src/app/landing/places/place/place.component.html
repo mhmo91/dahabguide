@@ -1,5 +1,18 @@
 <section class="w-100">
   <div class="bg-white mat-elevation-z1 fixed-top d-flex flex-wrap align-items-center justify-content-center py-2">
+
+    <button mat-button class="back-btn d-none d-md-block" [routerLink]="['../']" routerLinkActive="router-link-active"
+      color="primary">
+      <mat-icon>arrow_back_ios</mat-icon>
+      <span>Back</span>
+    </button>
+    <div class="col-auto pl-2 d-block d-md-none">
+      <button mat-icon-button [routerLink]="['../']" routerLinkActive="router-link-active" color="primary">
+        <mat-icon>arrow_back_ios</mat-icon>
+      </button>
+    </div>
+
+
     <div class="col-auto  bg-whit d-flex pl-0">
       <img class="mr-2 host-img" src="{{this.currentPlace?.host?.photoURL}}" alt="host profile picture">
       <div>
@@ -10,7 +23,7 @@
       </div>
     </div>
 
-    <div class="col-auto">
+    <div class="col-auto my-2">
       <mat-button-toggle class="mr-2" #showContact value="true" mat-button>
         <mat-icon>call</mat-icon>
         <span class="pl-2 d-none d-md-inline">Contact Info</span>
