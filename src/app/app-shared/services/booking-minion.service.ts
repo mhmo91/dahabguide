@@ -56,12 +56,12 @@ export class BookingMinionService {
     this.futureBookings.forEach(b => {
       if (b.rentalType === RentalTypes.shortTerm) {
         dateRanges.push({
-          from: moment.unix(b.fromDate.seconds),
+          from: moment.unix(b.fromDate.seconds).add(1, 'd'),
           to: moment.unix(b.toDate.seconds).add(-1, 'd'),
         })
       } else { // long term
         dateRanges.push({
-          from: moment.unix(b.fromDate.seconds),
+          from: moment.unix(b.fromDate.seconds).add(1, 'd'),
           to: this.longTermRentalEndDate(b).add(-1, 'd'),
         })
       }
