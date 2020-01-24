@@ -22,7 +22,7 @@ import { IAuthState } from '../models/auth.state'
 export class HostSignupComponent implements OnInit, AfterViewInit {
   wizard: Partial<IHostWizard>
   auth$: Observable<IAuthState>
-  @ViewChild('stepper', { static: false }) stepper: MatVerticalStepper
+  @ViewChild('stepper') stepper: MatVerticalStepper
   constructor(private store: Store<AppState & IHostWizardState>) {
     this.store.dispatch(new hostWizardActions.GetHostWizardState())
     this.auth$ = this.store.select('auth')
