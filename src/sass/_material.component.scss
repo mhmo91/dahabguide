@@ -6,7 +6,6 @@ mat-form-field {
 
 .mat-select-panel {
   max-height: 50vh !important;
-
 }
 
 
@@ -16,17 +15,17 @@ mat-checkbox {
   }
 }
 
-.mat-stepper-horizontal,
-.mat-stepper-vertical {
-  background-color: rgba(white, 0.4)
-}
+// .mat-stepper-horizontal,
+// .mat-stepper-vertical {
+//   background-color: rgba(white, 0.4)
+// }
 
 .mat-card {
-  background: rgba(white, 0.4)
+  background: rgba(white, 0.6)
 }
 
 
-// mat snackbar 
+// mat snackbar
 .mat-simple-snackbar-action {
   color: white !important;
 }

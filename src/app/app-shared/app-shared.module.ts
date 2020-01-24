@@ -40,7 +40,6 @@ import { AgmCoreModule } from '@agm/core'
 import { PlacesPipe } from './pipes/places.pipe'
 import { MatSelectExtensionComponent } from './mat-select-extension/mat-select-extension.component'
 import { SelectNumberComponent } from './select-number/select-number.component'
-import { PlacesFilterComponent } from './places-filter/places-filter.component'
 import { MatRippleModule } from '@angular/material/core'
 import { MatSliderModule } from '@angular/material/slider'
 import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker'
@@ -63,7 +62,6 @@ import { PlaceLocationComponent } from './place-location/place-location.componen
     NotPipe, PlacesPipe, PlaceCardComponent,
     MatSelectExtensionComponent,
     SelectNumberComponent,
-    PlacesFilterComponent,
     DropzoneDirective,
     UploadMeComponent,
     AddNewBookingComponent,
@@ -154,7 +152,6 @@ import { PlaceLocationComponent } from './place-location/place-location.componen
     PlaceCardComponent,
     MatSelectExtensionComponent,
     SelectNumberComponent,
-    PlacesFilterComponent,
     UploadMeComponent,
     AddNewBookingComponent,
     PlaceAvailabilityCalendarComponent,
