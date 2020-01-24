@@ -27,7 +27,6 @@
                     (markerClick)="currentPlace = place.id"
                     [markerClickable]="true"
                     [iconUrl]="place.goodDeal?'assets/here.svg': null"
-                    [markerClickable]="true"
                     [latitude]="place.location?.latitude"
                     [longitude]="place.location?.longitude">
           <agm-info-window [isOpen]="currentPlace === place.id">
