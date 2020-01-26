@@ -1,15 +1,15 @@
 <form class="d-flex flex-column flex-md-row flex-wrap align-items-center justify-content-start"
       [formGroup]="this.filterFormGroup">
-  <mat-form-field appearance="outline"
-                  floatLabel="never"
-                  class="col-sm-6 col-md-auto">
-    <mat-label id="placeTypeId">
-      <div class="d-flex justify-content-between">
-        <span>Any Place Type</span>
-        <mat-spinner color="accent"
-                     *ngIf="(this.resources$|async)?.loading"
-                     diameter="20"></mat-spinner>
-      </div>
+
+  <mat-form-field class="col-auto"
+                  appearance="outline"
+                  floatLabel="never">
+    <mat-label class="d-flex justify-content-between"
+               id="placeTypeId">
+      <span>Any Place Type</span>
+      <mat-spinner color="accent"
+                   *ngIf="(this.resources$|async)?.loading"
+                   diameter="20"></mat-spinner>
     </mat-label>
     <mat-select aria-labelledby="placeTypeId"
                 #typesCtrl
@@ -22,28 +22,40 @@
       <dahab-mat-select-extension [selectCtrl]="typesCtrl"
                                   (done)="typesCtrl.close()"></dahab-mat-select-extension>
     </mat-select>
+    <button mat-button
+            *ngIf="this.filterFormGroup.controls.types.value?.length>0"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="$event.stopPropagation();this.filterFormGroup.controls.types.reset()">
+      <mat-icon>close</mat-icon>
+    </button>
   </mat-form-field>
 
   <mat-checkbox #longTermCtrl
                 (change)="onLongTermChange($event)"
-                class="col-auto"
+                class="col-auto mb-3"
                 color="primary"
                 formControlName="longTermOnly">
     <span class="text-muted">Long Term Only</span>
   </mat-checkbox>
 
   <mat-form-field appearance="outline"
-                  floatLabel="never"
                   class="col-auto">
+    <mat-label>
+      {{longTermCtrl.checked ? 'Check in Date': 'Check in - Check out'}}
+    </mat-label>
+
     <input formControlName="date"
            autocomplete="off"
            (click)="placesFilterDatePicker.open()"
            matInput
-           [placeholder]="longTermCtrl.checked ? 'Check in Date': 'Check in - Check out'"
+           readonly
            [satDatepicker]="placesFilterDatePicker"
            [min]="this.bookingMinion.calendarConfig.today"
            [max]="this.bookingMinion.calendarConfig.oneYearFromNow">
-    <sat-datepicker #placesFilterDatePicker
+    <sat-datepicker [touchUi]="platform.ANDROID || platform.IOS"
+                    #placesFilterDatePicker
                     [rangeMode]="this.longTermCtrl.checked? false: true">
     </sat-datepicker>
     <sat-datepicker-toggle matSuffix
@@ -55,14 +67,10 @@
           mat-button
           (click)="this.dismissBottomSheet()"
           color="accent">
-    Save
+    <mat-icon>keyboard_arrow_down</mat-icon>
+    close
   </button>
-  <button type="reset"
-          (click)="resetFilter()"
-          class="col-auto"
-          mat-button>
-    Reset
-  </button>
+
 
   <!-- extra filter elements -->
   <ng-template>

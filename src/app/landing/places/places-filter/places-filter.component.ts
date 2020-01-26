@@ -10,6 +10,7 @@ import { FormGroup, FormBuilder } from '@angular/forms'
 import { formatCurrency } from '@angular/common'
 import * as placesActions from 'src/app/actions/place.actions'
 import { MatBottomSheet } from '@angular/material/bottom-sheet'
+import { Platform } from '@angular/cdk/platform'
 
 @Component({
   selector: 'dahab-places-filter',
@@ -24,7 +25,7 @@ export class PlacesFilterComponent implements OnInit {
 
 
   constructor(
-    private store: Store<AppState>, private afb: FormBuilder, public bookingMinion: BookingMinionService,
+    private store: Store<AppState>, private afb: FormBuilder, public bookingMinion: BookingMinionService, public platform: Platform,
     private bottomSheet: MatBottomSheet
   ) {
     this.constructForm()
@@ -37,10 +38,12 @@ export class PlacesFilterComponent implements OnInit {
   constructForm() {
     this.filterFormGroup = this.afb.group({
       types: null,
-      bedrooms: null,
-      adultGuests: null,
       longTermOnly: null,
-      date: null
+      date: null,
+      // disable this feature for now
+      // bedrooms: null,
+      // adultGuests: null,
+      // budget: null
     })
   }
 
@@ -53,16 +56,9 @@ export class PlacesFilterComponent implements OnInit {
 
   }
 
-  formatLabel(value: number) {
-    if (value >= 1000) {
-      return Math.round(value / 100) + '00'
-    }
-    // formatCurrency
-    return value
-  }
 
   onLongTermChange(value) {
-    this.filterFormGroup.controls.dates.reset()
+    this.filterFormGroup.controls.date.reset()
   }
 
   resetFilter() {
