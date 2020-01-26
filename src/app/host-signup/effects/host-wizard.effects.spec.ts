@@ -17,7 +17,7 @@ describe('HostWizardEffects', () => {
       ]
     })
 
-    effects = TestBed.get<HostWizardEffects>(HostWizardEffects)
+    effects = TestBed.inject<HostWizardEffects>(HostWizardEffects)
   })
 
   it('should be created', () => {

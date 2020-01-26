@@ -4,6 +4,10 @@ mat-grid-tile {
   background-color: #263238 !important;
 }
 
+.mb-large {
+  margin-bottom: 8rem;
+}
+
 .host-img {
   height: 3rem;
   width: 3rem;
@@ -28,9 +32,4 @@ mat-grid-tile {
 .social-icon {
   height: 1rem;
   width: 1rem;
-}
-
-.back-btn {
-  position: fixed;
-  left: 1rem;
 }

@@ -17,7 +17,7 @@ describe('HostSignupGuard', () => {
         provideMockStore({ initialState }),
       ]
     })
-    store = TestBed.get(Store)
+    store = TestBed.inject(Store)
 
   })
 

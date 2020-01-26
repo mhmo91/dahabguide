@@ -6,7 +6,8 @@ import { IPlace } from 'src/app/models/place.model'
 import { placesSelector } from 'src/app/selectors'
 import { MapStyle } from 'src/app/constants/map.config'
 import { Router, ActivatedRoute } from '@angular/router'
-
+import { MatBottomSheet } from '@angular/material/bottom-sheet'
+import { PlacesFilterComponent } from '../places-filter/places-filter.component'
 @Component({
   selector: 'dahab-places-list',
   templateUrl: './places-list.component.html',
@@ -14,7 +15,8 @@ import { Router, ActivatedRoute } from '@angular/router'
 })
 export class PlacesListComponent implements OnInit {
 
-  constructor(private store: Store<AppState>, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private store: Store<AppState>, private router: Router, private activatedRoute: ActivatedRoute, private bottomSheet: MatBottomSheet) {
     this.mapConfigurations = {
       latitude: 28.5001444,
       longitude: 34.5201866,
@@ -35,4 +37,9 @@ export class PlacesListComponent implements OnInit {
     console.log(place)
     this.router.navigate([place.id], { relativeTo: this.activatedRoute })
   }
+
+  openFilter(): void {
+    this.bottomSheet.open(PlacesFilterComponent)
+  }
+
 }

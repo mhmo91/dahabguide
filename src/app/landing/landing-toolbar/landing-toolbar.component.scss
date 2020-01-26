@@ -1,14 +1,2 @@
 @import "src/sass/variables";
-
-.mobile-view .landing-toolbar {
-  position: fixed;
-  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
-  z-index: 1;
-}
-
 @import "src/sass/bootstrap";
-@import "src/sass/variables";
-
-mat-toolbar {
-  background-image: src("assets/homepage_header_background.svg");
-}

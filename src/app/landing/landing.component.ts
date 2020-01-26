@@ -13,9 +13,11 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)')
+    console.log(this.mobileQuery)
     this.mobileQueryListener = () => changeDetectorRef.detectChanges()
-    // this.mobileQuery.addListener(this.mobileQueryListener);
-    this.mobileQuery.addEventListener('change', this.mobileQueryListener)
+    // until  onchange is supported  https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/onchange
+    // tslint:disable-next-line: deprecation
+    this.mobileQuery.addListener(this.mobileQueryListener)
   }
 
 
@@ -23,7 +25,9 @@ export class LandingComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.mobileQuery.removeEventListener('change', this.mobileQueryListener)
+    // until  onchange is supported  https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/onchange
+    // tslint:disable-next-line: deprecation
+    this.mobileQuery.removeListener(this.mobileQueryListener)
   }
 
 

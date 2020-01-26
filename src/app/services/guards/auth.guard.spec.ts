@@ -21,8 +21,8 @@ describe('AuthGuard', () => {
         provideMockStore({ initialState }),
       ]
     })
-    store = TestBed.get(Store)
-    authGuard = TestBed.get(AuthGuard)
+    store = TestBed.inject(Store)
+    authGuard = TestBed.inject(AuthGuard)
 
   })
 
