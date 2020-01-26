@@ -4,6 +4,9 @@
 > Our mission is  to empower the local economy by providing localized rental and hotel booking solution alternative to airbnb and booking.
 ![quote image](https://www.azquotes.com/picture-quotes/quote-we-can-fight-the-global-economy-with-a-strong-local-economy-wendell-berry-81-58-02.jpg)
 
+[![Watch the video](https://i.ytimg.com/vi/uSlibaJijpA/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLAWpPKDzLKfVyZs--iobJb5lmLLQQ)](https://youtu.be/uSlibaJijpA)
+
+
 # Technical instructions
 
 ## Analyze bundles size with webpack
