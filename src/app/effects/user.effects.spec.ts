@@ -24,8 +24,8 @@ describe('UserEffects', () => {
         provideMockActions(() => actions$)
       ]
     })
-    afAuth = TestBed.get(AngularFireAuth)
-    effects = TestBed.get<UserEffects>(UserEffects)
+    afAuth = TestBed.inject(AngularFireAuth)
+    effects = TestBed.inject<UserEffects>(UserEffects)
   })
 
   it('should be created', () => {

@@ -12,7 +12,7 @@ describe('BookingMinionService', () => {
   }))
 
   it('should be created', () => {
-    const service: BookingMinionService = TestBed.get(BookingMinionService)
+    const service: BookingMinionService = TestBed.inject(BookingMinionService)
     expect(service).toBeTruthy()
   })
 })

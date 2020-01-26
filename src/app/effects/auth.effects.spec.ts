@@ -20,7 +20,7 @@ describe('AuthEffects', () => {
       ]
     })
 
-    effects = TestBed.get<AuthEffects>(AuthEffects)
+    effects = TestBed.inject<AuthEffects>(AuthEffects)
   })
 
   it('should be created', () => {
