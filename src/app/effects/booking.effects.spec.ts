@@ -20,7 +20,7 @@ describe('BookingEffects', () => {
       ],
     })
 
-    effects = TestBed.inject<BookingEffects>(BookingEffects)
+    effects = TestBed.inject(BookingEffects)
   })
 
   it('should be created', () => {

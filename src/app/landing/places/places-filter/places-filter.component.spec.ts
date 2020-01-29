@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
-
 import { AppSharedModule } from '../../../app-shared/app-shared.module'
 import { PlacesFilterComponent } from './places-filter.component'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { appStateMock } from 'src/testing/states/app-state-mock'
 import { provideMockStore } from '@ngrx/store/testing'
+import { ReactiveFormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 describe('PlacesFilterComponent', () => {
@@ -14,9 +14,9 @@ describe('PlacesFilterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AppSharedModule, BrowserAnimationsModule],
-      declarations: [],
+      imports: [ReactiveFormsModule, AppSharedModule, BrowserAnimationsModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      declarations: [PlacesFilterComponent],
       providers: [provideMockStore({ initialState })]
     })
       .compileComponents()
