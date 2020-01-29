@@ -1,6 +1,10 @@
 steps:
 # Install
-- name: 'gcr.io/cloud-builders/npm:current'
+- name: node:10.15.1
+  entrypoint: npm
+  args: ['install']
+
+- name: 'npm'
   args: ['install']
 # Lint
 - name: 'gcr.io/cloud-builders/npm:current'
