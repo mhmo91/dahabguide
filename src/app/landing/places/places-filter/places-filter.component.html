@@ -23,7 +23,7 @@
                                   (done)="typesCtrl.close()"></dahab-mat-select-extension>
     </mat-select>
     <button mat-button
-            *ngIf="this.filterFormGroup.controls.types.value?.length>0"
+            *ngIf="this.filterFormGroup.controls.types.value.length>0"
             matSuffix
             mat-icon-button
             aria-label="Clear"

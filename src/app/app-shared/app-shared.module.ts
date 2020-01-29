@@ -37,7 +37,6 @@ import { NotPipe } from './pipes/not.pipe'
 import { PlaceCardComponent } from './place-card/place-card.component'
 import { NgbCarouselModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap'
 import { AgmCoreModule } from '@agm/core'
-import { PlacesPipe } from './pipes/places.pipe'
 import { MatSelectExtensionComponent } from './mat-select-extension/mat-select-extension.component'
 import { SelectNumberComponent } from './select-number/select-number.component'
 import { MatRippleModule } from '@angular/material/core'
@@ -55,11 +54,11 @@ import { MomentModule } from 'ngx-moment'
 import { PlaceImagesComponent } from './place-images/place-images.component'
 import { SnackbarService } from './services/snackbar.service'
 import { PlaceLocationComponent } from './place-location/place-location.component'
-
+import { PlacesPipe } from './pipes/places.pipe'
 @NgModule({
   declarations: [
     ToolbarLogoComponent, NiceImageComponent,
-    NotPipe, PlacesPipe, PlaceCardComponent,
+    NotPipe, PlaceCardComponent,
     MatSelectExtensionComponent,
     SelectNumberComponent,
     DropzoneDirective,
@@ -68,6 +67,7 @@ import { PlaceLocationComponent } from './place-location/place-location.componen
     PlaceAvailabilityCalendarComponent,
     PlaceImagesComponent,
     PlaceLocationComponent,
+    PlacesPipe
   ],
   imports: [
     CommonModule,
