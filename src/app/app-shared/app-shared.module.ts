@@ -55,6 +55,7 @@ import { PlaceImagesComponent } from './place-images/place-images.component'
 import { SnackbarService } from './services/snackbar.service'
 import { PlaceLocationComponent } from './place-location/place-location.component'
 import { PlacesPipe } from './pipes/places.pipe'
+import { PlacesTypesPipe } from './pipes/places-types.pipe'
 @NgModule({
   declarations: [
     ToolbarLogoComponent, NiceImageComponent,
@@ -67,7 +68,8 @@ import { PlacesPipe } from './pipes/places.pipe'
     PlaceAvailabilityCalendarComponent,
     PlaceImagesComponent,
     PlaceLocationComponent,
-    PlacesPipe
+    PlacesPipe,
+    PlacesTypesPipe
   ],
   imports: [
     CommonModule,
@@ -160,6 +162,7 @@ import { PlacesPipe } from './pipes/places.pipe'
     // pipes
     NotPipe,
     PlacesPipe,
+    PlacesTypesPipe,
     // Directives
     DropzoneDirective
   ],

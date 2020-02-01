@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store'
 import { Update } from '@ngrx/entity'
 import { IPlace } from '../models/place.model'
+import { IPlacesFilter } from '../models/places-filter.model'
 
 export enum PlaceActionTypes {
   LoadPlaces = '[Place] Load Places',
@@ -22,15 +23,14 @@ export enum PlaceActionTypes {
   DeletePlace = '[Place] Delete Place',
   DeletePlaces = '[Place] Delete Places',
   ClearPlaces = '[Place] Clear Places',
-  DeletePlaceImage = '[Place][User action] delete place image'
+  DeletePlaceImage = '[Place][User action] delete place image',
+  UpdatePlacesFilter = '[Places] [User changed filter value] update places filter model'
 }
 
 export class InitLoadPlaces implements Action {
   readonly type = PlaceActionTypes.InitLoadPlaces
 }
-export class ResetPlacesFilter implements Action {
-  readonly type = PlaceActionTypes.ResetPlacesFilter
-}
+
 
 export class GetPlaceDetails implements Action {
   readonly type = PlaceActionTypes.GetPlaceDetails
@@ -68,6 +68,16 @@ export class UpsertPlace implements Action {
   constructor(public payload: { place: IPlace }) { }
 }
 
+export class ResetPlacesFilter implements Action {
+  readonly type = PlaceActionTypes.ResetPlacesFilter
+}
+
+
+export class UpdatePlacesFilter implements Action {
+  constructor(public payload: { placesFilter: IPlacesFilter }) { }
+
+  readonly type = PlaceActionTypes.UpdatePlacesFilter
+}
 export class AddPlaces implements Action {
   readonly type = PlaceActionTypes.AddPlaces
 
@@ -122,8 +132,10 @@ export class DeletePlaceImage implements Action {
   constructor(public url: string) {
   }
 }
+
 export type PlaceActions =
   InitLoadPlaces
+  | UpdatePlacesFilter
   | LoadPlaces
   | GetPlaceDetails
   | UpdateCurrentPlace

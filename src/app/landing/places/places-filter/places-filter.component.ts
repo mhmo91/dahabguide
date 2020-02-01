@@ -36,6 +36,7 @@ export class PlacesFilterComponent implements OnInit {
   }
 
   constructForm() {
+    // maintain the form structure to emit a model similar to PlacesFilter
     this.filterFormGroup = this.afb.group({
       types: null,
       longTermOnly: null,
@@ -48,12 +49,11 @@ export class PlacesFilterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.filterFormGroup.valueChanges.subscribe(v => {
-      console.log(v)
-    })
-  }
-  updateState() {
 
+  }
+  updateState(formValue) {
+    console.log(formValue)
+    this.store.dispatch(new placesActions.UpdatePlacesFilter({ placesFilter: formValue }))
   }
 
 
