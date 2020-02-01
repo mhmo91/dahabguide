@@ -1,9 +1,17 @@
 <div class="sticky-bottom bg-white mat-elevation-z8 p-2 d-flex justify-content-between">
-  <button type="button" class="col-auto" aria-labelledby="resetId" (click)="selectCtrl.value = []" mat-button>
+  <button type="button"
+          class="col-auto"
+          aria-labelledby="resetId"
+          (click)="this.resetToDefault.emit()"
+          mat-button>
     <span id="resetId">Reset</span>
   </button>
-  <button type="button" (click)="SaveClicked()" class="col-auto" aria-labelledby="SaveId" mat-raised-button
-    color="accent">
+  <button type="button"
+          (click)="SaveClicked()"
+          class="col-auto"
+          aria-labelledby="SaveId"
+          mat-raised-button
+          color="accent">
     <span id="SaveId">Done</span>
   </button>
 </div>

@@ -1,13 +1,17 @@
-<form (ngSubmit)="addPlace(placeInfoFormGroup.value)" [formGroup]="placeInfoFormGroup">
+<form (ngSubmit)="addPlace(placeInfoFormGroup.value)"
+      [formGroup]="placeInfoFormGroup">
   <section class="d-flex flex-column align-items-center">
     <mat-divider class="my-3 col-12"></mat-divider>
     <mat-label class="col-12 pl-0 mb-3">Describe your place</mat-label>
     <article class="row flex-column flex-md-row align-items-center">
       <mat-form-field class="col">
         <mat-label>My guest can book?</mat-label>
-        <mat-select (valueChange)="whenPlaceTypeChange($event)" #palceTypeCtrl formControlName="type" required>
-          <mat-option *ngFor="let type of (this.resources$ | async).placesTypes | places:{canBeBooked:true }"
-            [value]="type.id">
+        <mat-select (valueChange)="whenPlaceTypeChange($event)"
+                    #palceTypeCtrl
+                    formControlName="type"
+                    required>
+          <mat-option *ngFor="let type of (this.resources$ | async).placesTypes | placesTypes:{canBeBooked:true }"
+                      [value]="type.id">
             {{type.name_en}}
           </mat-option>
         </mat-select>
@@ -15,10 +19,10 @@
 
       <mat-form-field class="col">
         <mat-label>And it's located inside</mat-label>
-        <mat-select #insideCtrl formControlName="inside">
-          <mat-option
-            *ngFor="let type of (this.resources$ | async).placesTypes | places:{ standAlone:true} | not:{id:palceTypeCtrl?.value}"
-            [value]="type.id">
+        <mat-select #insideCtrl
+                    formControlName="inside">
+          <mat-option *ngFor="let type of (this.resources$ | async).placesTypes | placesTypes:{ standAlone:true} | not:{id:palceTypeCtrl?.value}"
+                      [value]="type.id">
             {{type.name_en}}
           </mat-option>
           <mat-option value="standalone">
@@ -29,15 +33,19 @@
 
       </mat-form-field>
       <mat-form-field class="col">
-        <input matInput placeholder="And it's called" formControlName="brandName">
+        <input matInput
+               placeholder="And it's called"
+               formControlName="brandName">
         <mat-hint align="start">optional</mat-hint>
       </mat-form-field>
     </article>
-    <article formGroupName="layout" class="row flex-column flex-md-row align-items-center mt-4">
+    <article formGroupName="layout"
+             class="row flex-column flex-md-row align-items-center mt-4">
       <mat-form-field class="col">
         <mat-label>Bedrooms</mat-label>
         <mat-select formControlName="bedrooms">
-          <mat-option *ngFor="let num of [0,1,2,3,4,5,6,7,8,9,10,11] " [value]="num">
+          <mat-option *ngFor="let num of [0,1,2,3,4,5,6,7,8,9,10,11] "
+                      [value]="num">
             {{num}}
           </mat-option>
         </mat-select>
@@ -45,7 +53,8 @@
       <mat-form-field class="col">
         <mat-label>Beds</mat-label>
         <mat-select formControlName="beds">
-          <mat-option *ngFor="let num of [0,1,2,3,4,5,6,7,8,9,10,11] " [value]="num">
+          <mat-option *ngFor="let num of [0,1,2,3,4,5,6,7,8,9,10,11] "
+                      [value]="num">
             {{num}}
           </mat-option>
         </mat-select>
@@ -53,7 +62,8 @@
       <mat-form-field class="col">
         <mat-label>Bathrooms</mat-label>
         <mat-select formControlName="bathrooms">
-          <mat-option *ngFor="let num of [0,1,2,3,4,5,6,7,8,9,10,11] " [value]="num">
+          <mat-option *ngFor="let num of [0,1,2,3,4,5,6,7,8,9,10,11] "
+                      [value]="num">
             {{num}}
           </mat-option>
         </mat-select>
@@ -62,12 +72,15 @@
     <mat-divider class="my-3 col-12"></mat-divider>
     <mat-label class="col-12 pl-0 mb-3">Amenities and Features</mat-label>
     <article class=" d-flex flex-wrap align-items-around">
-      <div formGroupName="layout" class="col m-3">
+      <div formGroupName="layout"
+           class="col m-3">
         <mat-checkbox formControlName="privateGarden">Private Garden</mat-checkbox>
       </div>
-      <div class="col m-3" *ngFor="let amenity of (this.resources$|async).amenities; let i = index">
-        <mat-checkbox [checked]="this.place?.amenities?.includes(amenity.id)" (change)="amenityCheckChange($event)"
-          [value]="amenity.id">
+      <div class="col m-3"
+           *ngFor="let amenity of (this.resources$|async).amenities; let i = index">
+        <mat-checkbox [checked]="this.place?.amenities?.includes(amenity.id)"
+                      (change)="amenityCheckChange($event)"
+                      [value]="amenity.id">
           {{amenity.name_en}}
         </mat-checkbox>
       </div>
@@ -105,14 +118,21 @@
   </section>
 
   <div class="my-3">
-    <button *ngIf="(this.placeWizard$|async).mode === mode.Add" mat-raised-button type="submit" color="accent">
+    <button *ngIf="(this.placeWizard$|async).mode === mode.Add"
+            mat-raised-button
+            type="submit"
+            color="accent">
       Next <mat-icon>keyboard_arrow_right</mat-icon>
     </button>
-    <button *ngIf="(this.placeWizard$|async).mode === mode.Update" mat-raised-button type="submit" color="accent">
+    <button *ngIf="(this.placeWizard$|async).mode === mode.Update"
+            mat-raised-button
+            type="submit"
+            color="accent">
       <mat-icon>save</mat-icon> Save
     </button>
   </div>
-  <div *ngIf="(placeWizard$|async).busy" class="loading-shade">
+  <div *ngIf="(placeWizard$|async).busy"
+       class="loading-shade">
     <mat-spinner></mat-spinner>
   </div>
 

@@ -4,7 +4,7 @@
 
     <article id="placesList"
              class="places-list-container col-md-12 col-lg-7 col-xl-6">
-      <div *ngFor="let place of this.places$ | async"
+      <div *ngFor="let place of (this.places$ | async) | places: (this.placesFilter|async)"
            class="mb-3">
         <dahab-place-card (clicked)="openPlace(place)"
                           [place]="place"></dahab-place-card>
@@ -23,7 +23,7 @@
                [zoom]="15"
                [latitude]="this.mapConfigurations.latitude"
                [longitude]="this.mapConfigurations.longitude">
-        <agm-marker *ngFor="let place of this.places$ | async"
+        <agm-marker *ngFor="let place of (this.places$ | async) | places: (this.placesFilter|async)"
                     (markerClick)="currentPlace = place.id"
                     [markerClickable]="true"
                     [iconUrl]="place.goodDeal?'assets/here.svg': null"

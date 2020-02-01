@@ -8,12 +8,19 @@ import { MapStyle } from 'src/app/constants/map.config'
 import { Router, ActivatedRoute } from '@angular/router'
 import { MatBottomSheet } from '@angular/material/bottom-sheet'
 import { PlacesFilterComponent } from '../places-filter/places-filter.component'
+import { IPlacesFilter } from '../../../models/places-filter.model'
 @Component({
   selector: 'dahab-places-list',
   templateUrl: './places-list.component.html',
   styleUrls: ['./places-list.component.scss']
 })
 export class PlacesListComponent implements OnInit {
+
+  places$: Observable<IPlace[]>
+  isLoading$: Observable<boolean>
+  mapConfigurations
+  currentPlace: any
+  placesFilter: Observable<IPlacesFilter>
 
   constructor(
     private store: Store<AppState>, private router: Router, private activatedRoute: ActivatedRoute, private bottomSheet: MatBottomSheet) {
@@ -23,13 +30,10 @@ export class PlacesListComponent implements OnInit {
       style: MapStyle
     }
   }
-  places$: Observable<IPlace[]>
-  isLoading$: Observable<boolean>
-  mapConfigurations
-  currentPlace: any
 
   ngOnInit() {
     this.places$ = this.store.select(placesSelector.selectAllPlaces)
+    this.placesFilter = this.store.select(placesSelector.selectPlacesFilter)
     this.isLoading$ = this.store.select(placesSelector.isLoading)
   }
 
