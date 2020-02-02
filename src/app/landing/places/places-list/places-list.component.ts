@@ -9,13 +9,17 @@ import { Router, ActivatedRoute } from '@angular/router'
 import { MatBottomSheet } from '@angular/material/bottom-sheet'
 import { PlacesFilterComponent } from '../places-filter/places-filter.component'
 import { IPlacesFilter } from '../../../models/places-filter.model'
+import { listAnimation, fadeAnimation } from 'src/app/app-shared/animations/list.animations'
+
+
 @Component({
   selector: 'dahab-places-list',
   templateUrl: './places-list.component.html',
-  styleUrls: ['./places-list.component.scss']
+  styleUrls: ['./places-list.component.scss'],
+  animations: [fadeAnimation, listAnimation]
 })
 export class PlacesListComponent implements OnInit {
-
+  currentDisplayedPlaces
   places$: Observable<IPlace[]>
   isLoading$: Observable<boolean>
   mapConfigurations
@@ -46,4 +50,10 @@ export class PlacesListComponent implements OnInit {
     this.bottomSheet.open(PlacesFilterComponent)
   }
 
+  trackPlaceByFn(index: number, place: IPlace) {
+    return place.id
+  }
+
 }
+
+
