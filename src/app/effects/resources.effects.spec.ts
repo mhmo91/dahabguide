@@ -19,7 +19,7 @@ describe('ResourcesEffects', () => {
       ]
     })
 
-    effects = TestBed.get<ResourcesEffects>(ResourcesEffects)
+    effects = TestBed.inject<ResourcesEffects>(ResourcesEffects)
   })
 
   it('should be created', () => {

@@ -1,6 +1,6 @@
-import { BookingMinionService } from './../services/booking-minion.service'
+import { BookingMinionService } from '../../../app-shared/services/booking-minion.service'
 import { placesSelector } from 'src/app/selectors'
-import { PlacesFilter } from './../../models/places-filter.model'
+import { PlacesFilter } from '../../../models/places-filter.model'
 import { Observable } from 'rxjs'
 import { Component, OnInit } from '@angular/core'
 import { Store } from '@ngrx/store'
@@ -9,6 +9,9 @@ import { IResources } from 'src/app/models/resources.model'
 import { FormGroup, FormBuilder } from '@angular/forms'
 import { formatCurrency } from '@angular/common'
 import * as placesActions from 'src/app/actions/place.actions'
+import { MatBottomSheet } from '@angular/material/bottom-sheet'
+import { Platform } from '@angular/cdk/platform'
+
 @Component({
   selector: 'dahab-places-filter',
   templateUrl: './places-filter.component.html',
@@ -22,7 +25,8 @@ export class PlacesFilterComponent implements OnInit {
 
 
   constructor(
-    private store: Store<AppState>, private afb: FormBuilder, public bookingMinion: BookingMinionService
+    private store: Store<AppState>, private afb: FormBuilder, public bookingMinion: BookingMinionService, public platform: Platform,
+    private bottomSheet: MatBottomSheet
   ) {
     this.constructForm()
     this.resources$ = store.select('resources')
@@ -32,40 +36,39 @@ export class PlacesFilterComponent implements OnInit {
   }
 
   constructForm() {
+    // maintain the form structure to emit a model similar to PlacesFilter
     this.filterFormGroup = this.afb.group({
       types: null,
-      bedrooms: null,
-      adultGuests: null,
       longTermOnly: null,
       date: null,
-      budget: null
+      // disable this feature for now
+      // bedrooms: null,
+      // adultGuests: null,
+      // budget: null
     })
   }
 
   ngOnInit() {
-    this.filterFormGroup.valueChanges.subscribe(v => {
-      console.log(v)
-    })
-  }
-  updateState() {
 
   }
-
-  formatLabel(value: number) {
-    if (value >= 1000) {
-      return Math.round(value / 100) + '00'
-    }
-    // formatCurrency
-    return value
+  updateState(formValue) {
+    console.log(formValue)
+    this.store.dispatch(new placesActions.UpdatePlacesFilter({ placesFilter: formValue }))
   }
+
 
   onLongTermChange(value) {
-    this.filterFormGroup.controls.dates.reset()
-    this.filterFormGroup.controls.budget.reset()
+    this.filterFormGroup.controls.date.reset()
   }
 
   resetFilter() {
     this.store.dispatch(new placesActions.ResetPlacesFilter())
+    this.dismissBottomSheet()
+  }
+
+  // dismiss bottom sheet if found
+  dismissBottomSheet() {
+    this.bottomSheet.dismiss()
   }
 
 }

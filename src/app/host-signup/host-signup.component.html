@@ -1,30 +1,54 @@
-<mat-progress-bar *ngIf="this.wizard.loading else hostWizard" mode="indeterminate"></mat-progress-bar>
+<mat-progress-bar *ngIf="this.wizard.loading else hostWizard"
+                  mode="indeterminate"></mat-progress-bar>
 <ng-template #hostWizard>
   <section class="container-fullscreen d-flex  justify-content-between align-items-start">
     <div class=" d-flex flex-column flex-grow-1 align-items-center mw-custom h-100">
 
-      <mat-progress-bar mode="determinate" [value]="this.wizard?.progress"></mat-progress-bar>
+      <mat-progress-bar mode="determinate"
+                        [value]="this.wizard?.progress"></mat-progress-bar>
 
-      <dahab-toolbar-logo class="mt-5 mb-3" [size]="'4rem'"></dahab-toolbar-logo>
+      <a class="mt-5 mb-3"
+         color="accent"
+         [routerLink]="['/landing']">
+        <dahab-toolbar-logo [size]="'4rem'"></dahab-toolbar-logo>
+      </a>
       <h4 class="text-muted mb-5">Sign up as a Host </h4>
-      <mat-vertical-stepper class="px-5" color="accent" [selectedIndex]="this.wizard.currentStep" linear #stepper>
-        <mat-step [completed]="this.wizard.currentStep >0" editable=false>
+      <mat-vertical-stepper class="px-5 bg-transparent"
+                            color="accent"
+                            [selectedIndex]="this.wizard.currentStep"
+                            linear
+                            #stepper>
+        <mat-step [completed]="this.wizard.currentStep >0"
+                  editable=false>
           <ng-template matStepLabel>Create an account</ng-template>
           <div class="pt-4 d-flex flex-column">
-            <button aria-label="signIn with Facebook" mat-stroked-button color="accent"
-              class="btn-social-login text-center my-3 py-3 px-3" (click)="logInWithFacebook()">
-              <img width="150" src="assets/social/facebook.svg" alt="facebook logo">
+            <button aria-label="signIn with Facebook"
+                    mat-stroked-button
+                    color="accent"
+                    class="btn-social-login text-center my-3 py-3 px-3"
+                    (click)="logInWithFacebook()">
+              <img width="150"
+                   src="assets/social/facebook.svg"
+                   alt="facebook logo">
             </button>
-            <button aria-label="signIn with Google" class="btn-social-login my-3 text-center py-3 px-3"
-              mat-stroked-button color="accent" (click)="logInWithgoogle()">
-              <img class="img-fluid" width="150" src="assets/social/google.svg" alt="">
+            <button aria-label="signIn with Google"
+                    class="btn-social-login my-3 text-center py-3 px-3"
+                    mat-stroked-button
+                    color="accent"
+                    (click)="logInWithgoogle()">
+              <img class="img-fluid"
+                   width="150"
+                   src="assets/social/google.svg"
+                   alt="">
             </button>
           </div>
-          <div *ngIf="(this.auth$ | async).authenticating" class="loading-shade">
+          <div *ngIf="(this.auth$ | async).authenticating"
+               class="loading-shade">
             <mat-spinner></mat-spinner>
           </div>
         </mat-step>
-        <mat-step [completed]="this.wizard.currentStep >1" editable=false>
+        <mat-step [completed]="this.wizard.currentStep >1"
+                  editable=false>
           <ng-template matStepLabel>Update your information</ng-template>
           <dahab-user-info></dahab-user-info>
         </mat-step>
@@ -32,15 +56,23 @@
           <ng-template matStepLabel>What's Next</ng-template>
 
           <div class="pt-4 container-fluid text-center">
-            <img width="80px" class="img-fluid" src="assets/celebration.svg" alt="">
+            <img width="80px"
+                 class="img-fluid"
+                 src="assets/celebration.svg"
+                 alt="">
             <h4 class="my-3">You are now ready to List your place</h4>
-            <button class="my-3" mat-raised-button color="accent" [routerLink]="['/restrict']">My Account</button>
+            <button class="my-3"
+                    mat-raised-button
+                    color="accent"
+                    [routerLink]="['/restrict']">My Account</button>
           </div>
         </mat-step>
       </mat-vertical-stepper>
     </div>
     <div class="col-auto p-0 d-none d-md-block h-100  h-100">
-      <img height="100%" src="assets/desert-camel.jpg" alt="">
+      <img height="100%"
+           src="assets/desert-camel.jpg"
+           alt="">
 
     </div>
 

@@ -22,7 +22,6 @@ import * as moment from 'moment'
 })
 export class AddNewBookingComponent implements OnInit {
   stayPeriods = StayPeriods
-  today: Date = new Date()
   rentalTypes = RentalTypes
   addBookingForm: FormGroup
   id: string
@@ -87,10 +86,5 @@ export class AddNewBookingComponent implements OnInit {
       return moment().add(1, 'y').toDate()
     }
   }
-
-  get minDate() {
-    return moment().toDate()
-  }
-
 
 }

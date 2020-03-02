@@ -6,6 +6,7 @@ import { appStateMock } from 'src/testing/states/app-state-mock'
 import { provideMockStore } from '@ngrx/store/testing'
 import { RouterTestingModule } from '@angular/router/testing'
 import { AppSharedModule } from 'src/app/app-shared/app-shared.module'
+import { MapsAPILoader } from '@agm/core'
 
 describe('PlaceComponent', () => {
   let component: PlaceComponent
@@ -17,7 +18,12 @@ describe('PlaceComponent', () => {
       imports: [RouterTestingModule, AppSharedModule],
       declarations: [PlaceComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [provideMockStore({ initialState })]
+      providers: [provideMockStore({ initialState }), {
+        provide: MapsAPILoader,
+        useValue: {
+          load: jasmine.createSpy('load').and.returnValue(new Promise(() => true))
+        }
+      }]
     })
       .compileComponents()
   }))

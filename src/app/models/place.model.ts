@@ -1,5 +1,9 @@
 import { ApiModel } from 'src/app/models/api.model'
 
+export interface IPlaceLocation {
+  latitude: number,
+  longitude: number
+}
 export interface IPlace extends ApiModel {
   id?: string
   creatorId: string
@@ -12,10 +16,7 @@ export interface IPlace extends ApiModel {
     bathrooms: number,
     privateGarden: boolean
   }
-  location: {
-    latitude: number,
-    longitude: number
-  }
+  location: IPlaceLocation
   photos: Array<any>
   guests?: {
     adults: number,

@@ -37,10 +37,8 @@ import { NotPipe } from './pipes/not.pipe'
 import { PlaceCardComponent } from './place-card/place-card.component'
 import { NgbCarouselModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap'
 import { AgmCoreModule } from '@agm/core'
-import { PlacesPipe } from './pipes/places.pipe'
 import { MatSelectExtensionComponent } from './mat-select-extension/mat-select-extension.component'
 import { SelectNumberComponent } from './select-number/select-number.component'
-import { PlacesFilterComponent } from './places-filter/places-filter.component'
 import { MatRippleModule } from '@angular/material/core'
 import { MatSliderModule } from '@angular/material/slider'
 import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker'
@@ -55,19 +53,23 @@ import { PlaceAvailabilityCalendarComponent } from './place-availability-calenda
 import { MomentModule } from 'ngx-moment'
 import { PlaceImagesComponent } from './place-images/place-images.component'
 import { SnackbarService } from './services/snackbar.service'
-
+import { PlaceLocationComponent } from './place-location/place-location.component'
+import { PlacesPipe } from './pipes/places.pipe'
+import { PlacesTypesPipe } from './pipes/places-types.pipe'
 @NgModule({
   declarations: [
     ToolbarLogoComponent, NiceImageComponent,
-    NotPipe, PlacesPipe, PlaceCardComponent,
+    NotPipe, PlaceCardComponent,
     MatSelectExtensionComponent,
     SelectNumberComponent,
-    PlacesFilterComponent,
     DropzoneDirective,
     UploadMeComponent,
     AddNewBookingComponent,
     PlaceAvailabilityCalendarComponent,
     PlaceImagesComponent,
+    PlaceLocationComponent,
+    PlacesPipe,
+    PlacesTypesPipe
   ],
   imports: [
     CommonModule,
@@ -97,7 +99,8 @@ import { SnackbarService } from './services/snackbar.service'
     MatRadioModule,
     GalleryModule,
     MatTooltipModule,
-    MomentModule
+    MomentModule,
+    AgmCoreModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -151,15 +154,15 @@ import { SnackbarService } from './services/snackbar.service'
     PlaceCardComponent,
     MatSelectExtensionComponent,
     SelectNumberComponent,
-    PlacesFilterComponent,
     UploadMeComponent,
     AddNewBookingComponent,
     PlaceAvailabilityCalendarComponent,
     PlaceImagesComponent,
-
+    PlaceLocationComponent,
     // pipes
     NotPipe,
     PlacesPipe,
+    PlacesTypesPipe,
     // Directives
     DropzoneDirective
   ],

@@ -9,8 +9,8 @@ import { appStateMock } from 'src/testing/states/app-state-mock'
 import { RouterTestingModule } from '@angular/router/testing'
 
 describe('AuthGuard', () => {
-  let authGuard: AngularFireAuth
-  let store: MockStore<{ user: IUser }>
+  // tslint:disable-next-line: prefer-const
+  let authGuard
   const initialState = appStateMock
 
   beforeEach(() => {
@@ -21,8 +21,7 @@ describe('AuthGuard', () => {
         provideMockStore({ initialState }),
       ]
     })
-    store = TestBed.get(Store)
-    authGuard = TestBed.get(AuthGuard)
+    authGuard = TestBed.inject(AuthGuard)
 
   })
 

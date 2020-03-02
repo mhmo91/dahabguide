@@ -17,7 +17,7 @@ describe('PlaceWizardEffects', () => {
       ]
     })
 
-    effects = TestBed.get<PlaceWizardEffects>(PlaceWizardEffects)
+    effects = TestBed.inject<PlaceWizardEffects>(PlaceWizardEffects)
   })
 
   it('should be created', () => {

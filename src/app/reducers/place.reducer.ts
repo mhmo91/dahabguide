@@ -44,6 +44,10 @@ export function reducer(
       return { ...state, palcesFilter: new PlacesFilter() }
     }
 
+    case PlaceActionTypes.UpdatePlacesFilter: {
+      return { ...state, palcesFilter: action.payload.placesFilter }
+    }
+
     case PlaceActionTypes.AddPlaceSuccess: {
       return adapter.upsertOne(
         { ...action.payload.place, loading: false }, state

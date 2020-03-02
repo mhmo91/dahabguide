@@ -1,15 +1,20 @@
 steps:
-# Install
-- name: 'gcr.io/cloud-builders/npm:current'
+# Install node packages
+- name: node:12.4.0
+  entrypoint: npm
   args: ['install']
+
 # Lint
-- name: 'gcr.io/cloud-builders/npm:current'
+- name: node:12.4.0
+  entrypoint: npm
   args: ['run', 'lint']
+
 # test
 # - name: 'gcr.io/cloud-builders/npm:current'
 #   args: ['run', 'test:headless']
 # Build
-- name: 'gcr.io/cloud-builders/npm:current'
+- name: node:12.4.0
+  entrypoint: npm
   args: ['run', 'build-${_ENV}']
 # Deploy
 - name: 'gcr.io/$PROJECT_ID/firebase'

@@ -6,9 +6,10 @@
   </mat-radio-group>
 
   <mat-form-field class="my-2">
-    <input formControlName="fromDate" [matDatepickerFilter]="this.bookingMinion.dateFilter" [min]="this.today" matInput
+    <input formControlName="fromDate" [matDatepickerFilter]="this.bookingMinion.dateFilter" matInput
       [matDatepicker]="fromDatePicker" placeholder="Check-in Date" (click)="fromDatePicker.open()" autocomplete="off"
-      (dateChange)="addBookingForm.controls['toDate'].reset() ;toDatePicker.open()" [min]="this.minDate" required>
+      (dateChange)="addBookingForm.controls['toDate'].reset() ;toDatePicker.open()"
+      [min]="this.bookingMinion.calendarConfig.today" [max]="this.bookingMinion.calendarConfig.oneYearFromNow" required>
     <mat-datepicker-toggle matSuffix [for]="fromDatePicker"></mat-datepicker-toggle>
     <mat-datepicker #fromDatePicker></mat-datepicker>
   </mat-form-field>
@@ -37,7 +38,6 @@
       <mat-option value="{{stayPeriods.upTo12Month}}">
         6 to 12 months
       </mat-option>
-
       <mat-option value="{{stayPeriods.moreThan1Year}}">
         More than a year
       </mat-option>

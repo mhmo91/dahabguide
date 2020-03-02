@@ -1,0 +1,96 @@
+<form class="d-flex flex-column flex-md-row flex-wrap align-items-center justify-content-start"
+      [formGroup]="filterFormGroup">
+
+  <mat-form-field class="col-auto"
+                  appearance="outline"
+                  floatLabel="never">
+    <mat-label class="d-flex justify-content-between"
+               id="placeTypeId">
+      <span>Any Place Type</span>
+      <mat-spinner color="accent"
+                   *ngIf="(this.resources$|async)?.loading"
+                   diameter="20"></mat-spinner>
+    </mat-label>
+    <mat-select aria-labelledby="placeTypeId"
+                #typesCtrl
+                formControlName="types"
+                multiple
+                (selectionChange)="this.updateState(filterFormGroup.value)">
+      <mat-option *ngFor="let place of (this.resources$|async)?.placesTypes | placesTypes:{canBeBooked:true }"
+                  [value]="place.id">
+        {{place.name_en}}
+      </mat-option>
+      <dahab-mat-select-extension (resetToDefault)="filterFormGroup.controls.types.reset();this.updateState(filterFormGroup.value)"
+                                  (done)="typesCtrl.close()"></dahab-mat-select-extension>
+    </mat-select>
+
+  </mat-form-field>
+
+  <mat-checkbox #longTermCtrl
+                (change)="onLongTermChange($event);updateState(filterFormGroup.value)"
+                class="col-auto mb-3"
+                color="primary"
+                formControlName="longTermOnly">
+    <span class="text-muted">Long Term Only</span>
+  </mat-checkbox>
+
+  <mat-form-field appearance="outline"
+                  class="col-auto d-flex">
+    <mat-label>
+      {{longTermCtrl.checked ? 'Check in Date': 'Check in - Check out'}}
+    </mat-label>
+
+    <input formControlName="date"
+           autocomplete="off"
+           (click)="placesFilterDatePicker.open()"
+           matInput
+           readonly
+           [satDatepicker]="placesFilterDatePicker"
+           [min]="this.bookingMinion.calendarConfig.today"
+           [max]="this.bookingMinion.calendarConfig.oneYearFromNow">
+    <sat-datepicker [touchUi]="platform.ANDROID || platform.IOS"
+                    #placesFilterDatePicker
+                    [rangeMode]="this.longTermCtrl.checked? false: true">
+    </sat-datepicker>
+    <sat-datepicker-toggle *ngIf="!filterFormGroup.controls.date.value"
+                           matSuffix
+                           [for]="placesFilterDatePicker"></sat-datepicker-toggle>
+    <button mat-button
+            *ngIf="filterFormGroup.controls.date.value"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="$event.stopPropagation();filterFormGroup.controls.date.reset()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <button class="d-block d-md-none"
+          type="button"
+          mat-button
+          (click)="this.dismissBottomSheet()"
+          color="accent">
+    <mat-icon>keyboard_arrow_down</mat-icon>
+    close
+  </button>
+
+
+  <!-- extra filter elements -->
+  <ng-template>
+    <div class="col-auto ">
+      <dahab-select-number [initialValue]="1"
+                           [label]="'Guests'"
+                           [controlFormName]="'adultGuests'"
+                           [formGroup]="filterFormGroup">
+      </dahab-select-number>
+    </div>
+    <div class="col-auto">
+      <dahab-select-number [initialValue]="0"
+                           [label]="'Minimum Bedrooms'"
+                           [controlFormName]="'bedrooms'"
+                           [formGroup]="filterFormGroup">
+      </dahab-select-number>
+    </div>
+  </ng-template>
+
+</form>

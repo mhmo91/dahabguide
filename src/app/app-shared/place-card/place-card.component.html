@@ -1,17 +1,35 @@
-<mat-card (keypress)="openPlace()" (mouseover)="hover=true" (focus)="hover=true" tabindex="0" (blur)="hover=false"
-  (mouseleave)="hover=false" [ngClass]="{'shadow': hover, 'shadow-none':!hover}"
-  class="d-flex flex-column flex-md-row p-0  rounded" role="place short info">
+<mat-card (keypress)="openPlace()"
+          (mouseover)="hover=true"
+          (focus)="hover=true"
+          tabindex="0"
+          (blur)="hover=false"
+          (mouseleave)="hover=false"
+          [ngClass]="{'shadow': hover, 'shadow-none':!hover}"
+          class="d-flex flex-column flex-md-row p-0  rounded"
+          role="place short info">
 
-  <ngb-carousel (keypress)="openPlace()" (focus)="hover=true" class="col-sm-12 col-md-6 col-lg-5  p-0" #carousel
-    interval="4000000" pauseOnHover=true>
-    <ng-template ngbSlide *ngFor="let img of photos; index as i">
-      <img [src]="img" alt="Place image {{i + 1}} description" (click)="openPlace()">
+  <ngb-carousel (keypress)="openPlace()"
+                (focus)="hover=true"
+                class="col-sm-12 col-md-6 col-lg-5  p-0"
+                #carousel
+                interval="4000000"
+                pauseOnHover=true>
+    <ng-template ngbSlide
+                 *ngFor="let img of photos; index as i">
+      <img [src]="img"
+           alt="Place image {{i + 1}} description"
+           (click)="openPlace()">
     </ng-template>
   </ngb-carousel>
 
 
-  <div tabindex="0" (focus)="hover=true" (blur)="hover=false" matRipple (click)="openPlace()" (keypress)="openPlace()"
-    class="flex-grow-1 d-flex flex-column cursor-pointer pl-3">
+  <div tabindex="0"
+       (focus)="hover=true"
+       (blur)="hover=false"
+       matRipple
+       (click)="openPlace()"
+       (keypress)="openPlace()"
+       class="flex-grow-1 d-flex flex-column cursor-pointer pl-3">
     <h6 class="m-0 pt-2">{{this.placeTypeName}}</h6>
     <p class="text-muted small-text h-auto my-1">
       {{place.layout.bedrooms}} {{(place.layout.bedrooms> 1)? 'Bedrooms':'Bedroom'}} .
@@ -22,17 +40,22 @@
     </p>
 
     <p class="my-0">
-      <mat-icon class="text-muted m-2 small-icon" [matTooltip]="amen.name_en" *ngFor="let amen of this.placeAmenities">
+      <mat-icon class="text-muted m-2 small-icon"
+                [matTooltip]="amen.name_en"
+                *ngFor="let amen of this.placeAmenities">
         {{amen.icon}}</mat-icon>
     </p>
     <div class="flex-grow-1">
     </div>
-    <div *ngIf="this.place.price" class="d-flex justify-content-between pb-2">
+    <div *ngIf="this.place.price"
+         class="d-flex justify-content-between pb-2">
       <div>
-        <p class="price m-0" *ngIf="this.place?.price?.longTerm">
+        <p class="price m-0"
+           *ngIf="this.place?.price?.longTerm">
           {{place.price.perMonth  | number   }} <span class="text-muted small-text">$/Month</span>
         </p>
-        <p class="price m-0" *ngIf="this.place?.price?.shortTerm">
+        <p class="price m-0"
+           *ngIf="this.place?.price?.shortTerm">
           {{place.price.perNight  | number }} <span class="text-muted small-text">$/Night</span>
         </p>
       </div>

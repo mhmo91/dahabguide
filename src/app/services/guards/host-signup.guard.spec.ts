@@ -8,7 +8,6 @@ import { Store } from '@ngrx/store'
 
 describe('HostSignupGuard', () => {
   const initialState = appStateMock
-  let store: MockStore<{ user: IUser }>
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -17,7 +16,6 @@ describe('HostSignupGuard', () => {
         provideMockStore({ initialState }),
       ]
     })
-    store = TestBed.get(Store)
 
   })
 
