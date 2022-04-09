@@ -47,7 +47,7 @@
     "bootstrap": "^4.3.1",
     "express": "^4.15.2",
     "firebase": "^7.9.3",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "mousetrap": "^1.6.3",
     "ngrx-store-localstorage": "^8.0.0",
     "ngx-moment": "^3.5.0",
