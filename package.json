@@ -45,7 +45,7 @@
     "@types/hammerjs": "^2.0.36",
     "@types/mousetrap": "^1.6.3",
     "bootstrap": "^4.3.1",
-    "express": "^4.15.2",
+    "express": "^4.17.3",
     "firebase": "^7.9.3",
     "moment": "^2.24.0",
     "mousetrap": "^1.6.3",
